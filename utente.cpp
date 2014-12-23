@@ -31,6 +31,11 @@ void utente::aggiungi_esperienze_professionali(const esperienza_professionale & 
     esperienze_professionali.push_back(e);
 }
 
+void utente::aggiungi_lingua(const std::string & d, const std::string &c,
+                             const std::string &p, const std::string &s){
+    lingue.push_front(lingua(d,c,p,s));
+}
+
 //void utente::rimuovi_esperienze_professionali(const esperienza_professionale & e){
 //    esperienze_professionali.remove(e);
 //}

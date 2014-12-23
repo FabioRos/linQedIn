@@ -32,6 +32,8 @@ class utente{
         void update_username(const std::string&) ;
         void aggiungi_esperienze_professionali(const esperienza_professionale&);
 //        void rimuovi_esperienze_professionali(const esperienza_professionale&);
+        void aggiungi_lingua(const std::string&, const std::string&,
+                             const std::string&, const std::string&);
 //        void aggiungi_competenze(const std::string&);
 //        void rimuovi_competenze(const std::string&);
 
