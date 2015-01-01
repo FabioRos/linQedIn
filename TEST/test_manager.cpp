@@ -1,6 +1,7 @@
 #include "test_manager.h"
 #include "test_data.h"
 #include "test_lingua.h"
+#include "test_esperienza.h"
 #include <iostream>
 
 using std::cout;
@@ -23,7 +24,9 @@ void test_manager::aggiorna_stato_test(const test* componente_testata){
 }
 
 bool test_manager::run_tests(){
-    return(this->data_tester() && this->lingua_tester());
+
+    std::cout<<"\n _______________________ TEST MODE _____________________________\n\n";
+    return(this->data_tester() && this->lingua_tester() && this->esperienza_tester());
 
 }
 
@@ -33,25 +36,16 @@ bool test_manager::data_tester(){
 
     //OGGETTO TESTER
     test_data* test_var=new test_data;
-
-
-    //PRIMO INPUT
-    data d();
     test_var->run_tests();
     int tot=test_var->get_numero_test();
     int s=test_var->get_numero_test_superati();
     int f=test_var->get_numero_test_falliti();
 
-    cout<<"\n Tot Test: \t"<< tot <<
-          "\n Superati: \t"<< s   <<
-          "\n Falliti:  \t"<< f   <<"\n";
+    cout<<" < #:"<< tot <<", Superati: "<< s <<", Falliti: "<< f  <<" >\n";
+    cout<<"\n _______________________________________________________________\n";
 
     if(f)
         esito=false;
-
-
-
-    //--FINE PRIMO INPUT --//
 
     return esito;
 }
@@ -63,25 +57,36 @@ bool test_manager::lingua_tester(){
 
     //OGGETTO TESTER
     test_lingua* test_var=new test_lingua;
-
-
-    //PRIMO INPUT
-    lingua l();
     test_var->run_tests();
     int tot=test_var->get_numero_test();
     int s=test_var->get_numero_test_superati();
     int f=test_var->get_numero_test_falliti();
 
-    cout<<"\n Tot Test: \t"<< tot <<
-          "\n Superati: \t"<< s   <<
-          "\n Falliti:  \t"<< f   <<"\n";
+    cout<<" < #:"<< tot <<", Superati: "<< s <<", Falliti: "<< f  <<" >";
+    cout<<"\n _______________________________________________________________\n";
 
     if(f)
         esito=false;
 
+    return esito;
+}
 
+bool test_manager::esperienza_tester()
+{
+    bool esito=true;
+    //al primo fallimento --> esito==False
 
-    //--FINE PRIMO INPUT --//
+    //OGGETTO TESTER
+    test_esperienza* test_var=new test_esperienza;
+    test_var->run_tests();
+    int tot=test_var->get_numero_test();
+    int s=test_var->get_numero_test_superati();
+    int f=test_var->get_numero_test_falliti();
+
+    cout<<" < #:"<< tot <<", Superati: "<< s <<", Falliti: "<< f  <<" >";
+    cout<<"\n _______________________________________________________________\n";
+    if(f)
+        esito=false;
 
     return esito;
 }

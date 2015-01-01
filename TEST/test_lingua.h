@@ -8,12 +8,12 @@ public:
     test_lingua();
     test* run_tests();
     //tests
+    bool test0();
     bool test1();
     bool test2();
     bool test3();
     bool test4();
     bool test5();
-    bool test6();
 };
 
 #endif // TEST_LINGUA_H

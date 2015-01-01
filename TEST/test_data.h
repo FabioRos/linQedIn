@@ -5,9 +5,12 @@
 #include <iostream>
 class test_data : public test{
 public:
+
+    //void stampa_array_errori() const;
     test_data();
     test* run_tests();
     //tests
+    bool test0();
     bool test1();
     bool test2();
     bool test3();
@@ -16,7 +19,11 @@ public:
     bool test6();
     bool test7();
     bool test8();
-
+    bool test9();
+    bool test10();
+    bool test11();
+    bool test12();
+    bool test13();
 };
 
 #endif // TEST_DATA_H

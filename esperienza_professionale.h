@@ -24,10 +24,6 @@ public:
 
     //bool operator==(const esperienza_professionale&);
 
-
-
-
-
 };
 
 #endif // ESPERIENZA_PROFESSIONALE_H

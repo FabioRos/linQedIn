@@ -6,7 +6,6 @@ private:
     int giorno;
     int mese;
     int anno;
-
     static bool sanitize(const int&, const int&, const int&);
 public:
     static bool sanitize(const data&);
@@ -20,7 +19,12 @@ public:
      * Tanto basta pasarla per valore.
     */
     bool aggiorna(const data&);
-    bool operator==(const data&);
+    bool operator==(const data&) const;
+    bool operator!=(const data&) const;
+    bool operator<(const data&) const;
+    bool operator<=(const data&) const;
+    bool operator>(const data&) const;
+    bool operator>=(const data&) const;
 };
 
 #endif // DATA_H

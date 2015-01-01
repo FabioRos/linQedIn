@@ -18,6 +18,8 @@ public:
     bool data_tester();
     // LINGUA
     bool lingua_tester();
+    // ESPERIENZA PROFESSIONALE
+    bool esperienza_tester();
 
 
 

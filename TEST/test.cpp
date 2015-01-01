@@ -22,6 +22,16 @@ int test::get_numero_test_falliti() const {
 }
 
 
-
+void test::stampa_array_errori() const
+{   std::cout<<std::endl;
+    for (int i=0;i<numero_test;i++){
+        std::cout<<"["<<i<<":";
+        if(array_[i]==true)
+            std::cout<<"ERR] ";
+        else
+            std::cout<<"OK] ";
+    }
+    std::cout<<std::endl<<std::endl;
+}
 
 

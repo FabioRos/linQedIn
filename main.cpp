@@ -22,9 +22,9 @@ int main(int argc, char *argv[])
 
     if(ok){
 
-        std::cout<<" \n [V] Tutti i test passati. \n "<<std::endl;
+        std::cout<<" \n\n [V] Tutti i test passati. \n\n "<<std::endl;
     }else{
-        std::cout<<" \n [X] Il programma non ha passato la fase di test. \n"<<std::endl;
+        std::cout<<" \n\n [X] Il programma non ha passato la fase di test. \n\n"<<std::endl;
     }
     //data d(1,1,2005);
     //std::cout<<"\n"<<d.get_giorno()<<'-'<<d.get_mese()<<'-'<<d.get_anno()<<std::endl;

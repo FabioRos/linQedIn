@@ -1,9 +1,9 @@
 #include "data.h"
 
 data::data(int g, int m, int a):giorno(g),mese(m),anno(a){
-//        if(sanitize(g,m,a)){
-//            //ecc
-//        }
+    if(sanitize(*this)==false){
+        *this=data();
+    }
 }
 bool data::sanitize(const int& g, const int& m, const int& a){ //STATICO
     return sanitize(data(g,m,a));
@@ -19,7 +19,7 @@ bool data::sanitize(const data& d) {                           //STATICO
         if( d.anno % 400 == 0 || (d.anno % 100 != 0 && d.anno % 4 == 0)){ //anno bisestile
             if(d.giorno<=29)
                 tutto_bene=true;
-         }else {
+        }else {
             if(d.giorno<=28)
                 tutto_bene=true;
         }
@@ -49,10 +49,64 @@ bool data::aggiorna(const data& d){
         anno=d.anno;
         mese=d.mese;
         giorno=d.giorno;
-    return true;
+        return true;
     }
     return false;
 }
-bool data::operator==(const data &d){
+bool data::operator==(const data &d) const{
     return (giorno==d.get_giorno() && mese==d.get_mese() && anno==d.get_anno());
 }
+
+bool data::operator!=(const data &d) const {
+    return !(*this==d);
+}
+
+bool data::operator<(const data &d)const{
+    if(anno > d.anno)
+        return false;
+    if(anno < d.anno) {
+        return true;
+    }else {  //anno ==d.anno
+        if(mese <= d.mese){
+            if(giorno < d.giorno)
+                return true;
+        }
+        return false;
+    }
+}
+
+bool data::operator<=(const data & d) const{
+    return ((*this==d) || (*this<d));
+}
+
+bool data::operator>(const data & d) const{
+    return (!(*this<=d));
+}
+
+bool data::operator>=(const data & d) const{
+    return (!(*this<d));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
