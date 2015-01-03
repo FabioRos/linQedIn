@@ -12,8 +12,8 @@ test* test_esperienza::run_tests(){
     this->test0();
     this->test1();
     this->test2();
-//    this->test3();
-//    this->test4();
+    this->test3();
+    this->test4();
 //    this->test5();
 //    this->test6();
 //    this->test7();
@@ -101,7 +101,54 @@ bool test_esperienza::test1(){  //controllo getter
         return false;
     }
 }
-/*bool test_esperienza::test4(){ //controllo che la data inizio sia minore o uguale alla data fine
+ bool test_esperienza::test3(){ //controllo ==
+     numero_test++;
+     try{
+         esperienza_professionale* p1 = new esperienza_professionale("a","p","l","d",
+                                                                    data(),data());
+         esperienza_professionale* p2 = new esperienza_professionale("a","p","l","d",
+                                                                    data(),data());
+         if(*p1==*p2) {
+             array_[3]=false;
+             n_test_superati+=1;
+             return true;
+         }
+         else{
+             throw 3;
+
+         }
+     }
+     catch (int e)    {
+         array_[e]=true;
+         n_test_falliti+=1;
+         return false;
+     }
+ }
+
+ bool test_esperienza::test4(){ //controllo !=
+     numero_test++;
+     try{
+         esperienza_professionale* p1 = new esperienza_professionale("a","p","l","d",
+                                                                    data(),data());
+         esperienza_professionale* p2 = new esperienza_professionale("b","p","l","d",
+                                                                    data(),data());
+         if(*p1!=*p2) {
+             array_[4]=false;
+             n_test_superati+=1;
+             return true;
+         }
+         else{
+             throw 4;
+
+         }
+     }
+     catch (int e)    {
+         array_[e]=true;
+         n_test_falliti+=1;
+         return false;
+     }
+ }
+bool test_esperienza::test5(){    //data inizio <= data fine!
     numero_test++;
     try{
         if(0)
@@ -116,22 +163,9 @@ bool test_esperienza::test1(){  //controllo getter
         return false;
     }
 }
-bool test_esperienza::test5(){
-    numero_test++;
-    try{
-        if(0)
-            throw 20;
-        else{
-            n_test_superati+=1;
-            return true;
-        }
-    }
-    catch (...)    {
-        n_test_falliti+=1;
-        return false;
-    }
-}
-bool test_esperienza::test6(){
+
+/*
+bool test_esperienza::test6(){      //remove esperienza
     numero_test++;
     try{
         if(0)

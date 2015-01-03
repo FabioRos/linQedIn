@@ -1,2 +1,4 @@
 push back per esperienze perchè stamperò prima le più recenti.
 push_front per le lingue perchè di solito si inserisce prima quella che si sa meglio.
+
+DB--> map, diverso da multimap erchè non ammette doppioni, è chiave/valore=> ricerca veloce. la chiave deve avere almeno un operatore di confronto.

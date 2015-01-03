@@ -18,6 +18,19 @@ void esperienza_professionale::aggiorna_posizione(const std::string& s){
     posizione=s;
 }
 
+bool esperienza_professionale::operator==(const esperienza_professionale & e){
+    return ( e.get_descrizione()==get_descrizione() &&
+             e.get_fine()==get_fine() &&
+             e.get_inizio()==get_inizio()&&
+             e.get_luogo()==get_luogo() &&
+             e.nome_azienda==nome_azienda &&
+             e.posizione == posizione);
+}
+bool esperienza_professionale::operator!=(const esperienza_professionale & e){
+    return !(*this==e);
+}
+
+
 //bool esperienza_professionale::operator==(const esperienza_professionale &e){
 //    return (luogo==e.get_luogo()&& descrizione==e.get_descrizione() && inizio==e.get_inizio() &&
 //            fine== e.get_fine() && nome_azienda==e.get_nome_azienda() && posizione==e.get_posizione());

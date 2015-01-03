@@ -22,7 +22,8 @@ public:
     void aggiorna_nome_azienda(const std::string&);
     void aggiorna_posizione(const std::string&);
 
-    //bool operator==(const esperienza_professionale&);
+    bool operator==(const esperienza_professionale&);
+    bool operator!=(const esperienza_professionale&);
 
 };
 

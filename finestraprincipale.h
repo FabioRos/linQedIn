@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "VIEW/amministazione.h"
+
 class FinestraPrincipale : public QMainWindow
 {
     Q_OBJECT

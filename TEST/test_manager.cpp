@@ -2,6 +2,7 @@
 #include "test_data.h"
 #include "test_lingua.h"
 #include "test_esperienza.h"
+#include "test_utente_basic.h"
 #include <iostream>
 
 using std::cout;
@@ -24,10 +25,16 @@ void test_manager::aggiorna_stato_test(const test* componente_testata){
 }
 
 bool test_manager::run_tests(){
+    bool risultato=false;
+    std::cout<<"\n _______________________ \033[1;34mTEST MODE\033[0m _____________________________\n\n";
+    risultato=(this->data_tester() && this->lingua_tester() && this->esperienza_tester() &&
+           this->utente_basic_tester());
 
-    std::cout<<"\n _______________________ TEST MODE _____________________________\n\n";
-    return(this->data_tester() && this->lingua_tester() && this->esperienza_tester());
-
+    if(risultato)
+        std::cout<<" \n\n \033[1;32m [V] Tutti i test passati. \n\033[0m\n"<<std::endl;
+    else
+         std::cout<<" \n\n \033[1;31m [X] Il programma non ha passato la fase di test.\033[0m\n\n"<<std::endl;
+    return risultato;
 }
 
 bool test_manager::data_tester(){
@@ -71,8 +78,7 @@ bool test_manager::lingua_tester(){
     return esito;
 }
 
-bool test_manager::esperienza_tester()
-{
+bool test_manager::esperienza_tester(){
     bool esito=true;
     //al primo fallimento --> esito==False
 
@@ -89,4 +95,24 @@ bool test_manager::esperienza_tester()
         esito=false;
 
     return esito;
+}
+
+bool test_manager::utente_basic_tester(){
+    bool esito=true;
+    //al primo fallimento --> esito==False
+
+    //OGGETTO TESTER
+    test_utente_basic* test_var=new test_utente_basic;
+    test_var->run_tests();
+    int tot=test_var->get_numero_test();
+    int s=test_var->get_numero_test_superati();
+    int f=test_var->get_numero_test_falliti();
+
+    cout<<" < #:"<< tot <<", Superati: "<< s <<", Falliti: "<< f  <<" >";
+    cout<<"\n _______________________________________________________________\n";
+    if(f)
+        esito=false;
+
+    return esito;
+
 }

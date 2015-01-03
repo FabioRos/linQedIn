@@ -27,9 +27,9 @@ void test::stampa_array_errori() const
     for (int i=0;i<numero_test;i++){
         std::cout<<"["<<i<<":";
         if(array_[i]==true)
-            std::cout<<"ERR] ";
+            std::cout<<"\033[1;31mERR\033[0m] ";
         else
-            std::cout<<"OK] ";
+            std::cout<<"\033[1;32mOK\033[0m] ";
     }
     std::cout<<std::endl<<std::endl;
 }
