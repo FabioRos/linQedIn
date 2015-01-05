@@ -3,6 +3,7 @@
 #include "test_lingua.h"
 #include "test_esperienza.h"
 #include "test_utente_basic.h"
+#include "test_rete.h"
 #include <iostream>
 
 using std::cout;
@@ -28,7 +29,7 @@ bool test_manager::run_tests(){
     bool risultato=false;
     std::cout<<"\n _______________________ \033[1;34mTEST MODE\033[0m _____________________________\n\n";
     risultato=(this->data_tester() && this->lingua_tester() && this->esperienza_tester() &&
-           this->utente_basic_tester());
+            this->rete_tester() && this->utente_basic_tester());
 
     if(risultato)
         std::cout<<" \n\n \033[1;32m [V] Tutti i test passati. \n\033[0m\n"<<std::endl;
@@ -96,6 +97,27 @@ bool test_manager::esperienza_tester(){
 
     return esito;
 }
+
+bool test_manager::rete_tester(){
+    bool esito=true;
+    //al primo fallimento --> esito==False
+
+    //OGGETTO TESTER
+    test_rete* test_var=new test_rete;
+    test_var->run_tests();
+    int tot=test_var->get_numero_test();
+    int s=test_var->get_numero_test_superati();
+    int f=test_var->get_numero_test_falliti();
+
+    cout<<" < #:"<< tot <<", Superati: "<< s <<", Falliti: "<< f  <<" >";
+    cout<<"\n _______________________________________________________________\n";
+    if(f)
+        esito=false;
+
+    return esito;
+
+}
+
 
 bool test_manager::utente_basic_tester(){
     bool esito=true;

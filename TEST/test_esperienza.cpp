@@ -1,5 +1,5 @@
 #include "test_esperienza.h"
-#include "esperienza_professionale.h"
+#include "./MODEL/esperienza_professionale.h"
 
 test_esperienza::test_esperienza()
 {
@@ -14,7 +14,7 @@ test* test_esperienza::run_tests(){
     this->test2();
     this->test3();
     this->test4();
-//    this->test5();
+    this->test5();
 //    this->test6();
 //    this->test7();
 //    this->test8();
@@ -139,7 +139,6 @@ bool test_esperienza::test1(){  //controllo getter
          }
          else{
              throw 4;
-
          }
      }
      catch (int e)    {
@@ -151,14 +150,19 @@ bool test_esperienza::test1(){  //controllo getter
 bool test_esperienza::test5(){    //data inizio <= data fine!
     numero_test++;
     try{
-        if(0)
-            throw 20;
-        else{
+        esperienza_professionale* p = new esperienza_professionale("a","p","l","d",
+                                                                   data(2,2,2015),data(1,2,2015));
+        //la data di fine è precedente a quella d'inizio, le metto uguali a quella di fine
+        if(p->get_inizio()!=p->get_fine()){
+            throw 5;
+        }else{
+            array_[5]=false;
             n_test_superati+=1;
             return true;
         }
     }
-    catch (...)    {
+    catch (int e)    {
+        array_[e]=true;
         n_test_falliti+=1;
         return false;
     }

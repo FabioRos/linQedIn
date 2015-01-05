@@ -5,8 +5,8 @@
     #include <iostream>
 /*________________*/
 
-#include "test_manager.h"
-#include "db.h"
+#include "./TEST/test_manager.h"
+#include "./MODEL/db.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +17,7 @@ int main(int argc, char *argv[])
 
     //test
     test_manager* tester=new test_manager;
-    bool ok=tester->run_tests();
-
+    tester->run_tests();
 
     return a.exec();
 }

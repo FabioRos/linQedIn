@@ -1,12 +1,11 @@
-#ifndef TEST_UTENTE_BASIC_H
-#define TEST_UTENTE_BASIC_H
-
+#ifndef TEST_COMPETENZE_H
+#define TEST_COMPETENZE_H
 #include "test.h"
 #include <iostream>
 
-class test_utente_basic : public test{
+class test_rete : public test{
 public:
-    test_utente_basic();
+    test_rete();
     test* run_tests();
     //tests
     bool test0();
@@ -14,8 +13,8 @@ public:
     bool test2();
     bool test3();
     bool test4();
-    bool test5();
-    bool test6();
+//    bool test5();
+//    bool test6();
 //    bool test7();
 //    bool test8();
 //    bool test9();
@@ -25,4 +24,4 @@ public:
 //    bool test13();
 };
 
-#endif // TEST_UTENTE_BASIC_H
+#endif // TEST_COMPETENZE_H

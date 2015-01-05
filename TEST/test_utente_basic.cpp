@@ -8,12 +8,12 @@ test* test_utente_basic::run_tests(){
     array_=new bool[numero_test];
 
     this->test0();
-//    this->test1();
-//    this->test2();
-//    this->test3();
-//    this->test4();
-//    this->test5();
-//    this->test6();
+    this->test1();
+    this->test2();
+    this->test3();
+    this->test4();
+    this->test5();
+    this->test6();
 //    this->test7();
 //    this->test8();
 //    this->test9();
@@ -54,61 +54,134 @@ bool test_utente_basic::test0(){    //test  >=
     }
 }
 
-//bool test_utente_basic::test1(){    //test  aggiungi esperienza
-//    numero_test++;
-//    try{
-//        if(true){
-//            array_[1]=false;
-//            n_test_superati+=1;
-//            return true;
-//        }else{
-//            throw 1;
-//        }
-//    }
-//    catch (int e)    {
-//        array_[e]=true;
-//        n_test_falliti+=1;
-//        return false;
-//    }
-//}
+bool test_utente_basic::test1(){    //test  aggiungi esperienza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        esperienza_professionale* ep = new esperienza_professionale("a","p","l","d",data(),data());
+        u->aggiungi_esperienze_professionali(*ep);
+        if(u->get_esperienze_professionali().empty()==false){
+            array_[1]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 1;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
 
 
-//bool test_utente_basic::test1(){    //test  >=
-//    numero_test++;
-//    try{
-//        if(true){
-//            array_[1]=false;
-//            n_test_superati+=1;
-//            return true;
-//        }else{
-//            throw 1;
-//        }
-//    }
-//    catch (int e)    {
-//        array_[e]=true;
-//        n_test_falliti+=1;
-//        return false;
-//    }
-//}
+bool test_utente_basic::test2(){    //test  rimuovi esperienza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        esperienza_professionale* ep = new esperienza_professionale("a","p","l","d",data(),data());
+        u->aggiungi_esperienze_professionali(*ep);
+        u->rimuovi_esperienze_professionali(*ep);
+        if(u->get_esperienze_professionali().empty()==true){
+            array_[2]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 2;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
 
 
-//bool test_utente_basic::test1(){    //test  >=
-//    numero_test++;
-//    try{
-//        if(true){
-//            array_[1]=false;
-//            n_test_superati+=1;
-//            return true;
-//        }else{
-//            throw 1;
-//        }
-//    }
-//    catch (int e)    {
-//        array_[e]=true;
-//        n_test_falliti+=1;
-//        return false;
-//    }
-//}
+bool test_utente_basic::test3(){    //aggiunta competenza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        u->aggiungi_competenze("XML");
+        if(u->get_competenze().empty()==false){
+            array_[3]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 3;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
+
+
+bool test_utente_basic::test4(){    //aggiunta competenza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        u->aggiungi_competenze("XML");
+        if(u->get_competenze().empty()==false){
+            array_[4]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 4;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
+
+
+bool test_utente_basic::test5(){    //ha competenza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        u->aggiungi_competenze("XML");
+        if(u->ha_la_competenza("XML")){
+            array_[5]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 5;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
+
+
+bool test_utente_basic::test6(){    //rimozione competenza
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        u->aggiungi_competenze("XML");
+        u->rimuovi_competenze("XML");
+        if(u->get_competenze().empty()==true){
+            array_[6]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 6;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
 
 
 //bool test_utente_basic::test1(){    //test  >=

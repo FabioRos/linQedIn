@@ -20,6 +20,8 @@ public:
     bool lingua_tester();
     // ESPERIENZA PROFESSIONALE
     bool esperienza_tester();
+    // COMPETENZA
+    bool rete_tester();
     // UTENTE BASIC
     bool utente_basic_tester();
 

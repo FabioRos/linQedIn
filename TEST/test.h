@@ -3,10 +3,10 @@
 
 #include <string>
 #include <iostream>
-#include "data.h"
-#include "lingua.h"
-#include "esperienza_professionale.h"
-#include "utente_basic.h"
+#include "./MODEL/data.h"
+#include "./MODEL/lingua.h"
+#include "./MODEL/esperienza_professionale.h"
+#include "./MODEL/utente_basic.h"
 
 class test{
 public:
