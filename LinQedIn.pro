@@ -44,7 +44,8 @@ HEADERS += TEST/test.h \
     VIEW/client_manager.h \
     VIEW/tool_bar.h \
     VIEW/tab_wrapper.h \
-    VIEW/aggiunta_utente.h
+    VIEW/aggiunta_utente.h \
+    VIEW/modulo_lingua.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -78,7 +79,8 @@ SOURCES += main.cpp \
     VIEW/client_manager.cpp \
     VIEW/tool_bar.cpp \
     VIEW/tab_wrapper.cpp \
-    VIEW/aggiunta_utente.cpp
+    VIEW/aggiunta_utente.cpp \
+    VIEW/modulo_lingua.cpp
 
 
 
