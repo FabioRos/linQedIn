@@ -20,6 +20,7 @@ login::login(QWidget *parent): QWidget(parent){
 }
 
 void login::login_autorizzato(){
+    //if autorizzato
     this->hide();
     menu_bar* mb=new menu_bar(static_cast<QWidget*>(parent()));
     mb->show();

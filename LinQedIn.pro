@@ -41,7 +41,10 @@ HEADERS += TEST/test.h \
     VIEW/menu_bar.h \
     CONTROLLER/client_controller.h \
     VIEW/menu_amministrazione.h \
-    VIEW/client_manager.h
+    VIEW/client_manager.h \
+    VIEW/tool_bar.h \
+    VIEW/tab_wrapper.h \
+    VIEW/aggiunta_utente.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -72,7 +75,10 @@ SOURCES += main.cpp \
     #moc_finestraprincipale.cpp \
     CONTROLLER/client_controller.cpp \
     VIEW/menu_amministrazione.cpp \
-    VIEW/client_manager.cpp
+    VIEW/client_manager.cpp \
+    VIEW/tool_bar.cpp \
+    VIEW/tab_wrapper.cpp \
+    VIEW/aggiunta_utente.cpp
 
 
 

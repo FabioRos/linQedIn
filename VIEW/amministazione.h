@@ -5,19 +5,17 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QErrorMessage>
+#include <QScrollArea>
 #include "menu_amministrazione.h"
+#include "aggiunta_utente.h"
 
 class amministazione: public QWidget
 {private:
     Q_OBJECT
-    QPushButton* btn1, *btn2;
-    QPushButton* exit;
-    QVBoxLayout *main_layout;
-    QHBoxLayout *layout_I_O;
-    //per esseri sicuri di salvare/caricare
-    QMessageBox*sicuro_caricare;
-    QErrorMessage* sicuro_salvare;
+    QHBoxLayout  *layout_due_colonne;
     menu_amministrazione* pannello_opzioni;
+    QScrollArea* scroll_area;
+    aggiunta_utente* pagina_aggiunta_utente;
 public:
     amministazione(QWidget* =0);    //QWidget* =0 sempre
 };

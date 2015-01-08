@@ -1,24 +1,34 @@
 #include "finestraprincipale.h"
+#include <QApplication>
+#include <QMessageBox>
+#include <QVBoxLayout>
 
-FinestraPrincipale::FinestraPrincipale(QWidget *parent) : QMainWindow(parent){
-
+FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent) : QMainWindow(parent){
+    //this->showFullScreen();
     this->setWindowTitle("Emulatore Browser Client");
 
-    emulatore_browser=new QTabWidget(this);
-    setCentralWidget(emulatore_browser);
-    //layout_browser=new QHBoxLayout(this);
-
     //FINESTRE ESTERNE
-    amministazione* view_amministrazione= new amministazione;
-    //view_amministrazione->show();
-    testing* view_testing=new testing;
-    view_testing->show();
-    this->setGeometry(100,30,850,600);
+    if (test_mode){
+        testing* view_testing=new testing(0);
+        view_testing->show();
+    }
 
+    contenitore=new QWidget(this);
+    tab_pricipale=new Tab_wrapper(this);
+    tb=new tool_bar(this);
+    this->setGeometry(50,30,800,600);
+    layout_verticale=new QVBoxLayout;
+    layout_verticale->addWidget(tab_pricipale);
+    layout_verticale->addWidget(tb);
+    layout_verticale->setStretch(0, 10); //tab_widget è grande 10 volte il tasto esci per VLayout
+    //tab_pricipale->show();
+    //tb->show();
+    //layout_verticale=new QVBoxLayout(contenitore);
+    //layout_verticale->addWidget(tab_pricipale);
+    //layout_verticale->addWidget(tb);
 
-    view_client=new client_manager(emulatore_browser);
-    emulatore_browser->addTab(view_amministrazione, "Amministrazione");
-    emulatore_browser->addTab(view_client,"Client");
+    contenitore->setLayout(layout_verticale);
+    setCentralWidget(contenitore);
 
   }
 
