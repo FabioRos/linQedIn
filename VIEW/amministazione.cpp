@@ -18,25 +18,9 @@ amministazione::amministazione(QWidget *parent):QWidget(parent){
     scroll_area->setFrameStyle(QFrame::NoFrame);
     scroll_area->setMaximumHeight(530);
 
-    /*PROVA PROVA PROVA*/
 
     pagina_aggiunta_utente= new aggiunta_utente();
     scroll_area->setWidget(pagina_aggiunta_utente);
-   /* QWidget* prova_container= new QWidget;
-    scroll_area->setWidget(prova_container);    //!! si fa cosi per aggiungere widgets ad una scroll area!!!
-    QVBoxLayout* l= new QVBoxLayout(prova_container);
-    menu_amministrazione* prova= new menu_amministrazione(scroll_area);
-
-    menu_amministrazione* prova1= new menu_amministrazione(scroll_area);
-
-    menu_amministrazione* prova2= new menu_amministrazione(scroll_area);
-
-    l->addWidget(prova);
-    l->addWidget(prova1);
-    l->addWidget(prova2);
-*/
-    /*PROVA PROVA PROVA*/
-
 
     //creo il layout a due colonne, sx menu, dx area lavoro
     layout_due_colonne= new QHBoxLayout(this);

@@ -45,7 +45,9 @@ HEADERS += TEST/test.h \
     VIEW/tool_bar.h \
     VIEW/tab_wrapper.h \
     VIEW/aggiunta_utente.h \
-    VIEW/modulo_lingua.h
+    VIEW/modulo_lingua.h \
+    VIEW/modulo_competenza.h \
+    VIEW/modulo_esperienza_professionale.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -80,7 +82,9 @@ SOURCES += main.cpp \
     VIEW/tool_bar.cpp \
     VIEW/tab_wrapper.cpp \
     VIEW/aggiunta_utente.cpp \
-    VIEW/modulo_lingua.cpp
+    VIEW/modulo_lingua.cpp \
+    VIEW/modulo_competenza.cpp \
+    VIEW/modulo_esperienza_professionale.cpp
 
 
 

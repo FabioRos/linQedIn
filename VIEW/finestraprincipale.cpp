@@ -5,7 +5,7 @@
 
 FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent) : QMainWindow(parent){
     //this->showFullScreen();
-    this->setWindowTitle("Emulatore Browser Client");
+    this->setWindowTitle("Emulatore Browser");
 
     //FINESTRE ESTERNE
     if (test_mode){

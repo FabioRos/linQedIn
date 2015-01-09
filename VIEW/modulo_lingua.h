@@ -4,19 +4,23 @@
 #include <QWidget>
 #include <QListWidget>
 #include <QComboBox>
+#include <QPushButton>
 
 class modulo_lingua : public QWidget{
 private:
-     QListWidget* lingue;
+    QListWidget* lingue;
     Q_OBJECT
-     QLineEdit* descrizione_lingua;
-     QComboBox *select_parlato, *select_scritto, *select_comprensione;
+    QLineEdit* descrizione_lingua;
+    QComboBox *select_parlato, *select_scritto, *select_comprensione;
+    QPushButton* btn_rimuovi_lingua, *inserisci_lingua;
 public:
     explicit modulo_lingua(QWidget *parent = 0);
 
 signals:
-
+    void segnale_err_txt();
 public slots:
+     void controllore();
+     void errore_testo_vuoto();
      void aggiungi_lingua();
      void rimuovi_lingua();
 

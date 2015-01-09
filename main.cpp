@@ -10,7 +10,6 @@
 
 int main(int argc, char *argv[])
 {
-    //std::cout<< argc << " >>>>>>>>>>> "<< argv[0] <<" __ " << argv[1]<<std::endl;
     QApplication a(argc, argv);
     bool opzione=false;
     if(argv[1]){
