@@ -13,7 +13,7 @@ test* test_rete::run_tests(){
     this->test2();
     this->test3();
     this->test4();
-//    this->test5();
+    this->test5();
 //    this->test6();
 //    this->test7();
 //    this->test8();
@@ -54,7 +54,7 @@ bool test_rete::test0(){    //test  costruzione rete
     }
 }
 
-bool test_rete::test1(){    //test
+bool test_rete::test1(){    //test aggiungi a rete
     numero_test++;
     try{
         rete* r=new rete;
@@ -145,6 +145,32 @@ bool test_rete::test4(){    //test  rete::esiste_elemento()
                throw 4;
         }else{
             throw 4;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
+
+bool test_rete::test5(){    //test  rete::rimuovi_elemento()
+    numero_test++;
+    try{
+        rete* r=new rete;
+        if(!(r->esiste_elemento("TESTING_USERNAME"))){
+            utente_basic* ptr_utente_basic=new utente_basic;
+            ptr_utente_basic->update_username("TESTING_USERNAME");
+            r->aggiungi_elemento(*(new smart_utente(ptr_utente_basic)));
+            r->rimuovi_elemento("TESTING_USERNAME");
+            if(r->empty()){
+                array_[5]=false;
+                n_test_superati+=1;
+                return true;
+            }else
+               throw 5;
+        }else{
+            throw 5;
         }
     }
     catch (int e)    {

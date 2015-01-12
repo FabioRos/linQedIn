@@ -39,6 +39,8 @@ menu_amministrazione::menu_amministrazione(QWidget *parent):QWidget(parent){
 
     connect(btn1,SIGNAL(clicked()),sicuro_caricare,SLOT(show()));//devo mandare un segnale a icuro_caricare di mostrarsi
     //connect(btn2,SIGNAL(clicked()),sicuro_salvare,SLOT(showMessage("Sovrascriverai il DB")));
+    connect(btn_aggiungi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_aggiunta_utenti()));
+    connect(btn_dump_db,SIGNAL(clicked()),parent,SLOT(mostra_pag_visualizzazione_utenti()));
 
     //  I/O + EXIT _END
 

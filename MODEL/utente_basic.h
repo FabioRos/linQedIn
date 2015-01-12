@@ -7,6 +7,7 @@ private:
 
 public:
     utente_basic();
+    utente_basic(const utente&);
     std::list<utente*> cerca();
     utente* clona_utente() const;   //virtual
 };

@@ -24,6 +24,12 @@ public:
     bool rete_tester();
     // UTENTE BASIC
     bool utente_basic_tester();
+    // UTENTE BUSINESS
+    bool utente_business_tester();
+    // DB
+    bool db_tester();
+    // SMART_UTENTE
+    bool smart_utente_tester();
 
 
 

@@ -1,4 +1,7 @@
 #include "test_utente_basic.h"
+#include "./MODEL/smart_utente.h"
+#include "./MODEL/utente_basic.h"
+#include "./MODEL/utente_business.h"
 
 test_utente_basic::test_utente_basic() : test(0,0,0){
 }
@@ -14,8 +17,8 @@ test* test_utente_basic::run_tests(){
     this->test4();
     this->test5();
     this->test6();
-//    this->test7();
-//    this->test8();
+    this->test7();
+    this->test8();
 //    this->test9();
 //    this->test10();
 //    this->test11();
@@ -25,7 +28,7 @@ test* test_utente_basic::run_tests(){
     if(!n_test_falliti){
         std::cout<<"++++++++  [V] Tutti i test passati per l'unità [UTENTE BASIC] +++++++";
     }else{
-        std::cout<<"-  [X] Il programma non ha passato la fase di test per l'unità [DATA] -";
+        std::cout<<"-  [X] Il programma non ha passato la fase di test per l'unità [UTENTE BASIC] -";
     }
 
     //DETTAGLIO
@@ -184,23 +187,49 @@ bool test_utente_basic::test6(){    //rimozione competenza
 }
 
 
-//bool test_utente_basic::test1(){    //test  >=
-//    numero_test++;
-//    try{
-//        if(true){
-//            array_[1]=false;
-//            n_test_superati+=1;
-//            return true;
-//        }else{
-//            throw 1;
-//        }
-//    }
-//    catch (int e)    {
-//        array_[e]=true;
-//        n_test_falliti+=1;
-//        return false;
-//    }
-//}
+bool test_utente_basic::test7(){    //rete
+    numero_test++;
+    try{
+        utente_basic* u=new utente_basic;
+        utente_basic* utente_due=new utente_basic();
+        utente_due->update_username("username2");
+        smart_utente* sm_u=new smart_utente(utente_due);
+        u->aggiungi_utente_a_rete(sm_u);
+        if(u->esiste_nella_rete("username2")){
+            array_[7]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 7;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
+
+bool test_utente_basic::test8(){    //test  >=
+    numero_test++;
+    try{
+        utente_business utente_bss;
+        utente_basic* ptr_nuovo_utente;
+        //utente_bss(*ptr_nuovo_utente);
+        if(true){
+            array_[8]=false;
+            n_test_superati+=1;
+            return true;
+        }else{
+            throw 8;
+        }
+    }
+    catch (int e)    {
+        array_[e]=true;
+        n_test_falliti+=1;
+        return false;
+    }
+}
 
 
 //bool test_utente_basic::test1(){    //test  >=

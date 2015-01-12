@@ -17,11 +17,20 @@ class utente{
         std::string username;
         std::list<esperienza_professionale> esperienze_professionali;
         std::list<std::string> competenze;  //conviene mettere map per agevolare la ricerca
-        std::list<lingua> lingue;           //con la stringa della competenza/lingua
+                                           //con la stringa della competenza/lingua
+        std::map<std::string,lingua> lingue;
         rete rete_;
     public:
         //Costruttore a 0~3 argomenti
        explicit utente(const std::string& ="", const std::string& ="", const std::string& ="");
+       //costruttore completo
+       utente(  const std::string& n , const std::string& c,
+                const std::string& usn ,
+                const std::list<esperienza_professionale>& e,
+                const std::list<std::string>& com,
+                const std::map<std::string,lingua> l,
+                const rete& r);
+
         // _GET_
         std::string get_nome() const;
         std::string get_cognome() const;
@@ -37,14 +46,23 @@ class utente{
         bool rimuovi_esperienze_professionali(const esperienza_professionale&);   //op==
         void aggiungi_lingua(const std::string&, const std::string&,
                              const std::string&, const std::string&);
+        void rimuovi_lingua(const std::string&);
+        bool esiste_lingua(const std::string&) const;
         void aggiungi_competenze(const std::string&);
         void rimuovi_competenze(const std::string&);
         bool ha_la_competenza (const std::string&) const;
 
         virtual ~utente();
         virtual std::list<utente*> cerca()=0;
-        //virtual utente* aggiungi_utente_a_rete()=0; //a rete
-        //virtual utente* rimuovi_utente()=0;   // a rete
+
+        bool esiste_nella_rete(const std::string&) const; //username
+
+
+        //da testare
+        //utente* operator=(utente*);
+        std::list<utente*> get_all_rete() const;
+        virtual utente *aggiungi_utente_a_rete(smart_utente*);
+        virtual utente *rimuovi_utente_da_rete(smart_utente*);
         virtual utente* clona_utente() const =0 ;
 };
 

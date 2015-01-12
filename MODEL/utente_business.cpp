@@ -3,6 +3,11 @@
 utente_business::utente_business(){
 }
 
+utente_business::utente_business(const utente& ptr_u, const std::string& cc)
+    :utente_a_pagamento(ptr_u,cc){}
+
+double utente_business::costo_annuale =40;
+
 std::list<utente *> utente_business::cerca(){
     std::list<utente*> risultato;
     return risultato;
@@ -10,4 +15,12 @@ std::list<utente *> utente_business::cerca(){
 
 utente *utente_business::clona_utente() const{
     return new utente_business(*this);
+}
+
+void utente_business::set_costo_annuale(const double &c){
+    costo_annuale=c;
+}
+
+double utente_business::get_costo_annuale() const{
+    return costo_annuale;
 }

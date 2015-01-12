@@ -47,7 +47,12 @@ HEADERS += TEST/test.h \
     VIEW/aggiunta_utente.h \
     VIEW/modulo_lingua.h \
     VIEW/modulo_competenza.h \
-    VIEW/modulo_esperienza_professionale.h
+    VIEW/modulo_esperienza_professionale.h \
+    TEST/test_utente_business.h \
+    TEST/test_db.h \
+    VIEW/modulo_visualizzazione_utenti.h \
+    CONTROLLER/admin_controller.h \
+    TEST/test_smart_utente.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -84,7 +89,12 @@ SOURCES += main.cpp \
     VIEW/aggiunta_utente.cpp \
     VIEW/modulo_lingua.cpp \
     VIEW/modulo_competenza.cpp \
-    VIEW/modulo_esperienza_professionale.cpp
+    VIEW/modulo_esperienza_professionale.cpp \
+    TEST/test_utente_business.cpp \
+    TEST/test_db.cpp \
+    VIEW/modulo_visualizzazione_utenti.cpp \
+    CONTROLLER/admin_controller.cpp \
+    TEST/test_smart_utente.cpp
 
 
 

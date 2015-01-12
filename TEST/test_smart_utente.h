@@ -1,12 +1,13 @@
-#ifndef TEST_UTENTE_BASIC_H
-#define TEST_UTENTE_BASIC_H
+#ifndef TEST_SMART_UTENTE_H
+#define TEST_SMART_UTENTE_H
 
 #include "test.h"
 #include <iostream>
 
-class test_utente_basic : public test{
+class test_smart_utente : public test
+{
 public:
-    test_utente_basic();
+    test_smart_utente();
     test* run_tests();
     //tests
     bool test0();
@@ -14,10 +15,10 @@ public:
     bool test2();
     bool test3();
     bool test4();
-    bool test5();
-    bool test6();
-    bool test7();
-    bool test8();
+//    bool test5();
+//    bool test6();
+//    bool test7();
+//    bool test8();
 //    bool test9();
 //    bool test10();
 //    bool test11();
@@ -25,4 +26,4 @@ public:
 //    bool test13();
 };
 
-#endif // TEST_UTENTE_BASIC_H
+#endif // TEST_SMART_UTENTE_H

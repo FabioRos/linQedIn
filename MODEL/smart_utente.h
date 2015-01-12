@@ -13,6 +13,7 @@ public:
     smart_utente& operator=(const smart_utente&);
     void set_ptr_utente(utente*);
     utente* get_ptr_utente() const;
+    bool cambio_tipo_utente(const std::string&, const std::string &cc ="");
 };
 
 #endif // SMART_UTENTE_H

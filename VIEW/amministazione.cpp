@@ -1,6 +1,7 @@
 #include "amministazione.h"
 #include <QScrollBar>
 
+
 amministazione::amministazione(QWidget *parent):QWidget(parent){
     //IMPOSTAZIONI FINESTRA
     this->setWindowTitle("Pannello Amministrazione");
@@ -18,12 +19,19 @@ amministazione::amministazione(QWidget *parent):QWidget(parent){
     scroll_area->setFrameStyle(QFrame::NoFrame);
     scroll_area->setMaximumHeight(530);
 
-
-    pagina_aggiunta_utente= new aggiunta_utente();
-    scroll_area->setWidget(pagina_aggiunta_utente);
-
     //creo il layout a due colonne, sx menu, dx area lavoro
     layout_due_colonne= new QHBoxLayout(this);
     layout_due_colonne->addWidget(pannello_opzioni);
     layout_due_colonne->addWidget(scroll_area);
+}
+
+void amministazione::mostra_pag_aggiunta_utenti(){
+    pagina_aggiunta_utente= new aggiunta_utente(this);
+    scroll_area->setWidget(pagina_aggiunta_utente);
+}
+
+void amministazione::mostra_pag_visualizzazione_utenti(){
+    pagina_visualizzazione_utenti=new modulo_visualizzazione_utenti(this);
+    scroll_area->setWidget(pagina_visualizzazione_utenti);
+
 }

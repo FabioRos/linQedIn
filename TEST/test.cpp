@@ -2,6 +2,8 @@
 
 test::test():numero_test(0),n_test_superati(0),n_test_falliti(0){}
 
+test::~test(){}
+
 test::test(const int & tot, const int & s, const int & f):
     numero_test(tot),n_test_superati(s),n_test_falliti(f){}
 

@@ -3,7 +3,9 @@
 #include <QMessageBox>
 #include <QVBoxLayout>
 
-FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent) : QMainWindow(parent){
+
+FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent)
+    : QMainWindow(parent){
     //this->showFullScreen();
     this->setWindowTitle("Emulatore Browser");
 
