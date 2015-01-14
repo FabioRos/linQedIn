@@ -3,9 +3,8 @@
 #include <QMessageBox>
 #include <QVBoxLayout>
 
-
-FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent)
-    : QMainWindow(parent){
+FinestraPrincipale::FinestraPrincipale(users_repository *repo, bool test_mode, QWidget *parent)
+    :ptr_repository(repo), QMainWindow(parent){
     //this->showFullScreen();
     this->setWindowTitle("Emulatore Browser");
 
@@ -16,7 +15,7 @@ FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent)
     }
 
     contenitore=new QWidget(this);
-    tab_pricipale=new Tab_wrapper(this);
+    tab_pricipale=new Tab_wrapper(ptr_repository,this);
     tb=new tool_bar(this);
     this->setGeometry(50,30,800,600);
     layout_verticale=new QVBoxLayout;
@@ -33,6 +32,14 @@ FinestraPrincipale::FinestraPrincipale(bool test_mode, QWidget *parent)
     setCentralWidget(contenitore);
 
   }
+
+
+
+
+
+FinestraPrincipale::FinestraPrincipale(DB *p_db, bool test_mode, QWidget *parent){
+    FinestraPrincipale(new users_repository(p_db),test_mode,parent);
+}
 
 FinestraPrincipale::~FinestraPrincipale(){}
 

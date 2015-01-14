@@ -11,6 +11,8 @@
 #include "modulo_visualizzazione_utenti.h"
 #include "./CONTROLLER/admin_controller.h"
 
+#include "./MODEL/users_repository.h"
+
 class amministazione: public QWidget
 {private:
     Q_OBJECT
@@ -19,8 +21,9 @@ class amministazione: public QWidget
     QScrollArea* scroll_area;
     aggiunta_utente* pagina_aggiunta_utente;
     modulo_visualizzazione_utenti* pagina_visualizzazione_utenti;
+    users_repository* ptr_repository;
 public:
-    amministazione(QWidget* =0);    //QWidget* =0 sempre
+    amministazione( users_repository* =0, QWidget* =0);    //QWidget* =0 sempre
 public slots:
     void mostra_pag_aggiunta_utenti();
     void mostra_pag_visualizzazione_utenti();

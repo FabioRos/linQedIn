@@ -8,18 +8,20 @@
 #include "client_manager.h"
 #include "amministazione.h"
 
+#include "MODEL/users_repository.h"
+
 class Tab_wrapper : public QWidget{
 private:
 
     Q_OBJECT
     QTabWidget* emulatore_browser;  //Layout a schede
     QHBoxLayout* layout_browser;    //lauout orizzontale barra sx e dx dentro le tab
-
+    users_repository* ptr_repository;
     //new
     client_manager* view_client;
     amministazione* view_amministrazione;
 public:
-    explicit Tab_wrapper(QWidget *parent = 0);
+    explicit Tab_wrapper(users_repository* =0,QWidget *parent = 0);
 
 signals:
 

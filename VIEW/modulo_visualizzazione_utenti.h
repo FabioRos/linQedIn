@@ -5,20 +5,26 @@
 #include <QTableWidget>
 #include <QStringList>
 #include "./CONTROLLER/admin_controller.h"
+#include "./MODEL/users_repository.h"
+
 
 class modulo_visualizzazione_utenti : public QWidget{
 private:
     Q_OBJECT
     QTableWidget* tabella;
+    users_repository* ptr_repository;
 protected:
     void inizializza_tabella();
 
 public:
-    explicit modulo_visualizzazione_utenti(QWidget *parent = 0);
+    explicit modulo_visualizzazione_utenti(users_repository* =0, QWidget *parent = 0);
+
+    void inserisci_riga(utente* riga,int indice_riga);
     void popola_tabella(std::list<smart_utente*>);
 signals:
 
 public slots:
+    //void seleziona_tutta_la_riga(int indice_riga);
 
 };
 

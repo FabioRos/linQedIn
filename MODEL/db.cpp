@@ -34,6 +34,10 @@ void DB::rimuovi_utente(const std::string& username){
     database.erase(it);
 }
 
+int DB::size() const{
+    return database.size();
+}
+
 bool DB::empty() const{
     return database.empty();
 }

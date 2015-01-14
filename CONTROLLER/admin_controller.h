@@ -10,7 +10,7 @@ private:
 public:
     admin_controller(DB*db_);
     std::list<smart_utente *> get_model_db();
-    //void popola_tabella(modulo_visualizzazione_utenti* u);
+
 };
 
 #endif // ADMIN_CONTROLLER_H

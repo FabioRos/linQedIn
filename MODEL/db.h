@@ -17,7 +17,7 @@ public:
     DB();
     bool aggiungi_utente(const smart_utente&);
     void rimuovi_utente(const std::string&);
-
+    int size() const;
     smart_utente* get_ptr_smart_utente(const std::string&);
     utente* get_ptr_utente(const std::string&);
     std::list<smart_utente*> get_database() const;   //sola lettura -> const

@@ -52,7 +52,10 @@ HEADERS += TEST/test.h \
     TEST/test_db.h \
     VIEW/modulo_visualizzazione_utenti.h \
     CONTROLLER/admin_controller.h \
-    TEST/test_smart_utente.h
+    TEST/test_smart_utente.h \
+    MODEL/users_repository.h \
+    CONTROLLER/aggiungi_modifica_utenti.h \
+    MODEL/input_output.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -94,7 +97,13 @@ SOURCES += main.cpp \
     TEST/test_db.cpp \
     VIEW/modulo_visualizzazione_utenti.cpp \
     CONTROLLER/admin_controller.cpp \
-    TEST/test_smart_utente.cpp
+    TEST/test_smart_utente.cpp \
+    MODEL/users_repository.cpp \
+    CONTROLLER/aggiungi_modifica_utenti.cpp \
+    MODEL/input_output.cpp
+
+OTHER_FILES += \
+    PERSISTENT/database.json
 
 
 

@@ -14,9 +14,7 @@ std::list<smart_utente*> admin_controller::get_model_db(){
     return ptr_database->get_database();
 }
 
-//void admin_controller::popola_tabella(modulo_visualizzazione_utenti *tbl){
-//    //tbl->tabella->insertRow(2);
-//}
+
 
 
 

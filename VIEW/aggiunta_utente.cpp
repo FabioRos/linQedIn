@@ -1,6 +1,7 @@
 #include "aggiunta_utente.h"
 
-aggiunta_utente::aggiunta_utente(QWidget *parent) : QWidget(parent){
+aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
+    : ptr_repository(repo) ,QWidget(parent){
     layout_form=new QFormLayout(this);
     QHBoxLayout* layout_footer= new QHBoxLayout;
 

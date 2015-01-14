@@ -11,11 +11,14 @@
 #include "modulo_competenza.h"
 #include "modulo_esperienza_professionale.h"
 
-class aggiunta_utente : public QWidget
-{
+#include "./MODEL/users_repository.h"
+
+class aggiunta_utente : public QWidget{
     Q_OBJECT
+private:
+    users_repository* ptr_repository;
 public:
-    explicit aggiunta_utente(QWidget *parent = 0);
+    explicit aggiunta_utente(users_repository* =0,QWidget *parent = 0);
     QFormLayout* layout_form;
     QLineEdit* nome, *cognome, *username;//, *txt_nuova_competenza;
     QPushButton* btn_conferma;

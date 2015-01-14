@@ -2,7 +2,8 @@
 #include <QScrollBar>
 
 
-amministazione::amministazione(QWidget *parent):QWidget(parent){
+amministazione::amministazione(users_repository* repo, QWidget *parent)
+            :ptr_repository(repo),QWidget(parent){
     //IMPOSTAZIONI FINESTRA
     this->setWindowTitle("Pannello Amministrazione");
 
@@ -26,12 +27,12 @@ amministazione::amministazione(QWidget *parent):QWidget(parent){
 }
 
 void amministazione::mostra_pag_aggiunta_utenti(){
-    pagina_aggiunta_utente= new aggiunta_utente(this);
+    pagina_aggiunta_utente= new aggiunta_utente(ptr_repository,this);
     scroll_area->setWidget(pagina_aggiunta_utente);
 }
 
 void amministazione::mostra_pag_visualizzazione_utenti(){
-    pagina_visualizzazione_utenti=new modulo_visualizzazione_utenti(this);
+    pagina_visualizzazione_utenti=new modulo_visualizzazione_utenti(ptr_repository,this);
     scroll_area->setWidget(pagina_visualizzazione_utenti);
 
 }

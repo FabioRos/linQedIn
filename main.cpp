@@ -1,18 +1,14 @@
 #include "finestraprincipale.h"
 #include <QApplication>
-//#include <string>
-/*___temporaneo___*/
-    #include <iostream>
-/*________________*/
 
 #include "./TEST/test_manager.h"
-/*___temporaneo___*/
-void popola(DB*);
-/*------------------*/
-
+#include "./MODEL/users_repository.h"
 
 int main(int argc, char *argv[])
 {
+
+    //Qui chiamo subito la classe repository così ho il DB pronto!
+
 
     QApplication a(argc, argv);
     bool opzione=false;
@@ -23,7 +19,9 @@ int main(int argc, char *argv[])
         }
     }
 
-    FinestraPrincipale w(opzione);
+    users_repository* db=new users_repository(new DB);
+    //db->carica_dati;
+    FinestraPrincipale w(db,opzione);
     w.show();
 
     return a.exec();
