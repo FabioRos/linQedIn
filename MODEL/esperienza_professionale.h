@@ -25,6 +25,8 @@ public:
     bool operator==(const esperienza_professionale&);
     bool operator!=(const esperienza_professionale&);
 
+    void scrivi_json(QJsonObject &json) const;
+
 };
 
 #endif // ESPERIENZA_PROFESSIONALE_H

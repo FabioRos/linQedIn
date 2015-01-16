@@ -16,6 +16,8 @@ public:
     titolo_di_studio(const std::string&, const std::string&, const std::string&,const data&,const data&);
     std::string get_ente_erogante () const;
     void aggiorna_ente_erogante(const std::string& );
+
+    void scrivi_json(QJsonObject &json) const;
 };
 
 #endif // TITOLO_DI_STUDIO_H

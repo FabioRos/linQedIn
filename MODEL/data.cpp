@@ -1,4 +1,5 @@
 #include "data.h"
+#include <sstream>
 
 data::data(int g, int m, int a):giorno(g),mese(m),anno(a){
     if(sanitize(*this)==false){
@@ -85,6 +86,13 @@ bool data::operator>(const data & d) const{
 
 bool data::operator>=(const data & d) const{
     return (!(*this<d));
+}
+
+std::string data::toString() const{
+    std::stringstream s;
+    s << giorno << "-"<< mese << "-"<< anno;
+    return s.str();
+
 }
 
 

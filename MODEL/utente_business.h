@@ -14,6 +14,8 @@ public:
     std::list<utente*> cerca();
     utente* clona_utente() const;   //virtual
     double get_costo_annuale() const;
+    //genero record in json
+    void scrivi_json(QJsonObject &json) const;
 };
 
 #endif // UTENTE_BUSINESS_H

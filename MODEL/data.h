@@ -1,5 +1,6 @@
 #ifndef DATA_H
 #define DATA_H
+#include <string>
 
 class data{
 private:
@@ -25,6 +26,8 @@ public:
     bool operator<=(const data&) const;
     bool operator>(const data&) const;
     bool operator>=(const data&) const;
+
+    std::string toString() const;
 };
 
 #endif // DATA_H

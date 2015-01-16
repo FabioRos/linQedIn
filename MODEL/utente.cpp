@@ -1,5 +1,6 @@
 #include "utente.h"
 #include "smart_utente.h"
+#include <QJsonArray>
 
 utente::utente(const std::string & nome_ ,const std::string & cognome_,const std::string & username_)
     :nome(nome_),cognome(cognome_),username(username_){}
@@ -98,6 +99,25 @@ utente *utente::aggiungi_utente_a_rete(smart_utente* smart_u){
 utente *utente::rimuovi_utente_da_rete(smart_utente* smart_u){
     rete_.rimuovi_elemento(smart_u->get_ptr_utente()->get_username());
     return smart_u->get_ptr_utente();
+}
+
+void utente::scrivi_json(QJsonObject &json) const{
+    json["username"] = QString::fromStdString(username);
+    json["nome"] =     QString::fromStdString(nome);
+    json["cognome"] =  QString::fromStdString(cognome);
+    //esperienze_professionali
+    QJsonArray array_esperienze;
+    //array_esperienze.append("ciao");
+    std::list<esperienza_professionale>::const_iterator it= esperienze_professionali.begin();
+    int i=0;
+    for(it;it!=esperienze_professionali.end();++it){
+    //esperienze_professionali.scrivi_json(json);
+        QJsonObject temp;
+        it->scrivi_json(temp);
+        array_esperienze.append(temp);
+    ++i;
+    }
+    json["esperienze_professionali"]= array_esperienze;
 }
 
 bool utente::esiste_nella_rete(const std::string &username) const{

@@ -42,3 +42,11 @@ bool attivita::operator==(const attivita & a){
     return (luogo==a.get_luogo() && descrizione==a.get_descrizione() &&
             inizio==a.get_inizio() && fine==a.get_fine());
 }
+
+void attivita::scrivi_json(QJsonObject &json) const{
+    json["luogo"]       =  QString::fromStdString(luogo);
+    json["descrizione"] =  QString::fromStdString(descrizione);
+    json["inizio"]      =  QString::fromStdString(inizio.toString());
+    json["fine"]        =  QString::fromStdString(fine.toString());
+    //mancano date
+}

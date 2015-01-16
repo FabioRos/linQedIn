@@ -35,6 +35,12 @@ bool esperienza_professionale::operator!=(const esperienza_professionale & e){
     return !(*this==e);
 }
 
+void esperienza_professionale::scrivi_json(QJsonObject &json) const{
+    attivita::scrivi_json(json);
+    json["nome_azienda"] = QString::fromStdString(nome_azienda);
+    json["posizione"] =     QString::fromStdString(posizione);
+}
+
 
 //bool esperienza_professionale::operator==(const esperienza_professionale &e){
 //    return (luogo==e.get_luogo()&& descrizione==e.get_descrizione() && inizio==e.get_inizio() &&

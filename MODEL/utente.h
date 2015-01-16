@@ -7,6 +7,9 @@
 #include "lingua.h"
 #include "rete.h"
 
+//per virtualizzare il salvataggio
+#include <QJsonObject>
+
 
 //  {MODEL_utente}
 
@@ -52,7 +55,7 @@ class utente{
         void rimuovi_competenze(const std::string&);
         bool ha_la_competenza (const std::string&) const;
 
-        virtual ~utente();
+        virtual ~utente();//   da fare
         virtual std::list<utente*> cerca()=0;
 
         bool esiste_nella_rete(const std::string&) const; //username
@@ -64,6 +67,9 @@ class utente{
         virtual utente *aggiungi_utente_a_rete(smart_utente*);
         virtual utente *rimuovi_utente_da_rete(smart_utente*);
         virtual utente* clona_utente() const =0 ;
+        //genero record in json
+        virtual void scrivi_json(QJsonObject &json) const;
+
 };
 
 #endif // UTENTE_H

@@ -11,3 +11,9 @@ std::list<utente *> utente_basic::cerca(){
 utente *utente_basic::clona_utente() const{
     return new utente_basic(*this);
 }
+
+void utente_basic::scrivi_json(QJsonObject &json) const{
+    json["tipo_account"] = QString::fromStdString("basic");
+    utente::scrivi_json(json);
+
+}

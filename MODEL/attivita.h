@@ -3,6 +3,7 @@
 
 #include <string>
 #include "data.h"
+#include <QJsonObject>
 
 class attivita
 {
@@ -26,6 +27,8 @@ public:
     void update_fine(const data&);
 
     bool operator==(const attivita&);
+
+    virtual void scrivi_json(QJsonObject &json) const;
 };
 
 

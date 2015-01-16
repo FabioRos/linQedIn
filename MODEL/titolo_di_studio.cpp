@@ -12,3 +12,9 @@ void titolo_di_studio::aggiorna_ente_erogante(const std::string& s){
     ente_erogante=s;
 
 }
+
+void titolo_di_studio::scrivi_json(QJsonObject &json) const{
+    attivita::scrivi_json(json);
+    json["ente_erogante"] = QString::fromStdString(ente_erogante);
+
+}

@@ -26,3 +26,9 @@ void utente_executive::set_costo_annuale(const double &c){
 double utente_executive::get_costo_annuale() const{
     return costo_annuale;
 }
+
+void utente_executive::scrivi_json(QJsonObject &json) const{
+    utente_a_pagamento::scrivi_json(json);
+    json["tipo_account"] = QString::fromStdString("executive");
+
+}

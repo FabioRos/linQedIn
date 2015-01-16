@@ -24,3 +24,9 @@ void utente_business::set_costo_annuale(const double &c){
 double utente_business::get_costo_annuale() const{
     return costo_annuale;
 }
+
+void utente_business::scrivi_json(QJsonObject &json) const{
+    utente_a_pagamento::scrivi_json(json);
+    json["tipo_account"] = QString::fromStdString("business");
+
+}

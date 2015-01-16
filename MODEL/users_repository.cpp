@@ -1,11 +1,14 @@
 #include "users_repository.h"
 
 #include "utente_basic.h"
+#include "input_output.h"
 
 
 users_repository::users_repository(DB* p_db):ptr_db(p_db){
     //if(!p_db)
         carica_dati();
+        input_output* io;
+        io->salva_su_file(p_db);
 }
 
 smart_utente *users_repository::get_ptr_smart_utente(const std::string & usrnm){
@@ -21,7 +24,7 @@ std::list<smart_utente *> users_repository::get_database() const{
 }
 
 void users_repository::carica_dati(){
-    //...
+    //...   da chiamare il carica dati di input_output
 
 
     //TEMP TEMP TEMP TEMP
@@ -29,8 +32,12 @@ void users_repository::carica_dati(){
     b->update_nome("Fabio");
     b->update_cognome("Ros");
     b->update_username("FabioRos90");
+    b->aggiungi_esperienze_professionali(esperienza_professionale("az","po","lu","de",data(),data()));
+
     smart_utente io(b);
     ptr_db->aggiungi_utente(io);
+
+
 
     utente_basic* user_mario=new utente_basic;
     user_mario->update_nome("Mario");

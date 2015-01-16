@@ -14,6 +14,8 @@ public:
     void set_carta_di_credito(const std::string&);
     virtual void set_costo_annuale(const double&) =0;
     virtual double get_costo_annuale()const =0 ;
+
+    void scrivi_json(QJsonObject &json) const;
 };
 
 #endif // UTENTE_A_PAGAMENTO_H

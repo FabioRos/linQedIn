@@ -1,0 +1,28 @@
+{
+    "utenti": [
+        {
+            "cognome": "Ros",
+            "esperienze_professionali": [
+                {
+                    "descrizione": "de",
+                    "fine": "1-1-1970",
+                    "inizio": "1-1-1970",
+                    "luogo": "lu",
+                    "nome_azienda": "az",
+                    "posizione": "po"
+                }
+            ],
+            "nome": "Fabio",
+            "tipo_account": "basic",
+            "username": "FabioRos90"
+        },
+        {
+            "cognome": "Rossi",
+            "esperienze_professionali": [
+            ],
+            "nome": "Mario",
+            "tipo_account": "basic",
+            "username": "MarioRossi50"
+        }
+    ]
+}
