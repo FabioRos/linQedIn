@@ -22,6 +22,8 @@ public:
     utente* get_ptr_utente(const std::string&);
     std::list<smart_utente*> get_database() const;   //sola lettura -> const
     bool empty() const;
+
+    std::list<std::string> get_tutte_le_chiavi() const;
 };
 
 #endif // DB_H

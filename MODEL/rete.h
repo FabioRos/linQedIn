@@ -19,6 +19,8 @@ public:
     smart_utente* get_ptr_smart_utente(const std::string &);
     utente* get_ptr_utente(const std::string &);
     std::list<utente*> get_all_ptr_utente() const;
+    std::list<std::string> get_all_usernames() const;
+
     bool empty() const;
 
 };

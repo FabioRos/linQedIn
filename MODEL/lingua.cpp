@@ -60,3 +60,10 @@ bool lingua::sanitize(const lingua &l){
     else
         return false;
 }
+
+void lingua::scrivi_json(QJsonObject &json) const{
+    json["descrizione"]         =  QString::fromStdString(descrizione);
+    json["livello_scritto"]     =  QString::fromStdString(livello_scritto);
+    json["livello_parlato"]     =  QString::fromStdString(livello_parlato);
+    json["livello_comprensione"]=  QString::fromStdString(livello_comprensione);
+}

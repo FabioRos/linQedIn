@@ -17,6 +17,7 @@ public:
     bool carica_da_file();
     bool salva_su_file(DB*);
     void scrivi_un_utente(smart_utente*,QJsonObject& json_obj);
+    QJsonArray elenco_username(std::list<std::string>) const;
     QJsonArray serializza_db(const std::list<smart_utente*>&) const;
 
 };

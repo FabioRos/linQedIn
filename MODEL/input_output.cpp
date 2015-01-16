@@ -20,7 +20,7 @@ bool input_output::salva_su_file(DB* ptr_db_locale_corrente){
     //serializza db
 
     //scrivo sul file
-    smart_utente* s=ptr_db_locale_corrente->get_ptr_smart_utente("FabioRos90");
+    //smart_utente* s=ptr_db_locale_corrente->get_ptr_smart_utente("FabioRos90");
     //void saveJson(QJsonDocument document, QString fileName) {
 
 
@@ -28,48 +28,48 @@ bool input_output::salva_su_file(DB* ptr_db_locale_corrente){
     QFile output_file(file_path);
         output_file.open(QFile::WriteOnly);
 
-        //temp
+        //metto una lista con solo gli usename cosi
+        // nel caricamento creerò la mappa con tutti gli username
+        // giusti e 0 sul campo ptr_utente degli smart_utenti in modo da
+        // non avere problemi nel referenziare nella rete utenti non ancora esistenti
 
-//        QJsonObject nuovo_utente;
-//        scrivi_un_utente(s,nuovo_utente);
+        //USERNAMES
+        QJsonArray array_usernames;
+        array_usernames=elenco_username(ptr_db_locale_corrente->get_tutte_le_chiavi());
 
-//        QJsonDocument doc(nuovo_utente);
-
+        //UTENTI
         QJsonObject db_testuale;
         QJsonArray array_utenti;
         array_utenti=serializza_db(database);
+
+
+        //aggiungo al file
+        db_testuale["usernames"]=array_usernames;
         db_testuale["utenti"]=array_utenti;
         QJsonDocument doc(db_testuale);
 
-
-
-        /*
-         *
-        QJsonObject db_testuale(QString::fromStdString(serializza_db(database)));
-        QJsonDocument doc(db_testuale);
-
-         *
-         * */
-
         output_file.write(doc.toJson());
-    //}
     return true;
 }
 
-void input_output::scrivi_un_utente(smart_utente *ptr_smu, QJsonObject &json_obj)
-{
+void input_output::scrivi_un_utente(smart_utente *ptr_smu, QJsonObject &json_obj){
     ptr_smu->get_ptr_utente()->scrivi_json(json_obj);
-//    if(ptr_smu!=0){
-//        json_obj["username"] =ptr_smu->get_ptr_utente()->get_username();
-//        json_obj["cognome"] = ptr_smu->get_ptr_utente()->get_cognome();
-//        json_obj["nome"] = ptr_smu->get_ptr_utente()->get_nome();
-////        //jsonObj["id"] = this->id();
-//        }
+}
+
+QJsonArray input_output::elenco_username(std::list<std::string> lista) const {
+    QJsonArray elenco;
+
+    std::list<std::string>::const_iterator it=lista.begin();
+    for(;it!=lista.end();++it){
+
+        elenco.append(QString::fromStdString((*it)));
+    }
+    return elenco;
+
 }
 
 QJsonArray input_output::serializza_db(const std::list<smart_utente*>& database_) const{
     //genero sottoforma di stringa in contenuto da scrivere sul file json
-    QJsonObject oggetto;
     QJsonArray utenti;
 
 
@@ -77,7 +77,6 @@ QJsonArray input_output::serializza_db(const std::list<smart_utente*>& database_
         QJsonObject temp;
         (*it)->get_ptr_utente()->scrivi_json(temp);
         utenti.append(temp);
-       // array_esperienze.append(temp);
     }
     return utenti;
 

@@ -1,7 +1,17 @@
 {
+    "usernames": [
+        "FabioRos90",
+        "MarioRossi50"
+    ],
     "utenti": [
         {
             "cognome": "Ros",
+            "competenze": [
+                "WordPress",
+                "HTML",
+                "PHP",
+                "XML"
+            ],
             "esperienze_professionali": [
                 {
                     "descrizione": "de",
@@ -12,15 +22,32 @@
                     "posizione": "po"
                 }
             ],
+            "lingue": [
+                {
+                    "descrizione": "italiano",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                }
+            ],
             "nome": "Fabio",
+            "rete": [
+            ],
             "tipo_account": "basic",
             "username": "FabioRos90"
         },
         {
             "cognome": "Rossi",
+            "competenze": [
+            ],
             "esperienze_professionali": [
             ],
+            "lingue": [
+            ],
             "nome": "Mario",
+            "rete": [
+                "FabioRos90"
+            ],
             "tipo_account": "basic",
             "username": "MarioRossi50"
         }

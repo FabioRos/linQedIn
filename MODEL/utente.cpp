@@ -102,22 +102,57 @@ utente *utente::rimuovi_utente_da_rete(smart_utente* smart_u){
 }
 
 void utente::scrivi_json(QJsonObject &json) const{
+
+
     json["username"] = QString::fromStdString(username);
     json["nome"] =     QString::fromStdString(nome);
     json["cognome"] =  QString::fromStdString(cognome);
-    //esperienze_professionali
+
+
+    //*** ESPERIENZE_PROFESSIONALI ***
     QJsonArray array_esperienze;
     //array_esperienze.append("ciao");
     std::list<esperienza_professionale>::const_iterator it= esperienze_professionali.begin();
-    int i=0;
     for(it;it!=esperienze_professionali.end();++it){
     //esperienze_professionali.scrivi_json(json);
         QJsonObject temp;
         it->scrivi_json(temp);
         array_esperienze.append(temp);
-    ++i;
     }
     json["esperienze_professionali"]= array_esperienze;
+
+    //*** LINGUE ***
+     QJsonArray array_lingue;
+    std::map<std::string,lingua>::const_iterator it2= lingue.begin();
+    for(;it2!=lingue.end();++it2){
+    //esperienze_professionali.scrivi_json(json);
+        QJsonObject temp;
+        it2->second.scrivi_json(temp);
+        array_lingue.append(temp);
+    }
+
+    json["lingue"]= array_lingue;
+
+    //*** COMPETENZE ***
+    QJsonArray array_competenze;
+    std::list<std::string>::const_iterator it_comp=competenze.begin();
+    for(;it_comp!=competenze.end();++it_comp){
+        array_competenze.append(QString::fromStdString(*it_comp));
+    }
+    json["competenze"]=array_competenze;
+
+    //*** RETE ***
+    QJsonArray array_rete;
+    std::list<std::string> usernames=rete_.get_all_usernames();
+    std::list<std::string>::const_iterator it_rete=usernames.begin();
+    for(;it_rete!=usernames.end();++it_rete){
+    //esperienze_professionali.scrivi_json(json);
+        array_rete.append(QString::fromStdString(*it_rete));
+       // array_rete.append(temp);
+    }
+     json["rete"]=array_rete;
+
+
 }
 
 bool utente::esiste_nella_rete(const std::string &username) const{

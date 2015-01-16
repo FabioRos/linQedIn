@@ -2,6 +2,7 @@
 #define LINGUA_H
 
 #include <string>
+#include <QJsonObject>
 
 class lingua{
 private:
@@ -23,6 +24,8 @@ public:
     void set_livello_parlato(const std::string&);
     void set_livello_scritto(const std::string&);
     static bool sanitize(const lingua&);
+
+    virtual void scrivi_json(QJsonObject &json) const;
 
 };
 

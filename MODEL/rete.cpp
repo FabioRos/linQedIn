@@ -38,6 +38,17 @@ std::list<utente *> rete::get_all_ptr_utente() const{
      return elenco;
 }
 
+std::list<std::string> rete::get_all_usernames() const{
+
+    std::list<std::string>  usernames;
+    std::map<std::string,smart_utente*>::const_iterator it=lista.begin();
+      for(;it!=lista.end();++it){
+        usernames.push_back(it->first);
+      }
+      return usernames;
+
+}
+
 bool rete::empty() const{
     return lista.empty();
 }

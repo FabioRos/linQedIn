@@ -42,3 +42,12 @@ bool DB::empty() const{
     return database.empty();
 }
 
+std::list<std::string> DB::get_tutte_le_chiavi() const{
+    std::list<std::string>  chiavi;
+    std::map<std::string,smart_utente*>::const_iterator it=database.begin();
+      for(;it!=database.end();++it){
+        chiavi.push_back(it->first);
+      }
+      return chiavi;
+}
+
