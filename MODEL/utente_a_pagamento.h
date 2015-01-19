@@ -10,6 +10,7 @@ private:
 public:
     utente_a_pagamento(const std::string& ="");
     utente_a_pagamento(const utente&,const std::string& ="");
+    utente_a_pagamento(const std::string& n, const std::string& c, const std::string& usn );
     std::string get_carta_di_credito() const;
     void set_carta_di_credito(const std::string&);
     virtual void set_costo_annuale(const double&) =0;

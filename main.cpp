@@ -1,4 +1,5 @@
 #include "finestraprincipale.h"
+#include "./MODEL/input_output.h"
 #include <QApplication>
 
 #include "./TEST/test_manager.h"
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
     }
 
     users_repository* db=new users_repository(new DB);
-    //db->carica_dati;
+   // DB* db=new DB(*(input_output::carica_da_file()));//carica_dati;
     FinestraPrincipale w(db,opzione);
     w.show();
 

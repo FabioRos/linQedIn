@@ -6,6 +6,9 @@ utente_executive::utente_executive(){
 utente_executive::utente_executive(const utente & ptr_u, const std::string &cc)
     :utente_a_pagamento(ptr_u,cc){}
 
+utente_executive::utente_executive(const std::string &n, const std::string &c, const std::string &usn)
+    :utente_a_pagamento(n,c,usn){}
+
 
 double utente_executive::costo_annuale =120;
 

@@ -14,7 +14,7 @@ private:
 public:
     input_output();
     std::string get_file_path() const;
-    bool carica_da_file();
+    static DB* carica_da_file();
     bool salva_su_file(DB*);
     void scrivi_un_utente(smart_utente*,QJsonObject& json_obj);
     QJsonArray elenco_username(std::list<std::string>) const;

@@ -10,6 +10,7 @@ private:
     static bool sanitize(const int&, const int&, const int&);
 public:
     static bool sanitize(const data&);
+    static data converti_da_string(std::string);
     explicit data(int =1, int =1, int =1970);
     int get_giorno() const;
     int get_mese() const;

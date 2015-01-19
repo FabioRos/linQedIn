@@ -10,6 +10,7 @@ private:
 public:
     utente_executive();
     utente_executive(const utente&, const std::string& cc ="");
+    utente_executive(const std::string&, const std::string&, const std::string&);
    // utente_executive(const utente&);
     std::list<utente*> cerca();
     utente* clona_utente() const;   //virtual

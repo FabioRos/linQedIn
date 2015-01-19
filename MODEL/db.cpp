@@ -50,4 +50,3 @@ std::list<std::string> DB::get_tutte_le_chiavi() const{
       }
       return chiavi;
 }
-

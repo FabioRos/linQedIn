@@ -1,5 +1,7 @@
 #include "data.h"
 #include <sstream>
+#include <iostream>
+#include <istream>
 
 data::data(int g, int m, int a):giorno(g),mese(m),anno(a){
     if(sanitize(*this)==false){
@@ -35,6 +37,28 @@ bool data::sanitize(const data& d) {                           //STATICO
     return tutto_bene;
 }
 
+data data::converti_da_string(std::string s){    //draft!!!
+    std::string giorno_, mese_,anno_;
+
+    std::string delimiter = "-";
+    size_t pos = 0;
+
+    pos = s.find(delimiter);
+    giorno_ = s.substr(0,s.find(delimiter));
+    s.erase(0, pos + delimiter.length());
+    pos = s.find(delimiter);
+    mese_ = s.substr(0,s.find(delimiter));
+    s.erase(0, pos + delimiter.length());
+    anno_=s;
+
+    int g,m,a;
+    std::istringstream ( giorno_ ) >> g;
+    std::istringstream ( mese_ ) >> m;
+    std::istringstream ( anno_ ) >> a;
+   // std::cout<<"giorno_"<<g<<",mese_"<<m<<",anno_"<<a<<std::endl;
+
+    return data(g,m,a);
+}
 
 int data::get_giorno() const{
     return giorno;

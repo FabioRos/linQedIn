@@ -36,6 +36,8 @@ void modulo_visualizzazione_utenti::inserisci_riga(utente* riga,int indice_riga)
     item_cognome->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
     item_nome->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
     item_tipo_account->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+
+    //inserimento effettivo entry
     tabella->setItem(indice_riga,0,item_username);
     tabella->setItem(indice_riga,1,item_cognome);
     tabella->setItem(indice_riga,2,item_nome);
@@ -50,8 +52,9 @@ modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* r
     tabella->setMinimumWidth(510);
     tabella->setMaximumWidth(510);
     inizializza_tabella();
-    //popolazione fittizia temporanea
 
+    //popolazione
+    popola_tabella(ptr_repository->get_database());
 
     //tabella->insertRow(20);
 

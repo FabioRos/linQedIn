@@ -2,6 +2,8 @@
 
 utente_basic::utente_basic(){}
 
+utente_basic::utente_basic(const std::string &n, const std::string &c, const std::string &usn)
+    :utente_gratis(n,c,usn){}
 utente_basic::utente_basic(const utente& u):utente_gratis(u){}
 std::list<utente *> utente_basic::cerca(){
     std::list<utente*> risultato;

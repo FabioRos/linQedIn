@@ -6,6 +6,9 @@ utente_business::utente_business(){
 utente_business::utente_business(const utente& ptr_u, const std::string& cc)
     :utente_a_pagamento(ptr_u,cc){}
 
+utente_business::utente_business(const std::string &n, const std::string &c, const std::string &usn)
+    :utente_a_pagamento(n,c,usn){}
+
 double utente_business::costo_annuale =40;
 
 std::list<utente *> utente_business::cerca(){
