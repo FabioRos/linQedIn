@@ -6,7 +6,7 @@
 #include <QHBoxLayout>
 
 #include "client_manager.h"
-#include "amministazione.h"
+#include "amministrazione.h"
 
 #include "MODEL/users_repository.h"
 
@@ -19,7 +19,7 @@ private:
     users_repository* ptr_repository;
     //new
     client_manager* view_client;
-    amministazione* view_amministrazione;
+    amministrazione* view_amministrazione;
 public:
     explicit Tab_wrapper(users_repository* =0,QWidget *parent = 0);
 

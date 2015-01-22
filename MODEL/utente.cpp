@@ -101,6 +101,10 @@ utente *utente::rimuovi_utente_da_rete(smart_utente* smart_u){
     return smart_u->get_ptr_utente();
 }
 
+utente *utente::rimuovi_utente_da_rete(const std::string &s){
+    rete_.rimuovi_elemento(s);
+}
+
 void utente::scrivi_json(QJsonObject &json) const{
 
 

@@ -1,4 +1,5 @@
 #include "aggiunta_utente.h"
+#include <string>
 
 aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     : ptr_repository(repo) ,QWidget(parent){
@@ -36,4 +37,31 @@ aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     layout_form->addRow(layout_footer);
 
     layout_footer->addWidget(btn_conferma);
+}
+
+
+
+void aggiunta_utente::aggiungi_utente_a_db(){
+        //prendo i campi dati
+        std::string username_ = username->text().toStdString();
+        std::string cognome_ = cognome->text().toStdString();
+        std::string nome_ = nome->text().toStdString();
+        //competenze
+        std::list<std::string> competenze_ =blocco_competenza->get_lista_competenze();
+        //tipo account
+        QString tipo_a=tipologia_account->currentText();
+        std::string tipo_account=tipo_a.toStdString();
+
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         *                                                     *
+         *              MANCANO GLI ALTRI CAMPI DATI!!!        *
+         *                                                     *
+         * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+        //...
+
+        //chiamo la procedura del controller
+
+    //inserisco tramite lo smartutente*
 }

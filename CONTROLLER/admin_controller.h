@@ -8,8 +8,10 @@ class admin_controller{
 private:
     DB* ptr_database;
 public:
-    admin_controller(DB*db_);
+    admin_controller(DB* db_);
     std::list<smart_utente *> get_model_db();
+    void salva_db() const;      //da testare    ~~~~
+    DB* carica_db();           //da testare
 
 };
 

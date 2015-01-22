@@ -13,6 +13,7 @@ private:
     Q_OBJECT
 public:
     explicit modulo_competenza(QWidget *parent = 0);
+    std::list<std::string> get_lista_competenze() const; // da testare
 
 signals:
    void segnale_err_txt();

@@ -19,7 +19,6 @@ HEADERS += TEST/test.h \
            TEST/test_lingua.h \
            TEST/test_manager.h \
            TEST/test_utente_basic.h \
-           VIEW/amministazione.h \
     MODEL/attivita.h \
     MODEL/data.h \
     MODEL/db.h \
@@ -55,7 +54,8 @@ HEADERS += TEST/test.h \
     TEST/test_smart_utente.h \
     MODEL/users_repository.h \
     CONTROLLER/aggiungi_modifica_utenti.h \
-    MODEL/input_output.h
+    MODEL/input_output.h \
+    VIEW/amministrazione.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -63,7 +63,6 @@ SOURCES += main.cpp \
            TEST/test_lingua.cpp \
            TEST/test_manager.cpp \
            TEST/test_utente_basic.cpp \
-           VIEW/amministazione.cpp \
     MODEL/attivita.cpp \
     MODEL/data.cpp \
     MODEL/db.cpp \
@@ -100,7 +99,8 @@ SOURCES += main.cpp \
     TEST/test_smart_utente.cpp \
     MODEL/users_repository.cpp \
     CONTROLLER/aggiungi_modifica_utenti.cpp \
-    MODEL/input_output.cpp
+    MODEL/input_output.cpp \
+    VIEW/amministrazione.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json

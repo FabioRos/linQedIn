@@ -47,7 +47,7 @@ DB* input_output::carica_da_file(){
     //ora ho tutti gli smart_utenti
 
     //creo gli utenti stando tranquillo per la rete
-    DB* db_da_file=new DB;
+    DB* db_da_file=new DB();
     for (int i=0;i<numero_utenti;i++){
         //mi creo un oggetto di tipo QJsonObject a partire dalla stringa
         QJsonObject oggetto_utente_corrente(utenti[i].toObject());
@@ -123,6 +123,7 @@ DB* input_output::carica_da_file(){
 
         //aggiorno il puntatore nello smart_utente da 0 a questo utente
         smart_utente* tmp_ptr_smu= tutti_gli_smart_utenti.find(j_username)->second=new smart_utente(u);
+
         db_da_file->aggiungi_utente(*tmp_ptr_smu);
 
     }// foreach-utenti _END_
@@ -157,6 +158,7 @@ bool input_output::salva_su_file(DB* ptr_db_locale_corrente){
         QJsonDocument doc(db_testuale);
 
         output_file.write(doc.toJson());
+        output_file.close();
     return true;
 }
 

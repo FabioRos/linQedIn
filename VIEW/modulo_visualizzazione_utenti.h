@@ -18,7 +18,7 @@ protected:
 
 public:
     explicit modulo_visualizzazione_utenti(users_repository* =0, QWidget *parent = 0);
-
+    void refresh();
     void inserisci_riga(utente* riga,int indice_riga);
     void popola_tabella(std::list<smart_utente*>);
 signals:

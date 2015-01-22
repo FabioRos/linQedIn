@@ -66,6 +66,7 @@ class utente{
         std::list<utente*> get_all_rete() const;
         virtual utente *aggiungi_utente_a_rete(smart_utente*);
         virtual utente *rimuovi_utente_da_rete(smart_utente*);
+        virtual utente *rimuovi_utente_da_rete(const std::string&);
         virtual utente* clona_utente() const =0 ;
         //genero record in json
         virtual void scrivi_json(QJsonObject &json) const;

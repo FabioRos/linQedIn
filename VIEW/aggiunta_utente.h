@@ -30,6 +30,7 @@ public:
 signals:
 
 public slots:
+    void aggiungi_utente_a_db();// da testare //INCOMPLETO!!!
 };
 
 #endif // AGGIUNTA_UTENTE_H

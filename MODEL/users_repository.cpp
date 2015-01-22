@@ -6,6 +6,14 @@
 #include "input_output.h"
 
 
+DB *users_repository::get_ptr_db() const{
+    return ptr_db;
+}
+
+users_repository::~users_repository(){
+    delete ptr_db;
+}
+
 users_repository::users_repository(DB* p_db):ptr_db(p_db){
     if(p_db!=0)           //per estensibilità
         carica_dati(); // da file

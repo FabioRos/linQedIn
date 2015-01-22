@@ -3,6 +3,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include <QListWidget>
 
 modulo_competenza::modulo_competenza(QWidget *parent) :
     QWidget(parent){
@@ -29,6 +30,17 @@ modulo_competenza::modulo_competenza(QWidget *parent) :
 
 
 
+}
+
+std::list<std::string> modulo_competenza::get_lista_competenze() const{
+    std::list<std::string> tutte_le_competenze;
+    for(int i = 0; i < competenze->count(); ++i)
+    {
+        QListWidgetItem* item = competenze->item(i);
+        tutte_le_competenze.push_back(item->text().toStdString());
+        //Do stuff!
+    }
+    return tutte_le_competenze;
 }
 
 

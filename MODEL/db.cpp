@@ -2,6 +2,10 @@
 
 DB::DB(){}
 
+DB::~DB(){
+    //delete &database;
+}
+
 smart_utente *DB::get_ptr_smart_utente(const std::string& username){
     if(database.find(username)!=database.end())
         return (database[username]);
@@ -31,6 +35,7 @@ bool DB::aggiungi_utente(const smart_utente & smart_u){
 void DB::rimuovi_utente(const std::string& username){
     std::map<std::string,smart_utente*>::iterator it=database.begin();
     it=database.find(username);
+    rimuovi_utente_da_tutte_le_reti(username);  //da testare
     database.erase(it);
 }
 
@@ -40,6 +45,27 @@ int DB::size() const{
 
 bool DB::empty() const{
     return database.empty();
+}
+
+void DB::rimuovi_utente_da_tutte_le_reti(smart_utente * smu){
+    for(std::map<std::string,smart_utente*>::iterator it=database.begin();
+        it != database.end(); ++it) {
+        if(it->second->get_ptr_utente()->esiste_nella_rete(smu->get_ptr_utente()->get_username())){
+            it->second->get_ptr_utente()->rimuovi_utente_da_rete(smu);
+        }
+
+    }
+}
+
+void DB::rimuovi_utente_da_tutte_le_reti(const std::string& s){
+    for(std::map<std::string,smart_utente*>::iterator it=database.begin();
+        it != database.end(); ++it) {
+        if(it->second->get_ptr_utente()->esiste_nella_rete(s)){
+            it->second->get_ptr_utente()->rimuovi_utente_da_rete(s);
+        }
+
+    }
+
 }
 
 std::list<std::string> DB::get_tutte_le_chiavi() const{

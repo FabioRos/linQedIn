@@ -4,7 +4,7 @@ Tab_wrapper::Tab_wrapper(users_repository* repo, QWidget *parent)
     :ptr_repository(repo), QWidget(parent){
     emulatore_browser=new QTabWidget(this);
     //widgets
-    view_amministrazione= new amministazione(repo, emulatore_browser);
+    view_amministrazione= new amministrazione(repo, emulatore_browser);
     view_client=new client_manager(emulatore_browser);
 
 

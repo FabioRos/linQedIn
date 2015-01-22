@@ -20,8 +20,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    users_repository* db=new users_repository(new DB);
-   // DB* db=new DB(*(input_output::carica_da_file()));//carica_dati;
+    users_repository* db=new users_repository(new DB(*(input_output::carica_da_file())));//carica_dati;
     FinestraPrincipale w(db,opzione);
     w.show();
 

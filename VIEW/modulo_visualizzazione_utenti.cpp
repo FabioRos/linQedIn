@@ -1,11 +1,24 @@
 #include "modulo_visualizzazione_utenti.h"
 #include <QStringList>
 #include <QHeaderView>
-
+#include "./VIEW/amministrazione.h"
 //temp
 #include <iostream>
 
 //---
+
+
+modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* repo,QWidget *parent)
+    :ptr_repository(repo), QWidget(parent){
+    tabella = new QTableWidget(this);
+    tabella->setMinimumWidth(510);
+    tabella->setMaximumWidth(510);
+    inizializza_tabella();
+
+    //popolazione
+    popola_tabella(ptr_repository->get_database());
+}
+
 void modulo_visualizzazione_utenti::inizializza_tabella(){
     tabella->setColumnCount(4);
     tabella->setHorizontalHeaderLabels(QStringList() << "Username" << "Cognome" << "Nome" << "tipo account");
@@ -46,21 +59,19 @@ void modulo_visualizzazione_utenti::inserisci_riga(utente* riga,int indice_riga)
    // connect()
 }
 
-modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* repo,QWidget *parent)
-    :ptr_repository(repo), QWidget(parent){
-    tabella = new QTableWidget(this);
-    tabella->setMinimumWidth(510);
-    tabella->setMaximumWidth(510);
-    inizializza_tabella();
 
-    //popolazione
+void modulo_visualizzazione_utenti::refresh(){
+    if(tabella!=0){
+        tabella->clear();
+    }else{
+        tabella=new QTableWidget(this);
+    }
+    inizializza_tabella();
+    //popolazionee
     popola_tabella(ptr_repository->get_database());
 
-    //tabella->insertRow(20);
 
 
-//    tabella->setRowCount(10);
-//    tabella->setColumnCount(4);
-
-
+    // std::cout<<(ptr_repository==0)<<std::endl;
+    //popola_tabella(ptr_repository->get_database());
 }

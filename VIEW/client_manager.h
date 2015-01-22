@@ -4,7 +4,7 @@
 #include <QWidget>
 
 
-#include "amministazione.h"
+#include "amministrazione.h"
 #include "testing.h"
 #include "login.h"
 #include "menu_bar.h"
