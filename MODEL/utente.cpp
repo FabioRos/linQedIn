@@ -60,6 +60,18 @@ void utente::aggiungi_lingua(const std::string & d, const std::string &c,
     //lista.insert (std::pair<std::string,smart_utente*>(s.get_ptr_utente()->get_username(),new smart_utente(s)) );
 }
 
+void utente::aggiungi_lingua(const lingua &l){
+    aggiungi_lingua(l.get_descrizione(),l.get_livello_comprensione(),l.get_livello_parlato(),
+                    l.get_livello_scritto());
+}
+
+void utente::aggiungi_lingue(const std::list<lingua> &l){
+    std::list<lingua>::const_iterator it=l.begin();
+    for(;it!=l.end();++it){
+        aggiungi_lingua(*it);
+    }
+}
+
 void utente::rimuovi_lingua(const std::string &chiave){
    std::map<std::string,lingua>::iterator it=lingue.begin();
    it=lingue.find(chiave);
@@ -74,6 +86,12 @@ bool utente::esiste_lingua(const std::string &chiave) const{
 
 void utente::aggiungi_competenze(const std::string &s){//controllo univocità, trim
     competenze.push_front(s);
+}
+
+void utente::aggiungi_competenze(const std::list<std::string> &competenze_da_aggiungere){
+    std::list<std::string>::const_iterator it=competenze_da_aggiungere.begin();
+    for(;it!=competenze_da_aggiungere.end();++it)
+        aggiungi_competenze(*it);
 }
 
 void utente::rimuovi_competenze(const std::string &s){

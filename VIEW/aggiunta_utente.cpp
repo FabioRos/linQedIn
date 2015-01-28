@@ -1,4 +1,6 @@
+#include"./CONTROLLER/aggiungi_modifica_utenti.h"
 #include "aggiunta_utente.h"
+
 #include <string>
 
 aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
@@ -37,6 +39,9 @@ aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     layout_form->addRow(layout_footer);
 
     layout_footer->addWidget(btn_conferma);
+
+    //connessioni
+    connect(btn_conferma,SIGNAL(clicked()),this,SLOT(aggiungi_utente_a_db()));
 }
 
 
@@ -46,11 +51,13 @@ void aggiunta_utente::aggiungi_utente_a_db(){
         std::string username_ = username->text().toStdString();
         std::string cognome_ = cognome->text().toStdString();
         std::string nome_ = nome->text().toStdString();
-        //competenze
-        std::list<std::string> competenze_ =blocco_competenza->get_lista_competenze();
         //tipo account
         QString tipo_a=tipologia_account->currentText();
         std::string tipo_account=tipo_a.toStdString();
+        //competenze
+        std::list<std::string> competenze_ =blocco_competenza->get_lista_competenze();
+        //lingue
+        std::list<std::string> lingue_=blocco_lingua->get_lista_lingue();
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
          *                                                     *
@@ -62,6 +69,10 @@ void aggiunta_utente::aggiungi_utente_a_db(){
         //...
 
         //chiamo la procedura del controller
+        aggiungi_modifica_utenti controller_handler(ptr_repository);
+        controller_handler.aggiungi_utente(aggiungi_modifica_utenti::costruisci_utente(tipo_account,
+                                                username_,cognome_,nome_,competenze_,lingue_)
+        );
 
     //inserisco tramite lo smartutente*
 }

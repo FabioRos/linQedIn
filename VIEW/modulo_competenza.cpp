@@ -38,7 +38,6 @@ std::list<std::string> modulo_competenza::get_lista_competenze() const{
     {
         QListWidgetItem* item = competenze->item(i);
         tutte_le_competenze.push_back(item->text().toStdString());
-        //Do stuff!
     }
     return tutte_le_competenze;
 }

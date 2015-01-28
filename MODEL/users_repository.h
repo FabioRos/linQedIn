@@ -5,9 +5,12 @@
 #include "input_output.h"
 
 
-//  [READ ONLY]<<< eccetto menu_amministrazione>>>
+//  [READ ONLY MODE]<<< eccetto menu_amministrazione e aggiungi_modifica_utenti>>>
 class users_repository{     //metodi getter verso il db
-friend class menu_amministrazione;  //per avere accesso al puntatore al DB
+
+    friend class menu_amministrazione;  //per avere accesso al puntatore al DB
+    friend class aggiungi_modifica_utenti;
+
 private:
         DB* ptr_db;
         DB* get_ptr_db() const;

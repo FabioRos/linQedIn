@@ -5,6 +5,9 @@
 #include <QMessageBox>
 #include <QLabel>
 
+#include <QJsonArray>
+#include <QJsonObject>
+
 modulo_lingua::modulo_lingua(QWidget *parent) :
     QWidget(parent){
 
@@ -17,6 +20,7 @@ modulo_lingua::modulo_lingua(QWidget *parent) :
     select_comprensione =new QComboBox();
     select_scritto =new QComboBox();
     lingue = new QListWidget(this);
+    lingue->setMinimumHeight(250);
 
     //popolo
     QStringList livelli;
@@ -45,16 +49,32 @@ modulo_lingua::modulo_lingua(QWidget *parent) :
      connect(this,SIGNAL(segnale_err_txt()),this,SLOT(errore_testo_vuoto()));
 }
 
-void modulo_lingua::aggiungi_lingua(){  // da testare
-    QString record=descrizione_lingua->text();
-    record.append("\n-comprensione:");
-    record.append(select_comprensione->itemText(select_comprensione->currentIndex()));
-    record.append("\n-scritto:");
-    record.append(select_scritto->itemText(select_scritto->currentIndex()));
-    record.append("\n-parlato:");
-    record.append(select_parlato->itemText(select_parlato->currentIndex()));
-    record.append("\n");
+void  modulo_lingua::aggiungi_lingua(){  // da testare
+
+    QString descrizione_=descrizione_lingua->text();
+    QString comprensione_=select_comprensione->itemText(select_comprensione->currentIndex());
+    QString scritto_=select_scritto->itemText(select_scritto->currentIndex());
+    QString parlato_=select_parlato->itemText(select_parlato->currentIndex());
+
+//    QString record="{\n \"descrizione\": \"";
+//    record.append(descrizione_);
+//    record.append("\",\n \"comprensione\": \"");
+//    record.append(comprensione_);
+//    record.append("\",\n \"scritto\": \"");
+//    record.append(scritto_);
+//    record.append("\",\n \"parlato\": \"");
+//    record.append(parlato_);
+//    record.append("\"\n}");
+    QString record=descrizione_;
+    record.append(" # ");   //sentinella per non avere problemi con gli spazi nelle descrizioni
+    record.append(comprensione_);
+    record.append(" ");
+    record.append(scritto_);
+    record.append(" ");
+    record.append(parlato_);
     lingue->addItem(record);
+
+    //Ho messo in questo formato per andare meglio a fare il parsing
 }
 
 void modulo_lingua::rimuovi_lingua(){
@@ -75,4 +95,17 @@ void modulo_lingua::errore_testo_vuoto(){
     errore->setIcon(QMessageBox::Warning);
     errore->setWindowTitle("Attenzione");
     errore->exec();
+}
+
+
+std::list<std::string> modulo_lingua::get_lista_lingue() const{
+    //mando la stringa intera e demando il parse al controller
+    std::list<std::string> tutte_le_lingue;
+
+    for(int i = 0; i < lingue->count(); ++i)
+    {
+        QListWidgetItem* item = lingue->item(i);
+        tutte_le_lingue.push_back(item->text().toStdString());
+    }
+    return tutte_le_lingue;
 }

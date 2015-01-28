@@ -15,6 +15,7 @@ private:
     QPushButton* btn_rimuovi_lingua, *inserisci_lingua;
 public:
     explicit modulo_lingua(QWidget *parent = 0);
+    std::list<std::string> get_lista_lingue() const;
 
 signals:
     void segnale_err_txt();
