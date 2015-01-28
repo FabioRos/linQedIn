@@ -40,6 +40,15 @@ void utente::update_username(const std::string & s){
 void utente::aggiungi_esperienze_professionali(const esperienza_professionale & e){
     esperienze_professionali.push_back(e);
 }
+
+void utente::aggiungi_esperienze_professionali(const std::list<esperienza_professionale> &l){
+    std::list<esperienza_professionale>::const_iterator it=l.begin();
+    for(;it!=l.end();++it){
+        esperienze_professionali.push_back(*it);
+    }
+}
+
+
 bool utente::rimuovi_esperienze_professionali(const esperienza_professionale & e){
     for(std::list<esperienza_professionale>::iterator it=esperienze_professionali.begin();
        it!=esperienze_professionali.end();++it){

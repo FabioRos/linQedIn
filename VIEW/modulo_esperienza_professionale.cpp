@@ -41,21 +41,34 @@ modulo_esperienza_professionale::modulo_esperienza_professionale(QWidget *parent
 
 }
 
+//prendo le sringhe verranno esplose dal metodo statico e poi inserite dal controller.
+std::list<std::string> modulo_esperienza_professionale::get_lista_esperienze_txt() const{
+    std::list<std::string> tutte_le_esperienze;
+
+    for(int i = 0; i < esperienze->count(); ++i)
+    {
+        QListWidgetItem* item = esperienze->item(i);
+        tutte_le_esperienze.push_back(item->text().toStdString());
+    }
+    return tutte_le_esperienze;
+}
+
 
 void modulo_esperienza_professionale::aggiungi_esperienza(){
-    QString record("\n descrizione: ");
-    record.append(descrizione->text());
-    record.append("\n posizione: ");
+    QString record=descrizione->text();
+    record.append(" # ");
     record.append(posizione->text());
-    record.append("\n luogo: ");
+    record.append(" # ");
     record.append(luogo->text());
-    record.append("\n nome azienda: ");
+    record.append(" # ");
     record.append(nome_azienda->text());
-    record.append("\n dal giorno: ");
-    //record.append(data_inizio);
-    //record.append("\n al giorno: ");
-    //record.append(data_fine);
-    //record.append("\n");
+    record.append(" # ");
+        QDate d_inizio,d_fine;
+        d_inizio=data_inizio->selectedDate();
+        d_fine=data_fine->selectedDate();
+    record.append(d_inizio.toString("d M yyyy"));
+    record.append(" # ");
+    record.append(d_fine.toString("d M yyyy"));
 
     esperienze->addItem(record);
 }

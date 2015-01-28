@@ -58,6 +58,9 @@ void aggiunta_utente::aggiungi_utente_a_db(){
         std::list<std::string> competenze_ =blocco_competenza->get_lista_competenze();
         //lingue
         std::list<std::string> lingue_=blocco_lingua->get_lista_lingue();
+        //esperienze
+        std::list<std::string> esperienze_=blocco_esperienza_professionale->get_lista_esperienze_txt();
+
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
          *                                                     *
@@ -71,7 +74,7 @@ void aggiunta_utente::aggiungi_utente_a_db(){
         //chiamo la procedura del controller
         aggiungi_modifica_utenti controller_handler(ptr_repository);
         controller_handler.aggiungi_utente(aggiungi_modifica_utenti::costruisci_utente(tipo_account,
-                                                username_,cognome_,nome_,competenze_,lingue_)
+                                                username_,cognome_,nome_,competenze_,lingue_,esperienze_)
         );
 
     //inserisco tramite lo smartutente*

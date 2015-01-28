@@ -93,6 +93,7 @@ void menu_amministrazione::carica_db_da_file(){
 }
 
 void menu_amministrazione::salva_su_file() const{
-    //admin_controller cntrl()
-   // admin_controller::salva_db();
+
+    admin_controller *cntrl= new admin_controller(ptr_repo->get_ptr_db());
+    cntrl->salva_db();
 }

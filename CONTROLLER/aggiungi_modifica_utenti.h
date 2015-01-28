@@ -17,9 +17,13 @@ public:
     static utente* costruisci_utente(const std::string& tipo,const std::string& username,
                               const std::string& cognome, const std::string& nome,
                               const std::list<std::string>&comp,
-                              const std::list<std::string>& lingue);  //..da completare
+                              const std::list<std::string>& lingue,
+                              const std::list<std::string>& esperienze);  //..da completare
     static lingua esplodi_lingua(const std::string&);  //da testare
+    static esperienza_professionale esplodi_esperienza(const std::string&);  //da testare
     static std::list<lingua> converti_tutte_le_lingue(const std::list<std::string>&s); //da testare
+    static std::list<esperienza_professionale> converti_tutte_le_esperienze(
+            const std::list<std::string>&s);//da fare
 };
 
 #endif // AGGIUNGI_MODIFICA_UTENTI_H

@@ -47,6 +47,7 @@ class utente{
         void update_cognome(const std::string&) ;
         void update_username(const std::string&) ;
         void aggiungi_esperienze_professionali(const esperienza_professionale&);
+        void aggiungi_esperienze_professionali(const std::list<esperienza_professionale>&);
         bool rimuovi_esperienze_professionali(const esperienza_professionale&);   //op==
         void aggiungi_lingua(const std::string&, const std::string&,
                              const std::string&, const std::string&);
