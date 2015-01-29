@@ -7,6 +7,11 @@
 
 #include <sstream>
 
+
+//temp
+#include <iostream>
+//temp
+
 aggiungi_modifica_utenti::aggiungi_modifica_utenti(DB* ptr_database_ )
     :ptr_db(ptr_database_){}
 
@@ -33,16 +38,19 @@ void aggiungi_modifica_utenti::cambia_tipo_utente(smart_utente *ptr_smu,
 utente* aggiungi_modifica_utenti::costruisci_utente(
         /*tutti i parametri*/const std::string& tipo,const std::string& u,
         const std::string& c, const std::string& n, const std::list<std::string>& comp ,
-        const std::list<std::string>& lingue, const std::list<std::string>& esperienze){
+        const std::list<std::string>& lingue, const std::list<std::string>& esperienze,
+        const std::string& cc){
     //prendo i campi dati
     utente* nuovo_utente;
 
-    if(tipo=="business"){
+
+
+    if(tipo=="BUSINESS"){
         nuovo_utente= new utente_business(n,c,u);
-        //manca inserimento cc
-    }else if(tipo=="executive"){
+        static_cast<utente_business*>(nuovo_utente)->set_carta_di_credito(cc);
+    }else if(tipo=="EXECUTIVE"){
         nuovo_utente= new utente_executive(n,c,u);
-        //manca inserimento cc
+        static_cast<utente_executive*>(nuovo_utente)->set_carta_di_credito(cc);
     }else{ //tipo basic
        nuovo_utente= new utente_basic(n,c,u);
     }
@@ -52,8 +60,6 @@ utente* aggiungi_modifica_utenti::costruisci_utente(
     nuovo_utente->aggiungi_lingue(converti_tutte_le_lingue(lingue));
 
     nuovo_utente->aggiungi_esperienze_professionali(converti_tutte_le_esperienze(esperienze));
-
-
 
     return nuovo_utente;
 }

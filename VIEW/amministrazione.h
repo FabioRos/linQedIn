@@ -9,6 +9,7 @@
 #include "menu_amministrazione.h"
 #include "aggiunta_utente.h"
 #include "modulo_visualizzazione_utenti.h"
+#include "modulo_rimozione_utenti.h"
 #include "./CONTROLLER/admin_controller.h"
 
 #include "./MODEL/users_repository.h"
@@ -21,6 +22,7 @@ class amministrazione: public QWidget
     QScrollArea* scroll_area;
     aggiunta_utente* pagina_aggiunta_utente;
     modulo_visualizzazione_utenti* pagina_visualizzazione_utenti;
+    modulo_rimozione_utenti* pagina_rimozione_utenti;
     users_repository* ptr_repository;   //read_only
 
 public:
@@ -28,6 +30,7 @@ public:
 public slots:
     void mostra_pag_aggiunta_utenti();
     void mostra_pag_visualizzazione_utenti();
+    void mostra_pag_rimozione_utenti();
     void refresh();
 };
 

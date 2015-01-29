@@ -15,6 +15,7 @@ private:
     users_repository* ptr_repository;
 protected:
     void inizializza_tabella();
+    QTableWidget* get_ptr_tabella() const;
 
 public:
     explicit modulo_visualizzazione_utenti(users_repository* =0, QWidget *parent = 0);

@@ -20,6 +20,25 @@ DB* admin_controller::carica_db(){
     return input_output::carica_da_file();
 }
 
+void admin_controller::rimuovi_utenti(const std::list<std::string> &lista){
+    std::list<std::string>::const_iterator it=lista.begin();
+    for(;it!=lista.end();++it){
+        ptr_database->rimuovi_utente(*it);
+
+    }
+
+
+
+    /*
+    <<< ITERATOR >>>{
+        1. salvo username
+        2. delete utente* associato
+        3  smart_utente["username"].second=0;
+    }
+
+*/
+}
+
 
 
 

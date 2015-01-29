@@ -20,7 +20,7 @@ private:
 public:
     explicit aggiunta_utente(users_repository* =0,QWidget *parent = 0);
     QFormLayout* layout_form;
-    QLineEdit* nome, *cognome, *username;//, *txt_nuova_competenza;
+    QLineEdit* nome, *cognome, *username, *carta_di_credito;
     QPushButton* btn_conferma;
     QComboBox* tipologia_account;
     modulo_lingua* blocco_lingua;
@@ -30,7 +30,8 @@ public:
 signals:
 
 public slots:
-    void aggiungi_utente_a_db();// da testare //INCOMPLETO!!!
+    void aggiungi_utente_a_db();// da testare
+    void cc_manager(int);
 };
 
 #endif // AGGIUNTA_UTENTE_H

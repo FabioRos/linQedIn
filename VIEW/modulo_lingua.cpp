@@ -36,7 +36,7 @@ modulo_lingua::modulo_lingua(QWidget *parent) :
     layout_form_lingua->addRow(new QLabel("<b><center>LINGUE</center></b>"));
     layout_form_lingua->addRow("<u>Lingua</u>:",descrizione_lingua);
     layout_form_lingua->addRow("Livello comprensione",select_comprensione);
-    layout_form_lingua->addRow("Livello sritto",select_scritto);
+    layout_form_lingua->addRow("Livello scritto",select_scritto);
     layout_form_lingua->addRow("Livello parlato",select_parlato);
     layout_form_lingua->addRow(inserisci_lingua);
     layout_form_lingua->addRow("Lingue inserite: ",lingue);

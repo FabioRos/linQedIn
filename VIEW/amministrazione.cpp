@@ -9,7 +9,8 @@ amministrazione::amministrazione(users_repository* repo, QWidget *parent)
 
     // menu opzioni
 
-    pannello_opzioni=new menu_amministrazione(this,ptr_repository);
+    admin_controller* ac=new admin_controller(repo->get_ptr_db());
+    pannello_opzioni=new menu_amministrazione(ac,this,ptr_repository);
 
     // scroll area
 
@@ -24,6 +25,12 @@ amministrazione::amministrazione(users_repository* repo, QWidget *parent)
     layout_due_colonne= new QHBoxLayout(this);
     layout_due_colonne->addWidget(pannello_opzioni);
     layout_due_colonne->addWidget(scroll_area);
+}
+
+void amministrazione::mostra_pag_rimozione_utenti(){
+    admin_controller* ac=new admin_controller(ptr_repository->get_ptr_db());
+    pagina_rimozione_utenti=new modulo_rimozione_utenti(ptr_repository, ac ,this);
+    scroll_area->setWidget(pagina_rimozione_utenti);
 }
 
 void amministrazione::mostra_pag_aggiunta_utenti(){

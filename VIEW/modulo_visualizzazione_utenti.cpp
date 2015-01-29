@@ -12,7 +12,9 @@ modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* r
     :ptr_repository(repo), QWidget(parent){
     tabella = new QTableWidget(this);
     tabella->setMinimumWidth(510);
-    tabella->setMaximumWidth(510);
+//    tabella->setMinimumHeight(600);
+//    tabella->setMaximumHeight(600);
+    tabella->setSizeAdjustPolicy(QScrollArea::AdjustToContents);
     inizializza_tabella();
 
     //popolazione
@@ -20,11 +22,19 @@ modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* r
 }
 
 void modulo_visualizzazione_utenti::inizializza_tabella(){
-    tabella->setColumnCount(4);
-    tabella->setHorizontalHeaderLabels(QStringList() << "Username" << "Cognome" << "Nome" << "tipo account");
+    tabella->setColumnCount(3);
+    tabella->setHorizontalHeaderLabels(QStringList() << "Username" << "Cognome" << "Nome");
     tabella->horizontalHeader()->setStretchLastSection(1);
+    tabella->setColumnWidth(0,150);
+    tabella->setColumnWidth(1,150);
+    tabella->setColumnWidth(2,150);
     popola_tabella(ptr_repository->get_database());
+
     //tabella->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+}
+
+QTableWidget *modulo_visualizzazione_utenti::get_ptr_tabella() const{
+    return tabella;
 }
 
 void modulo_visualizzazione_utenti::popola_tabella(std::list<smart_utente*> lista_record){
@@ -54,7 +64,7 @@ void modulo_visualizzazione_utenti::inserisci_riga(utente* riga,int indice_riga)
     tabella->setItem(indice_riga,0,item_username);
     tabella->setItem(indice_riga,1,item_cognome);
     tabella->setItem(indice_riga,2,item_nome);
-    tabella->setItem(indice_riga,3,item_tipo_account);
+    //tabella->setItem(indice_riga,3,item_tipo_account);
 
    // connect()
 }
@@ -67,7 +77,7 @@ void modulo_visualizzazione_utenti::refresh(){
         tabella=new QTableWidget(this);
     }
     inizializza_tabella();
-    //popolazionee
+    //popolazione
     popola_tabella(ptr_repository->get_database());
 
 

@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QErrorMessage>
 #include "./MODEL/users_repository.h"
+#include "./CONTROLLER/admin_controller.h";
 
 class DB;
 class menu_amministrazione : public QWidget{
@@ -21,9 +22,10 @@ private:
     QMessageBox*sicuro_caricare;
     QErrorMessage* sicuro_salvare;
     users_repository* ptr_repo;
+    admin_controller* controller;
     QWidget* parent_ptr;
 public:
-    menu_amministrazione(QWidget* =0,users_repository* =0);
+    menu_amministrazione(admin_controller* ,QWidget* =0,users_repository* =0);
 public slots:
     void conferma_caricamento() ;
     void carica_db_da_file();

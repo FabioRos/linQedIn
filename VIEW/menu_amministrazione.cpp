@@ -10,8 +10,8 @@
 
 
 
-menu_amministrazione::menu_amministrazione(QWidget *parent,users_repository* repo)
-    :QWidget(parent),ptr_repo(repo),parent_ptr(parent){
+menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent,users_repository* repo)
+    :controller(ac), QWidget(parent),ptr_repo(repo),parent_ptr(parent){
 
     //ISTANZIO MEMBRI
     btn_aggiungi_utente=new QPushButton("Aggiungi utente",this);
@@ -50,6 +50,7 @@ menu_amministrazione::menu_amministrazione(QWidget *parent,users_repository* rep
     //connect(btn2,SIGNAL(clicked()),sicuro_salvare,SLOT(showMessage("Sovrascriverai il DB")));
     connect(btn_aggiungi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_aggiunta_utenti()));
     connect(btn_dump_db,SIGNAL(clicked()),parent,SLOT(mostra_pag_visualizzazione_utenti()));
+    connect(btn_rimuovi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_rimozione_utenti()));
 
     //  I/O + EXIT _END
 

@@ -9,8 +9,8 @@ tool_bar::tool_bar(QWidget *parent) :
     layout_toolbar->addWidget(btn_exit);
 
 
-    connect(btn_exit,SIGNAL(clicked()),this,SLOT(chiudi()));
-    //connect(qApp,SIGNAL(aboutToQuit()),this,SLOT(chiudi()));
+    //connect(btn_exit,SIGNAL(clicked()),this,SLOT(chiudi()));
+    connect(qApp,SIGNAL(aboutToQuit()),this,SLOT(chiudi()));
 }
 
 void tool_bar::chiudi(){
@@ -20,11 +20,9 @@ void tool_bar::chiudi(){
 
 
      if (scelta == QMessageBox::Yes) {
-       //qDebug() << "[YES]";
+        //salvataggio
 
-     } /*else {
-       //qDebug() << "[NO]";
-     }*/
+     }
      //a prescindere dalla scelta poi chiudo l'applicazione.
      QApplication::quit();
 }

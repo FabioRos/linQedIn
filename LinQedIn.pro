@@ -55,7 +55,8 @@ HEADERS += TEST/test.h \
     MODEL/users_repository.h \
     CONTROLLER/aggiungi_modifica_utenti.h \
     MODEL/input_output.h \
-    VIEW/amministrazione.h
+    VIEW/amministrazione.h \
+    VIEW/modulo_rimozione_utenti.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -100,7 +101,8 @@ SOURCES += main.cpp \
     MODEL/users_repository.cpp \
     CONTROLLER/aggiungi_modifica_utenti.cpp \
     MODEL/input_output.cpp \
-    VIEW/amministrazione.cpp
+    VIEW/amministrazione.cpp \
+    VIEW/modulo_rimozione_utenti.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json
