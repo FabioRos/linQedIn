@@ -5,6 +5,7 @@
 #include <QLineEdit>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include "./MODEL/users_repository.h"
 
 class login : public QWidget{
 private:
@@ -13,8 +14,9 @@ private:
     QLineEdit* input_username;
     QHBoxLayout* layout_login;
     QPushButton* btn_login;
+    users_repository* ptr_repository;
 public:
-    login(QWidget* parent =0);
+    login(users_repository*,QWidget* parent =0);
 
 public slots:
     void login_autorizzato();

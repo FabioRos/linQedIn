@@ -14,7 +14,7 @@ private:
 public:
     explicit modulo_competenza(QWidget *parent = 0);
     std::list<std::string> get_lista_competenze() const; // da testare
-
+    ~modulo_competenza();
 signals:
    void segnale_err_txt();
 public slots:

@@ -41,6 +41,20 @@ modulo_esperienza_professionale::modulo_esperienza_professionale(QWidget *parent
 
 }
 
+modulo_esperienza_professionale::~modulo_esperienza_professionale(){
+
+
+    delete luogo,
+    delete descrizione;
+    delete nome_azienda;
+    delete posizione;
+    delete data_inizio;
+    delete data_fine;
+    delete btn_inserisci_esperienza;
+    delete btn_rimuovi_esperienza;
+    delete esperienze;
+}
+
 //prendo le sringhe verranno esplose dal metodo statico e poi inserite dal controller.
 std::list<std::string> modulo_esperienza_professionale::get_lista_esperienze_txt() const{
     std::list<std::string> tutte_le_esperienze;

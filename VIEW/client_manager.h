@@ -7,14 +7,15 @@
 #include "amministrazione.h"
 #include "testing.h"
 #include "login.h"
-#include "menu_bar.h"
+#include "client_enviroment.h"
 
 class client_manager : public QWidget{
 private:
     Q_OBJECT
+    users_repository* ptr_repository;
    // QHBoxLayout* layout_browser;
 public:
-    explicit client_manager(QWidget *parent = 0);
+    explicit client_manager(users_repository*, QWidget *parent = 0);
 
 signals:
 

@@ -25,6 +25,21 @@ amministrazione::amministrazione(users_repository* repo, QWidget *parent)
     layout_due_colonne= new QHBoxLayout(this);
     layout_due_colonne->addWidget(pannello_opzioni);
     layout_due_colonne->addWidget(scroll_area);
+
+    //istanzio pagine
+    //admin_controller* ac=new admin_controller(ptr_repository->get_ptr_db());
+
+}
+
+amministrazione::~amministrazione(){
+
+    delete layout_due_colonne;
+    delete pannello_opzioni;
+    delete scroll_area;
+    //delete pagina_aggiunta_utente;
+    //delete pagina_visualizzazione_utenti;
+    //delete pagina_rimozione_utenti;
+
 }
 
 void amministrazione::mostra_pag_rimozione_utenti(){
@@ -41,7 +56,6 @@ void amministrazione::mostra_pag_aggiunta_utenti(){
 void amministrazione::mostra_pag_visualizzazione_utenti(){
     pagina_visualizzazione_utenti=new modulo_visualizzazione_utenti(ptr_repository,this);
     scroll_area->setWidget(pagina_visualizzazione_utenti);
-
 }
 
 void amministrazione::refresh(){

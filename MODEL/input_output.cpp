@@ -8,6 +8,9 @@
 #include "utente_business.h"
 #include "utente_executive.h"
 
+#include <QDir>
+#include <QApplication>
+#include <QDebug>
 #include <iostream>
 
 

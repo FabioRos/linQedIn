@@ -47,6 +47,8 @@ void modulo_visualizzazione_utenti::popola_tabella(std::list<smart_utente*> list
     }
 }
 
+
+
 void modulo_visualizzazione_utenti::inserisci_riga(utente* riga,int indice_riga){
     //->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable
     QTableWidgetItem* item_username =new QTableWidgetItem(QString::fromStdString(riga->get_username()));
@@ -77,6 +79,8 @@ void modulo_visualizzazione_utenti::refresh(){
         tabella=new QTableWidget(this);
     }
     inizializza_tabella();
+    tabella->setColumnCount(3);
+    tabella->setHorizontalHeaderLabels(QStringList() << "Username" << "Cognome" << "Nome");
     //popolazione
     popola_tabella(ptr_repository->get_database());
 
@@ -84,4 +88,13 @@ void modulo_visualizzazione_utenti::refresh(){
 
     // std::cout<<(ptr_repository==0)<<std::endl;
     //popola_tabella(ptr_repository->get_database());
+}
+
+modulo_visualizzazione_utenti::~modulo_visualizzazione_utenti(){
+
+    delete tabella;
+
+
+    // !!! devo deallocare tutti i record!
+
 }

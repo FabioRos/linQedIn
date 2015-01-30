@@ -42,6 +42,13 @@ std::list<std::string> modulo_competenza::get_lista_competenze() const{
     return tutte_le_competenze;
 }
 
+modulo_competenza::~modulo_competenza(){
+    delete btn_nuova_competenza;
+    delete btn_rimuovi_competenze;
+    delete competenze;
+    delete txt_nuova_competenza;
+}
+
 
 void modulo_competenza::aggiungi_competenza(){
     competenze->addItem(txt_nuova_competenza->text());
@@ -64,7 +71,7 @@ void modulo_competenza::controllore(){
 void modulo_competenza::errore_testo_vuoto(){
     QMessageBox* errore= new QMessageBox(this);
     errore->setText("Il campo descrizione per la sezione competenza non può essere vuoto.");
-    errore->setIcon(QMessageBox::Warning);
+    errore->setIcon(QMessageBox::Critical);
     errore->setWindowTitle("Attenzione");
     errore->exec();
 }

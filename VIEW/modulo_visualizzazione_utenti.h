@@ -22,6 +22,7 @@ public:
     void refresh();
     void inserisci_riga(utente* riga,int indice_riga);
     void popola_tabella(std::list<smart_utente*>);
+    ~modulo_visualizzazione_utenti();
 signals:
 
 public slots:

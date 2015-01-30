@@ -5,7 +5,7 @@ Tab_wrapper::Tab_wrapper(users_repository* repo, QWidget *parent)
     emulatore_browser=new QTabWidget(this);
     //widgets
     view_amministrazione= new amministrazione(repo, emulatore_browser);
-    view_client=new client_manager(emulatore_browser);
+    view_client=new client_manager(ptr_repository, emulatore_browser);
 
 
 
@@ -28,4 +28,11 @@ Tab_wrapper::Tab_wrapper(users_repository* repo, QWidget *parent)
     emulatore_browser->addTab(view_amministrazione, "Amministrazione");
 
 
+}
+
+Tab_wrapper::~Tab_wrapper(){
+    delete emulatore_browser;
+    //delete view_amministrazione;
+    //delete view_client;
+    //delete layout_browser;
 }

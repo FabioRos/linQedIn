@@ -18,7 +18,7 @@ signals:
 
 public slots:
     void seleziona_riga(int,int) const;
-    void rimuovi_utenti() const;
+    void rimuovi_utenti();
 };
 
 #endif // MODULO_RIMOZIONE_UTENTI_H

@@ -20,23 +20,13 @@ modulo_rimozione_utenti::modulo_rimozione_utenti(users_repository* repo, admin_c
 std::list<std::string> modulo_rimozione_utenti::get_selected_usernames() const{
 
     std::list<std::string> usernames;
-
     std::list<QModelIndex> l=ptr_tabella->selectionModel()->selectedRows().toStdList();
-
-
 
     std::list<QModelIndex>::const_iterator it=l.begin();
     for(;it!=l.end();++it){
         //qDebug() << ptr_tabella->item( (it)->row(),0)->text();
         usernames.push_back(ptr_tabella->item( (it)->row(),0)->text().toStdString());
     }
-
-//    for (int i=0; i<ptr_tabella->rowCount(); ++i)
-//    {   //if(ptr_tabella->rowAt(i))
-//        ptr_tabella->item(i,0)->text();
-//        qDebug() << ptr_tabella->item(i, 0)->text();
-//    }
-
      return usernames;
 }
 
@@ -48,6 +38,8 @@ void modulo_rimozione_utenti::seleziona_riga(int riga, int colonna) const{
     ptr_tabella->selectRow(riga);
 }
 
-void modulo_rimozione_utenti::rimuovi_utenti() const{
+void modulo_rimozione_utenti::rimuovi_utenti(){
     controller->rimuovi_utenti(get_selected_usernames());
+    //refresh [ereditato]
+    refresh();
 }

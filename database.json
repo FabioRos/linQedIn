@@ -1,33 +1,19 @@
 {
     "usernames": [
-        "",
-        "FabioRos90",
-        "MarioRossi50",
-        "Username_test",
+        "Fabio",
+        "Mario",
         "aaa",
-        "dd",
-        "eeee",
+        "ad",
+        "eeeee",
         "ex",
-        "pluto",
-        "rteerter"
+        "nome_test",
+        "pippo",
+        "q",
+        "tertert"
     ],
     "utenti": [
         {
-            "cognome": "",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": ""
-        },
-        {
-            "cognome": "Ros",
+            "cognome": "FabioRos90",
             "competenze": [
                 "WordPress",
                 "HTML",
@@ -52,56 +38,27 @@
                     "livello_scritto": "C2"
                 }
             ],
-            "nome": "Fabio",
+            "nome": "Ros",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "FabioRos90"
+            "username": "Fabio"
         },
         {
             "carta_di_credito": "",
-            "cognome": "Rossi",
+            "cognome": "MarioRossi50",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "Mario",
+            "nome": "Rossi",
             "rete": [
-                "FabioRos90"
+                "Fabio"
             ],
             "tipo_account": "executive",
-            "username": "MarioRossi50"
-        },
-        {
-            "cognome": "cognome_test",
-            "competenze": [
-                "xml",
-                "c++",
-                "php"
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-                {
-                    "descrizione": "inglese",
-                    "livello_comprensione": "B2",
-                    "livello_parlato": "B1",
-                    "livello_scritto": "B1"
-                },
-                {
-                    "descrizione": "italiano",
-                    "livello_comprensione": "C2",
-                    "livello_parlato": "C2",
-                    "livello_scritto": "C2"
-                }
-            ],
-            "nome": "nome_test",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "Username_test"
+            "username": "Mario"
         },
         {
             "cognome": "aaa",
@@ -131,32 +88,32 @@
             "username": "aaa"
         },
         {
-            "cognome": "adsdas",
+            "cognome": "dd",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "ad",
+            "nome": "adsdas",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "dd"
+            "username": "ad"
         },
         {
-            "cognome": "eeeeee",
+            "cognome": "eeee",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "eeeee",
+            "nome": "eeeeee",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "eeee"
+            "username": "eeeee"
         },
         {
             "cognome": "ex",
@@ -173,33 +130,76 @@
             "username": "ex"
         },
         {
-            "cognome": "paperino",
+            "cognome": "Username_test",
             "competenze": [
+                "xml",
+                "c++",
+                "php"
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
+                {
+                    "descrizione": "inglese",
+                    "livello_comprensione": "B2",
+                    "livello_parlato": "B1",
+                    "livello_scritto": "B1"
+                },
+                {
+                    "descrizione": "italiano",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                }
             ],
-            "nome": "pippo",
+            "nome": "cognome_test",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "pluto"
+            "username": "nome_test"
         },
         {
-            "carta_di_credito": "",
-            "cognome": "retreert",
+            "cognome": "pluto",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "tertert",
+            "nome": "paperino",
+            "rete": [
+            ],
+            "tipo_account": "basic",
+            "username": "pippo"
+        },
+        {
+            "cognome": "q",
+            "competenze": [
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "q",
+            "rete": [
+            ],
+            "tipo_account": "basic",
+            "username": "q"
+        },
+        {
+            "carta_di_credito": "",
+            "cognome": "rteerter",
+            "competenze": [
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "retreert",
             "rete": [
             ],
             "tipo_account": "business",
-            "username": "rteerter"
+            "username": "tertert"
         }
     ]
 }

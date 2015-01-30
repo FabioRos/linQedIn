@@ -16,6 +16,7 @@ private:
     QListWidget* esperienze;
 public:
     explicit modulo_esperienza_professionale(QWidget *parent = 0);
+    ~modulo_esperienza_professionale();
     std::list<std::string> get_lista_esperienze_txt() const;// da fare
 signals:
     void segnale_err_txt();

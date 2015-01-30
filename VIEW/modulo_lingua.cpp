@@ -109,3 +109,13 @@ std::list<std::string> modulo_lingua::get_lista_lingue() const{
     }
     return tutte_le_lingue;
 }
+
+modulo_lingua::~modulo_lingua(){
+    delete lingue;
+    delete descrizione_lingua;
+    delete select_parlato;
+    delete select_scritto;
+    delete select_comprensione;
+    delete btn_rimuovi_lingua;
+    delete inserisci_lingua;
+}

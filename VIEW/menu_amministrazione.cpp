@@ -51,7 +51,7 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     connect(btn_aggiungi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_aggiunta_utenti()));
     connect(btn_dump_db,SIGNAL(clicked()),parent,SLOT(mostra_pag_visualizzazione_utenti()));
     connect(btn_rimuovi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_rimozione_utenti()));
-
+    //connect(btn_cambia_account,SIGNAL(clicked()),parent,SLOT(mostra_pag_cambio_account()));
     //  I/O + EXIT _END
 
     QVBoxLayout* local_menu_layout=new QVBoxLayout(this);
@@ -68,6 +68,21 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     local_menu_layout->addLayout(layout_carica_salva);
 
     connect(this,SIGNAL(refresh_tabella()),parent,SLOT(refresh()));
+}
+
+menu_amministrazione::~menu_amministrazione(){
+
+
+    delete btn_aggiungi_utente;
+    delete btn_rimuovi_utente;
+    delete btn_cambia_account;
+    delete btn_dump_db;
+    delete btn_cerca;
+    delete btn_caricamento;
+    //delete exit;
+    delete main_menu_layout;
+    delete sicuro_caricare;
+    delete sicuro_salvare;
 }
 
 

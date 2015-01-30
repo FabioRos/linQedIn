@@ -27,6 +27,7 @@ class amministrazione: public QWidget
 
 public:
     amministrazione( users_repository* =0, QWidget* =0);    //QWidget* =0 sempre
+    ~amministrazione();
 public slots:
     void mostra_pag_aggiunta_utenti();
     void mostra_pag_visualizzazione_utenti();

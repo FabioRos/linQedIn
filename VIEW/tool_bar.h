@@ -5,16 +5,18 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QHBoxLayout>
+#include "./CONTROLLER/admin_controller.h"
 
 class tool_bar : public QWidget
 {private:
     Q_OBJECT
     QHBoxLayout *layout_toolbar;
     QPushButton *btn_exit;
+    admin_controller* controller;
 
 public:
-    explicit tool_bar(QWidget *parent = 0);
-
+    explicit tool_bar(users_repository* ,QWidget *parent = 0);
+    ~tool_bar();
 signals:
 
 public slots:

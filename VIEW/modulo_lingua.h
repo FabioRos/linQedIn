@@ -16,7 +16,7 @@ private:
 public:
     explicit modulo_lingua(QWidget *parent = 0);
     std::list<std::string> get_lista_lingue() const;
-
+    ~modulo_lingua();
 signals:
     void segnale_err_txt();
 public slots:

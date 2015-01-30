@@ -37,7 +37,6 @@ HEADERS += TEST/test.h \
     VIEW/testing.h \
     TEST/test_rete.h \
     VIEW/login.h \
-    VIEW/menu_bar.h \
     CONTROLLER/client_controller.h \
     VIEW/menu_amministrazione.h \
     VIEW/client_manager.h \
@@ -56,7 +55,9 @@ HEADERS += TEST/test.h \
     CONTROLLER/aggiungi_modifica_utenti.h \
     MODEL/input_output.h \
     VIEW/amministrazione.h \
-    VIEW/modulo_rimozione_utenti.h
+    VIEW/modulo_rimozione_utenti.h \
+    VIEW/client_profilo.h \
+    VIEW/client_enviroment.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -82,7 +83,6 @@ SOURCES += main.cpp \
     VIEW/testing.cpp \
     TEST/test_rete.cpp \
     VIEW/login.cpp \
-    VIEW/menu_bar.cpp \
     #moc_finestraprincipale.cpp \
     CONTROLLER/client_controller.cpp \
     VIEW/menu_amministrazione.cpp \
@@ -102,7 +102,9 @@ SOURCES += main.cpp \
     CONTROLLER/aggiungi_modifica_utenti.cpp \
     MODEL/input_output.cpp \
     VIEW/amministrazione.cpp \
-    VIEW/modulo_rimozione_utenti.cpp
+    VIEW/modulo_rimozione_utenti.cpp \
+    VIEW/client_profilo.cpp \
+    VIEW/client_enviroment.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json

@@ -11,6 +11,7 @@ class users_repository{     //metodi getter verso il db
     friend class menu_amministrazione;  //per avere accesso al puntatore al DB
     friend class amministrazione;
     friend class aggiungi_modifica_utenti;
+    friend class admin_controller;
 
 private:
         DB* ptr_db;

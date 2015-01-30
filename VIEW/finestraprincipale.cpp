@@ -16,7 +16,7 @@ FinestraPrincipale::FinestraPrincipale(users_repository *repo, bool test_mode, Q
 
     contenitore=new QWidget(this);
     tab_pricipale=new Tab_wrapper(ptr_repository,this);
-    tb=new tool_bar(this);
+    tb=new tool_bar(ptr_repository,this);
     this->setGeometry(50,30,800,600);
     layout_verticale=new QVBoxLayout;
     layout_verticale->addWidget(tab_pricipale);
@@ -41,5 +41,10 @@ FinestraPrincipale::FinestraPrincipale(DB *p_db, bool test_mode, QWidget *parent
     FinestraPrincipale(new users_repository(p_db),test_mode,parent);
 }
 
-FinestraPrincipale::~FinestraPrincipale(){}
+FinestraPrincipale::~FinestraPrincipale(){
+    delete tab_pricipale;
+    delete tb;
+    delete layout_verticale;
+    delete contenitore;
+}
 

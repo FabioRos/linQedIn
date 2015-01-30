@@ -22,6 +22,7 @@ private:
     amministrazione* view_amministrazione;
 public:
     explicit Tab_wrapper(users_repository* =0,QWidget *parent = 0);
+    ~Tab_wrapper();
 
 signals:
 

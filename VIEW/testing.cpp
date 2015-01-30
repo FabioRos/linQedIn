@@ -17,7 +17,11 @@ testing::testing(QWidget *parent):QWidget(parent){
     connect(chiudi_finestra,SIGNAL(clicked()),this,SLOT(close()));
 }
 
-testing::~testing(){}
+testing::~testing(){
+    delete layout;
+    delete chiudi_finestra;
+    delete esito_testuale;
+}
 
 void testing::run_tests(){
      test_manager* tester=new test_manager;
@@ -33,4 +37,5 @@ void testing::run_tests(){
     }
      //chiudi_finestra->setAutoFillBackground(true);
      layout->addWidget(chiudi_finestra);
+     delete tester;
 }
