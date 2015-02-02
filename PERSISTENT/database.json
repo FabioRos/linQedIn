@@ -1,39 +1,24 @@
 {
     "usernames": [
-        "",
-        "FabioRos90",
-        "MarioRossi50",
-        "Username_test",
+        "Ros",
+        "Rossi",
         "aaa",
-        "dd",
-        "eeee",
+        "adsdas",
+        "cognome_test",
+        "eeeeee",
         "ex",
-        "pluto",
-        "rteerter"
+        "paperino",
+        "retreert"
     ],
     "utenti": [
         {
-            "cognome": "",
+            "cognome": "Fabio",
             "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": ""
-        },
-        {
-            "cognome": "Ros",
-            "competenze": [
-                "WordPress",
-                "HTML",
-                "PHP",
+                "mySql",
                 "XML",
-                "mySql"
+                "PHP",
+                "HTML",
+                "WordPress"
             ],
             "esperienze_professionali": [
                 {
@@ -53,34 +38,87 @@
                     "livello_scritto": "C2"
                 }
             ],
-            "nome": "Fabio",
+            "nome": "FabioRos90",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "FabioRos90"
+            "username": "Ros"
         },
         {
             "carta_di_credito": "",
-            "cognome": "Rossi",
+            "cognome": "Mario",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "Mario",
+            "nome": "MarioRossi50",
             "rete": [
-                "FabioRos90"
+                "Ros"
             ],
             "tipo_account": "executive",
-            "username": "MarioRossi50"
+            "username": "Rossi"
         },
         {
-            "cognome": "cognome_test",
+            "cognome": "aaa",
             "competenze": [
-                "xml",
+                "xml"
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+                {
+                    "descrizione": "eng",
+                    "livello_comprensione": "A1",
+                    "livello_parlato": "A1",
+                    "livello_scritto": "A1"
+                },
+                {
+                    "descrizione": "fra",
+                    "livello_comprensione": "A1",
+                    "livello_parlato": "A1",
+                    "livello_scritto": "A1"
+                },
+                {
+                    "descrizione": "ita",
+                    "livello_comprensione": "A1",
+                    "livello_parlato": "A1",
+                    "livello_scritto": "A1"
+                },
+                {
+                    "descrizione": "tedesco",
+                    "livello_comprensione": "A1",
+                    "livello_parlato": "A1",
+                    "livello_scritto": "A1"
+                }
+            ],
+            "nome": "aaa",
+            "rete": [
+            ],
+            "tipo_account": "basic",
+            "username": "aaa"
+        },
+        {
+            "cognome": "ad",
+            "competenze": [
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "dd",
+            "rete": [
+            ],
+            "tipo_account": "basic",
+            "username": "adsdas"
+        },
+        {
+            "cognome": "nome_test",
+            "competenze": [
+                "php",
                 "c++",
-                "php"
+                "xml"
             ],
             "esperienze_professionali": [
             ],
@@ -98,66 +136,25 @@
                     "livello_scritto": "C2"
                 }
             ],
-            "nome": "nome_test",
+            "nome": "Username_test",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "Username_test"
+            "username": "cognome_test"
         },
         {
-            "cognome": "aaa",
-            "competenze": [
-                "xml"
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-                {
-                    "descrizione": "eng",
-                    "livello_comprensione": "A1",
-                    "livello_parlato": "A1",
-                    "livello_scritto": "A1"
-                },
-                {
-                    "descrizione": "ita",
-                    "livello_comprensione": "A1",
-                    "livello_parlato": "A1",
-                    "livello_scritto": "A1"
-                }
-            ],
-            "nome": "aaa",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "aaa"
-        },
-        {
-            "cognome": "adsdas",
+            "cognome": "eeeee",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "ad",
+            "nome": "eeee",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "dd"
-        },
-        {
-            "cognome": "eeeeee",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "eeeee",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "eeee"
+            "username": "eeeeee"
         },
         {
             "cognome": "ex",
@@ -174,33 +171,33 @@
             "username": "ex"
         },
         {
-            "cognome": "paperino",
+            "cognome": "pippo",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "pippo",
+            "nome": "pluto",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "pluto"
+            "username": "paperino"
         },
         {
             "carta_di_credito": "",
-            "cognome": "retreert",
+            "cognome": "tertert",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "tertert",
+            "nome": "rteerter",
             "rete": [
             ],
             "tipo_account": "business",
-            "username": "rteerter"
+            "username": "retreert"
         }
     ]
 }

@@ -63,8 +63,6 @@ std::list<std::string> client_controller::get_info_utente(const std::string &use
     }
     lista_risultato.push_back("#fine_lingue#");
 
-
-
     return lista_risultato;
 
 }
