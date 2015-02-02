@@ -29,11 +29,11 @@
         {
             "cognome": "Ros",
             "competenze": [
-                "mySql",
-                "XML",
-                "PHP",
+                "WordPress",
                 "HTML",
-                "WordPress"
+                "PHP",
+                "XML",
+                "mySql"
             ],
             "esperienze_professionali": [
                 {
@@ -78,9 +78,9 @@
         {
             "cognome": "cognome_test",
             "competenze": [
-                "php",
+                "xml",
                 "c++",
-                "xml"
+                "php"
             ],
             "esperienze_professionali": [
             ],

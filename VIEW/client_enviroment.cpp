@@ -19,6 +19,11 @@ client_enviroment::client_enviroment(users_repository* repo, const std::string& 
     scroll_area=new QScrollArea(this);
    // scroll_area->setGeometry(200,10,510,500);
 
+    scroll_area->setHorizontalScrollBarPolicy( Qt::ScrollBarAsNeeded);
+    scroll_area->setVerticalScrollBarPolicy( Qt::ScrollBarAsNeeded);
+    scroll_area->setWidgetResizable(true);
+
+
     //creo il layout a due colonne, sx menu, dx area lavoro
     layout_due_colonne= new QHBoxLayout(this);
     layout_due_colonne->addWidget(menu);
@@ -62,7 +67,7 @@ void client_enviroment::log_out(){
 
 void client_enviroment::mostra_profilo(){
     //pagina_profilo = new client_profilo(ptr_repository,username_corrente,this);
-    scroll_area->setWidget(new client_profilo(ptr_repository,username_corrente,this));
+    scroll_area->setWidget(new client_profilo(ptr_repository,scroll_area,username_corrente,this));
 }
 
 

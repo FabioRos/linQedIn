@@ -54,9 +54,17 @@ std::list<std::string> client_controller::get_info_utente(const std::string &use
             }
     lista_risultato.push_back("#fine_competenze#");
 
-//     std::list<std::string>::const_iterator it=lista_risultato.begin();
-//        for (;it!=lista_risultato.end();++it){
-//            std::cout << *it;
-//        }
+    lista_risultato.push_back("#inizio_lingue#");
+    std::list<std::string> lista_lingue=utente_corrente->get_lingue();
+    std::cout<<lista_lingue.size();
+    it=lista_lingue.begin();
+    for (;it!=lista_lingue.end();++it){
+        lista_risultato.push_back(*it);
+    }
+    lista_risultato.push_back("#fine_lingue#");
+
+
+
     return lista_risultato;
+
 }

@@ -2,6 +2,8 @@
 #include "smart_utente.h"
 #include <QJsonArray>
 
+#include <iostream>
+
 utente::utente(const std::string & nome_ ,const std::string & cognome_,const std::string & username_)
     :nome(nome_),cognome(cognome_),username(username_){}
 
@@ -28,6 +30,30 @@ std::list<esperienza_professionale> utente::get_esperienze_professionali() const
 std::list<std::string> utente::get_competenze() const{
     return competenze;
 }
+
+std::list<std::string> utente::get_lingue() const{ //portare la f() dentro lingua.h/.cpp
+    //"lingua#L1#L2#L3"
+    std::list<std::string> lista_lingue;
+    if (!lingue.empty()){
+     std::map<std::string,lingua>::const_iterator it=lingue.begin();
+     for(;it!=lingue.end();++it){
+         std::string s=(*it).second.get_descrizione();
+         s+="#";
+         s+=(*it).second.get_livello_comprensione();
+         s+="#";
+         s+=(*it).second.get_livello_parlato();
+         s+="#";
+         s+=(*it).second.get_livello_scritto();
+         lista_lingue.push_back(s);
+//         std::cout<<s;
+     }
+    }
+
+    return lista_lingue;
+}
+
+
+
 void utente::update_nome(const std::string & s){
     nome=s;
 }
