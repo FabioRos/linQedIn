@@ -40,6 +40,8 @@ class utente{
         std::string get_cognome() const;
         std::string get_username() const;
         std::list<esperienza_professionale> get_esperienze_professionali() const;
+
+        std::list<std::string> get_esperienze_professionali_txt() const;
         std::list<std::string> get_competenze() const;
         std::list<std::string> get_lingue() const;  // da testare
 

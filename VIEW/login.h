@@ -12,7 +12,7 @@ private:
     Q_OBJECT
 
     QLineEdit* input_username;
-    QHBoxLayout* layout_login;
+    QVBoxLayout* layout_verticale;
     QPushButton* btn_login;
     users_repository* ptr_repository;
 public:

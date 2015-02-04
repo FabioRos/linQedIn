@@ -62,6 +62,14 @@ std::list<std::string> client_controller::get_info_utente(const std::string &use
         lista_risultato.push_back(*it);
     }
     lista_risultato.push_back("#fine_lingue#");
+    lista_risultato.push_back("#inizio_esperienze_professionali#");
+    std::list<std::string> lista_esperienze=utente_corrente->get_esperienze_professionali_txt();
+    it=lista_esperienze.begin();
+    for (;it!=lista_esperienze.end();++it){
+       // std::cout<<*it;
+        lista_risultato.push_back(*it);
+    }
+    lista_risultato.push_back("#fine_esperienze_professionali#");
 
     return lista_risultato;
 

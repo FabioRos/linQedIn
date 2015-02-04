@@ -1,24 +1,43 @@
 {
     "usernames": [
+        "#########",
         "Ros",
         "Rossi",
         "aaa",
         "adsdas",
         "cognome_test",
+        "d",
         "eeeeee",
+        "esperto",
         "ex",
         "paperino",
         "retreert"
     ],
     "utenti": [
         {
+            "carta_di_credito": "",
+            "cognome": "#########",
+            "competenze": [
+                "a"
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "#########",
+            "rete": [
+            ],
+            "tipo_account": "business",
+            "username": "#########"
+        },
+        {
             "cognome": "Fabio",
             "competenze": [
-                "mySql",
-                "XML",
-                "PHP",
+                "WordPress",
                 "HTML",
-                "WordPress"
+                "PHP",
+                "XML",
+                "mySql"
             ],
             "esperienze_professionali": [
                 {
@@ -116,9 +135,9 @@
         {
             "cognome": "nome_test",
             "competenze": [
-                "php",
+                "xml",
                 "c++",
-                "xml"
+                "php"
             ],
             "esperienze_professionali": [
             ],
@@ -143,6 +162,22 @@
             "username": "cognome_test"
         },
         {
+            "carta_di_credito": "",
+            "cognome": "d",
+            "competenze": [
+                "aaaa"
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "d",
+            "rete": [
+            ],
+            "tipo_account": "executive",
+            "username": "d"
+        },
+        {
             "cognome": "eeeee",
             "competenze": [
             ],
@@ -155,6 +190,53 @@
             ],
             "tipo_account": "basic",
             "username": "eeeeee"
+        },
+        {
+            "carta_di_credito": "espertoespertoesperto",
+            "cognome": "esperto",
+            "competenze": [
+            ],
+            "esperienze_professionali": [
+            	{
+                    "descrizione": "de",
+                    "fine": "1-1-1970",
+                    "inizio": "1-1-1970",
+                    "luogo": "lu",
+                    "nome_azienda": "az",
+                    "posizione": "po"
+                },
+                {
+                    "descrizione": "de",
+                    "fine": "1-1-1970",
+                    "inizio": "1-1-1970",
+                    "luogo": "lu",
+                    "nome_azienda": "az",
+                    "posizione": "po"
+                },
+                {
+                    "descrizione": "de",
+                    "fine": "1-1-1970",
+                    "inizio": "1-1-1970",
+                    "luogo": "lu",
+                    "nome_azienda": "az",
+                    "posizione": "po"
+                },
+                {
+                    "descrizione": "de",
+                    "fine": "1-1-1970",
+                    "inizio": "1-1-1970",
+                    "luogo": "lu",
+                    "nome_azienda": "az",
+                    "posizione": "po"
+                }
+            ],
+            "lingue": [
+            ],
+            "nome": "esperto",
+            "rete": [
+            ],
+            "tipo_account": "executive",
+            "username": "esperto"
         },
         {
             "cognome": "ex",

@@ -27,6 +27,30 @@ std::string utente::get_username() const{
 std::list<esperienza_professionale> utente::get_esperienze_professionali() const{
     return esperienze_professionali;
 }
+
+std::list<std::string> utente::get_esperienze_professionali_txt() const{
+    // nome_azienda#posizione#luogo#descrizione#data_inizio#data_fine
+    std::list<std::string> risultato;
+    if (!esperienze_professionali.empty()){
+        std::list<esperienza_professionale>::const_iterator it=esperienze_professionali.begin();
+        for(;it!=esperienze_professionali.end();++it){
+            std::string s=it->get_nome_azienda();
+            s+="#";
+            s+=it->get_posizione();
+            s+="#";
+            s+=it->get_luogo();
+            s+="#";
+            s+=it->get_descrizione();
+            s+="#";
+            s+=it->get_inizio().toString();
+            s+="#";
+            s+=it->get_fine().toString();
+            risultato.push_back(s);
+        }
+    }
+    return risultato;
+}
+
 std::list<std::string> utente::get_competenze() const{
     return competenze;
 }
@@ -35,18 +59,18 @@ std::list<std::string> utente::get_lingue() const{ //portare la f() dentro lingu
     //"lingua#L1#L2#L3"
     std::list<std::string> lista_lingue;
     if (!lingue.empty()){
-     std::map<std::string,lingua>::const_iterator it=lingue.begin();
-     for(;it!=lingue.end();++it){
-         std::string s=(*it).second.get_descrizione();
-         s+="#";
-         s+=(*it).second.get_livello_comprensione();
-         s+="#";
-         s+=(*it).second.get_livello_parlato();
-         s+="#";
-         s+=(*it).second.get_livello_scritto();
-         lista_lingue.push_back(s);
-//         std::cout<<s;
-     }
+        std::map<std::string,lingua>::const_iterator it=lingue.begin();
+        for(;it!=lingue.end();++it){
+            std::string s=(*it).second.get_descrizione();
+            s+="#";
+            s+=(*it).second.get_livello_comprensione();
+            s+="#";
+            s+=(*it).second.get_livello_parlato();
+            s+="#";
+            s+=(*it).second.get_livello_scritto();
+            lista_lingue.push_back(s);
+            //         std::cout<<s;
+        }
     }
 
     return lista_lingue;
@@ -77,19 +101,19 @@ void utente::aggiungi_esperienze_professionali(const std::list<esperienza_profes
 
 bool utente::rimuovi_esperienze_professionali(const esperienza_professionale & e){
     for(std::list<esperienza_professionale>::iterator it=esperienze_professionali.begin();
-       it!=esperienze_professionali.end();++it){
+        it!=esperienze_professionali.end();++it){
         if(*it==e){
             esperienze_professionali.erase(it);
             return true;
         }
 
-   }
+    }
     return false;
 }
 
 void utente::aggiungi_lingua(const std::string & d, const std::string &c,
                              const std::string &p, const std::string &s){
-   // lingue.push_front(lingua(d,c,p,s));
+    // lingue.push_front(lingua(d,c,p,s));
     lingue.insert(std::pair<std::string,lingua>(d,lingua(d,c,p,s)));
 
     //lista.insert (std::pair<std::string,smart_utente*>(s.get_ptr_utente()->get_username(),new smart_utente(s)) );
@@ -108,19 +132,20 @@ void utente::aggiungi_lingue(const std::list<lingua> &l){
 }
 
 void utente::rimuovi_lingua(const std::string &chiave){
-   std::map<std::string,lingua>::iterator it=lingue.begin();
-   it=lingue.find(chiave);
-       lingue.erase(it);
+    std::map<std::string,lingua>::iterator it=lingue.begin();
+    it=lingue.find(chiave);
+    lingue.erase(it);
 }
 
 bool utente::esiste_lingua(const std::string &chiave) const{
     std::map<std::string,lingua>::const_iterator it=lingue.begin();
-        it=lingue.find(chiave);
-        return (it!=lingue.end())?true:false;
+    it=lingue.find(chiave);
+    return (it!=lingue.end())?true:false;
 }
 
 void utente::aggiungi_competenze(const std::string &s){//controllo univocità, trim
-    competenze.push_front(s);
+    if(!ha_la_competenza(s))
+        competenze.push_front(s);
 }
 
 void utente::aggiungi_competenze(const std::list<std::string> &competenze_da_aggiungere){
@@ -130,8 +155,8 @@ void utente::aggiungi_competenze(const std::list<std::string> &competenze_da_agg
 }
 
 void utente::rimuovi_competenze(const std::string &s){
-        if(ha_la_competenza(s))
-            competenze.remove(s);
+    if(ha_la_competenza(s))
+        competenze.remove(s);
 }
 
 bool utente::ha_la_competenza(const std::string & s) const{
@@ -171,7 +196,7 @@ void utente::scrivi_json(QJsonObject &json) const{
     //array_esperienze.append("ciao");
     std::list<esperienza_professionale>::const_iterator it= esperienze_professionali.begin();
     for(it;it!=esperienze_professionali.end();++it){
-    //esperienze_professionali.scrivi_json(json);
+        //esperienze_professionali.scrivi_json(json);
         QJsonObject temp;
         it->scrivi_json(temp);
         array_esperienze.append(temp);
@@ -179,10 +204,10 @@ void utente::scrivi_json(QJsonObject &json) const{
     json["esperienze_professionali"]= array_esperienze;
 
     //*** LINGUE ***
-     QJsonArray array_lingue;
+    QJsonArray array_lingue;
     std::map<std::string,lingua>::const_iterator it2= lingue.begin();
     for(;it2!=lingue.end();++it2){
-    //esperienze_professionali.scrivi_json(json);
+        //esperienze_professionali.scrivi_json(json);
         QJsonObject temp;
         it2->second.scrivi_json(temp);
         array_lingue.append(temp);
@@ -203,11 +228,11 @@ void utente::scrivi_json(QJsonObject &json) const{
     std::list<std::string> usernames=rete_.get_all_usernames();
     std::list<std::string>::const_iterator it_rete=usernames.begin();
     for(;it_rete!=usernames.end();++it_rete){
-    //esperienze_professionali.scrivi_json(json);
+        //esperienze_professionali.scrivi_json(json);
         array_rete.append(QString::fromStdString(*it_rete));
-       // array_rete.append(temp);
+        // array_rete.append(temp);
     }
-     json["rete"]=array_rete;
+    json["rete"]=array_rete;
 
 
 }
