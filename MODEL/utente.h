@@ -8,6 +8,11 @@
 #include "lingua.h"
 #include "rete.h"
 
+#include <QJsonArray>
+
+#include <iostream>
+
+
 //per virtualizzare il salvataggio
 #include <QJsonObject>
 
@@ -71,9 +76,9 @@ class utente{
         //da testare
         //utente* operator=(utente*);
         std::list<utente*> get_all_rete() const;
-        virtual utente *aggiungi_utente_a_rete(smart_utente*);
-        virtual utente *rimuovi_utente_da_rete(smart_utente*);
-        virtual utente *rimuovi_utente_da_rete(const std::string&);
+        utente *aggiungi_utente_a_rete(smart_utente*);
+        utente *rimuovi_utente_da_rete(smart_utente*);
+        void rimuovi_utente_da_rete(const std::string&);
         virtual utente* clona_utente() const =0 ;
         //genero record in json
         virtual void scrivi_json(QJsonObject &json) const;

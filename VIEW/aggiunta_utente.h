@@ -1,17 +1,15 @@
 #ifndef AGGIUNTA_UTENTE_H
 #define AGGIUNTA_UTENTE_H
 
-#include <QWidget>
-#include <QFormLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QListWidget>
+#include"./CONTROLLER/aggiungi_modifica_utenti.h"
+
 #include "modulo_lingua.h"
 #include "modulo_competenza.h"
 #include "modulo_esperienza_professionale.h"
 
-#include "./MODEL/users_repository.h"
+#include <QFormLayout>
+#include <QLabel>
+
 
 class aggiunta_utente : public QWidget{
     Q_OBJECT

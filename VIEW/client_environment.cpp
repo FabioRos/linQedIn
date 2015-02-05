@@ -1,12 +1,6 @@
-#include "client_enviroment.h"
-#include "login.h"
-#include "finestraprincipale.h"
-#include <qapplication.h>    //per qApp, puntatore statico all'applicazione up.
-#include <QDebug>
-#include "./VIEW/client_profilo.h"
+#include "client_environment.h"
 
-
-client_enviroment::client_enviroment(users_repository* repo, const std::string& uc, QWidget *parent):
+client_environment::client_environment(users_repository* repo, const std::string& uc, QWidget *parent):
     ptr_repository(repo),username_corrente(uc),QWidget(parent){
 
     //Inizializzazione campi dati
@@ -51,7 +45,7 @@ client_enviroment::client_enviroment(users_repository* repo, const std::string& 
     connect(btn_log_out,SIGNAL(clicked()),this,SLOT(log_out()));
 }
 
-client_enviroment::~client_enviroment(){
+client_environment::~client_environment(){
     delete btn_profilo;
     delete btn_rete;
     delete btn_log_out;
@@ -59,13 +53,13 @@ client_enviroment::~client_enviroment(){
     delete layout_menu;
 }
 
-void client_enviroment::log_out(){
+void client_environment::log_out(){
     this->hide();
     login* login_view=new login(ptr_repository,static_cast<QWidget*>(parent()));
     login_view->show();
 }
 
-void client_enviroment::mostra_profilo(){
+void client_environment::mostra_profilo(){
     //pagina_profilo = new client_profilo(ptr_repository,username_corrente,this);
     scroll_area->setWidget(new client_profilo(ptr_repository,scroll_area,username_corrente,this));
 }

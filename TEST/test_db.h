@@ -1,8 +1,9 @@
 #ifndef TEST_DB_H
 #define TEST_DB_H
 
-#include "./MODEL/db.h"
 #include "test.h"
+#include "./MODEL/db.h"
+#include "./MODEL/utente_basic.h"
 
 class test_db : public test{
 private:

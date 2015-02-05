@@ -1,11 +1,12 @@
 #ifndef MODULO_VISUALIZZAZIONE_DATI_H
 #define MODULO_VISUALIZZAZIONE_DATI_H
 
+#include "./CONTROLLER/admin_controller.h"
+
 #include <QWidget>
 #include <QTableWidget>
 #include <QStringList>
-#include "./CONTROLLER/admin_controller.h"
-#include "./MODEL/users_repository.h"
+
 
 
 class modulo_visualizzazione_utenti : public QWidget{

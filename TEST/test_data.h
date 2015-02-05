@@ -2,7 +2,9 @@
 #define TEST_DATA_H
 
 #include "test.h"
-#include <iostream>
+
+#include "./MODEL/data.h"
+
 class test_data : public test{
 public:
 

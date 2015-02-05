@@ -1,9 +1,13 @@
 #ifndef ADMIN_CONTROLLER_H
 #define ADMIN_CONTROLLER_H
 
-#include "./MODEL/db.h"
 #include "./MODEL/users_repository.h"
 #include "./VIEW/modulo_visualizzazione_utenti.h"
+
+#include <QApplication>
+#include <QLabel>
+
+
 
 class admin_controller{
 private:

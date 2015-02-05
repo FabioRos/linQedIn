@@ -1,15 +1,16 @@
 #ifndef TAB_WRAPPER_H
 #define TAB_WRAPPER_H
 
+#include "MODEL/users_repository.h"
+#include "amministrazione.h"
+
 #include <QWidget>
 #include <QTabWidget>
 #include <QHBoxLayout>
 
-#include "client_manager.h"
-#include "amministrazione.h"
 
-#include "MODEL/users_repository.h"
 
+class client_manager;
 class Tab_wrapper : public QWidget{
 private:
 

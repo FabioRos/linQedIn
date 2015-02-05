@@ -5,6 +5,7 @@
 #include <string>
 #include <list>
 
+
 class utente;
 class smart_utente; //dichiarazioni incomplete per evitare inclusioni circolari->solo rif e punt
 

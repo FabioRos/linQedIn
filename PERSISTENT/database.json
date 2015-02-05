@@ -1,17 +1,17 @@
 {
     "usernames": [
         "#########",
-        "Ros",
-        "Rossi",
+        "Fabio",
+        "Mario",
         "aaa",
-        "adsdas",
-        "cognome_test",
+        "ad",
         "d",
-        "eeeeee",
+        "eeeee",
         "esperto",
         "ex",
-        "paperino",
-        "retreert"
+        "nome_test",
+        "pippo",
+        "tertert"
     ],
     "utenti": [
         {
@@ -31,13 +31,13 @@
             "username": "#########"
         },
         {
-            "cognome": "Fabio",
+            "cognome": "FabioRos90",
             "competenze": [
-                "WordPress",
-                "HTML",
-                "PHP",
+                "mySql",
                 "XML",
-                "mySql"
+                "PHP",
+                "HTML",
+                "WordPress"
             ],
             "esperienze_professionali": [
                 {
@@ -57,27 +57,27 @@
                     "livello_scritto": "C2"
                 }
             ],
-            "nome": "FabioRos90",
+            "nome": "Ros",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "Ros"
+            "username": "Fabio"
         },
         {
             "carta_di_credito": "",
-            "cognome": "Mario",
+            "cognome": "MarioRossi50",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "MarioRossi50",
+            "nome": "Rossi",
             "rete": [
-                "Ros"
+                "Fabio"
             ],
             "tipo_account": "executive",
-            "username": "Rossi"
+            "username": "Mario"
         },
         {
             "cognome": "aaa",
@@ -119,47 +119,18 @@
             "username": "aaa"
         },
         {
-            "cognome": "ad",
+            "cognome": "dd",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "dd",
+            "nome": "adsdas",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "adsdas"
-        },
-        {
-            "cognome": "nome_test",
-            "competenze": [
-                "xml",
-                "c++",
-                "php"
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-                {
-                    "descrizione": "inglese",
-                    "livello_comprensione": "B2",
-                    "livello_parlato": "B1",
-                    "livello_scritto": "B1"
-                },
-                {
-                    "descrizione": "italiano",
-                    "livello_comprensione": "C2",
-                    "livello_parlato": "C2",
-                    "livello_scritto": "C2"
-                }
-            ],
-            "nome": "Username_test",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "cognome_test"
+            "username": "ad"
         },
         {
             "carta_di_credito": "",
@@ -178,26 +149,26 @@
             "username": "d"
         },
         {
-            "cognome": "eeeee",
+            "cognome": "eeee",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "eeee",
+            "nome": "eeeeee",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "eeeeee"
+            "username": "eeeee"
         },
         {
-            "carta_di_credito": "espertoespertoesperto",
+            "carta_di_credito": "",
             "cognome": "esperto",
             "competenze": [
             ],
             "esperienze_professionali": [
-            	{
+                {
                     "descrizione": "de",
                     "fine": "1-1-1970",
                     "inizio": "1-1-1970",
@@ -253,33 +224,62 @@
             "username": "ex"
         },
         {
-            "cognome": "pippo",
+            "cognome": "Username_test",
             "competenze": [
+                "php",
+                "c++",
+                "xml"
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
+                {
+                    "descrizione": "inglese",
+                    "livello_comprensione": "B2",
+                    "livello_parlato": "B1",
+                    "livello_scritto": "B1"
+                },
+                {
+                    "descrizione": "italiano",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                }
             ],
-            "nome": "pluto",
+            "nome": "cognome_test",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "paperino"
+            "username": "nome_test"
         },
         {
-            "carta_di_credito": "",
-            "cognome": "tertert",
+            "cognome": "pluto",
             "competenze": [
             ],
             "esperienze_professionali": [
             ],
             "lingue": [
             ],
-            "nome": "rteerter",
+            "nome": "paperino",
+            "rete": [
+            ],
+            "tipo_account": "basic",
+            "username": "pippo"
+        },
+        {
+            "carta_di_credito": "",
+            "cognome": "rteerter",
+            "competenze": [
+            ],
+            "esperienze_professionali": [
+            ],
+            "lingue": [
+            ],
+            "nome": "retreert",
             "rete": [
             ],
             "tipo_account": "business",
-            "username": "retreert"
+            "username": "tertert"
         }
     ]
 }

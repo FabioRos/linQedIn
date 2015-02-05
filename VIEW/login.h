@@ -1,11 +1,10 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QWidget>
-#include <QLineEdit>
-#include <QHBoxLayout>
-#include <QPushButton>
+#include "client_environment.h"
 #include "./MODEL/users_repository.h"
+
+#include <QHBoxLayout>
 
 class login : public QWidget{
 private:

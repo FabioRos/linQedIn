@@ -1,7 +1,4 @@
 #include "login.h"
-#include "client_enviroment.h"
-#include "./CONTROLLER/client_controller.h"
-#include <QMessageBox>
 
 
 login::login(users_repository*repo, QWidget *parent):
@@ -33,7 +30,7 @@ void login::login_autorizzato(){
     client_controller cc(ptr_repository);
     if(cc.login_autorizzato(user)){
         this->hide();
-        client_enviroment* mb=new client_enviroment(ptr_repository,user, static_cast<QWidget*>(parent()));
+        client_environment* mb=new client_environment(ptr_repository,user, static_cast<QWidget*>(parent()));
         mb->show();
     }else{
         QMessageBox* l=new QMessageBox(QMessageBox::Critical,"Attenzione!",

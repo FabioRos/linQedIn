@@ -213,9 +213,7 @@ bool test_utente_basic::test7(){    //rete
 bool test_utente_basic::test8(){    //test  >=
     numero_test++;
     try{
-        utente_business utente_bss;
-        utente_basic* ptr_nuovo_utente;
-        //utente_bss(*ptr_nuovo_utente);
+
         if(true){
             array_[8]=false;
             n_test_superati+=1;

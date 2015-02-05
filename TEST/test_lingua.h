@@ -2,7 +2,8 @@
 #define TEST_LINGUA_H
 
 #include "test.h"
-#include <iostream>
+#include "./MODEL/lingua.h"
+
 class test_lingua: public test{
 public:
     test_lingua();

@@ -1,7 +1,10 @@
 #ifndef SMART_UTENTE_H
 #define SMART_UTENTE_H
 
-#include "utente.h"
+#include "utente_basic.h"
+#include "utente_business.h"
+#include "utente_executive.h"
+
 class smart_utente
 {private:
     utente* ptr_utente;

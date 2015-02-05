@@ -1,10 +1,20 @@
 #ifndef INPUT_OUTPUT_H
 #define INPUT_OUTPUT_H
 
-#include <QJsonObject>
-#include <QJsonArray>
 #include "db.h"
 #include "./MODEL/smart_utente.h"
+
+#include <QFile>
+#include <QTextStream>
+#include <QJsonDocument>
+
+#include "utente_basic.h"
+#include "utente_business.h"
+#include "utente_executive.h"
+
+#include <QDir>
+#include <QApplication>
+
 
 #define file_path "/home/fabio/Development/C++/PaO_2014_15/LinQedIn/LinQedIn/PERSISTENT/database.json"
 

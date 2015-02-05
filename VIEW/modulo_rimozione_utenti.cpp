@@ -1,5 +1,4 @@
 #include "modulo_rimozione_utenti.h"
-#include <QDebug>
 
 modulo_rimozione_utenti::modulo_rimozione_utenti(users_repository* repo, admin_controller* ac,
                                                  QWidget *parent) :controller(ac),

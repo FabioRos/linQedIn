@@ -1,7 +1,4 @@
-#include"./CONTROLLER/aggiungi_modifica_utenti.h"
 #include "aggiunta_utente.h"
-
-#include <string>
 
 aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     : ptr_repository(repo) ,QWidget(parent){
@@ -26,7 +23,7 @@ aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     blocco_lingua=new modulo_lingua(this);
     blocco_competenza= new modulo_competenza(this);
     blocco_esperienza_professionale= new modulo_esperienza_professionale(this);
-    layout_form->addRow(new QLabel("<h3><b><center>INSERIMENTO UTENTE</center></b></h3>"));
+    layout_form->addRow("",new QLabel("<h3><b><center>INSERIMENTO UTENTE</center></b></h3>"));
     layout_form->addRow("Cognome:",cognome);
     layout_form->addRow("Nome:",nome);
     layout_form->addRow("Username:",username);

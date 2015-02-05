@@ -1,11 +1,4 @@
 #include "client_profilo.h"
-#include <QLayoutItem>
-#include <sstream>
-#include <istream>
-#include <QMessageBox>
-
-
-#include <iostream>
 
 client_profilo::client_profilo(users_repository* repo, QScrollArea* s_a, const std::string& user, QWidget *parent) :
     QWidget(parent), ptr_repository(repo), username_(user),ptr_scroll_area_contenitore(s_a){
@@ -52,6 +45,27 @@ void client_profilo::salva_modifiche(){
 
 
 }
+void client_profilo::disabilita_tutto(){    //eccetto tasto btn_modifica_profilo
+    nome->setDisabled(true);
+    cognome->setDisabled(true);;
+    username->setDisabled(true);
+    //competenze
+    disabilita_competenze(true);
+    disabilita_lingue(true);
+    disabilita_esperienze_professionali(true);
+}
+void client_profilo::abilita_tutto(){
+    nome->setDisabled(false);
+    cognome->setDisabled(false);
+    username->setDisabled(false);
+    //competenze
+    disabilita_competenze(false);
+    disabilita_lingue(false);
+    disabilita_esperienze_professionali(false);
+
+
+    //layout_top->itemAtPosition(r,c)
+}
 void client_profilo::aggiungi_competenza(){
     lbl_hint_inserimento->hide();
     //controllo che non ci sia già
@@ -86,28 +100,9 @@ void client_profilo::aggiungi_competenza(){
     }
 
 }
-void client_profilo::disabilita_tutto(){    //eccetto tasto btn_modifica_profilo
-    nome->setDisabled(true);
-    cognome->setDisabled(true);;
-    username->setDisabled(true);
-    //competenze
-    disabilita_competenze(true);
-    disabilita_lingue(true);
-    disabilita_esperienze_professionali(true);
 
+void client_profilo::aggiungi_lingua(){
 
-}
-void client_profilo::abilita_tutto(){
-    nome->setDisabled(false);
-    cognome->setDisabled(false);
-    username->setDisabled(false);
-    //competenze
-    disabilita_competenze(false);
-    disabilita_lingue(false);
-    disabilita_esperienze_professionali(false);
-
-
-    //layout_top->itemAtPosition(r,c)
 }
 void client_profilo::disabilita_competenze(const bool &value){
     //per recuperare i widgets mi conviene usare
@@ -173,8 +168,6 @@ void client_profilo::disabilita_esperienze_professionali(const bool &value){
         }
     }
 }
-
-
 void client_profilo::popola() {
     //inizializzo, importante farlo qui!
     numero_competenze=0;
@@ -217,7 +210,6 @@ void client_profilo::popola() {
     btn_aggiungi_competenza=new QPushButton("aggiungi");
     nuova_competenza= new QLineEdit("");
 }
-
 void client_profilo::inizializza(const std::list<std::string>& user_data){
     std::list<std::string>::const_iterator it=user_data.begin();
     if(it!=user_data.end()) {
@@ -262,8 +254,6 @@ void client_profilo::inizializza(const std::list<std::string>& user_data){
 
 
 }
-
-
 void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
                                         std::list<std::string>::const_iterator& it, int &indice_riga){
 
@@ -334,7 +324,6 @@ void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
 
     }
 }
-
 void client_profilo::inizializza_competenze(const std::list<std::string> &user_data,
                                             std::list<std::string>::const_iterator& it, int &indice_riga){
 
@@ -362,7 +351,6 @@ void client_profilo::inizializza_competenze(const std::list<std::string> &user_d
 
 
 }
-
 void client_profilo::inizializza_esperienze(const std::list<std::string> &user_data,
                           std::list<std::string>::const_iterator& it, int &indice_riga){
 
@@ -432,15 +420,21 @@ void client_profilo::inizializza_esperienze(const std::list<std::string> &user_d
             layout_top->addWidget(new QLineEdit(QString::fromStdString(data_inizio_)),indice_riga++,2,1,2);
             layout_top->addWidget(new QLabel("<hr>"),indice_riga++,1,1,3);
         }
+        riga_fine_esperienze_profesionali=indice_riga+=7*4; //7=num righe per esperienza,
+                                                            //4 numero esperienze da inserire
     }
 
    aggiungi_controlli_esperienza_professionale(indice_riga);
+   disabilita_controlli_esperienze_professionali(true);
 }
+//CONTROLLI INSERIMENTO NUOVA ENTRY
 void client_profilo::disabilita_controlli_inserimento(const bool & b){
     disabilita_controlli_competenze(b);
     disabilita_controlli_lingua(b);
+    disabilita_controlli_esperienze_professionali(b);
 
 }
+
 void client_profilo::aggiungi_controlli_lingua(int &indice_riga){
     riga_inizio_inserimento_lingua=indice_riga;
     lbl_inserimento_lingua=new QLabel("inserisci un nuova lingua");
@@ -470,6 +464,7 @@ void client_profilo::aggiungi_controlli_lingua(int &indice_riga){
     layout_top->addWidget(new QLabel("<hr>"),indice_riga++,1,1,3);
 
 }
+
 void client_profilo::aggiungi_controlli_esperienza_professionale(int &riga_corrente){
 
     lbl_esp_nuova_azienda = new QLabel("Azienda: ");
@@ -481,7 +476,7 @@ void client_profilo::aggiungi_controlli_esperienza_professionale(int &riga_corre
 
 
     //Titolo
-    QLabel* titolo =new QLabel("Aggiunta Esperienze\nProfessionali: ");
+    QLabel* titolo =new QLabel("Aggiunta Esperienze Professionali: ");
     layout_top->addWidget(titolo,riga_corrente++,1,1,3);
     //Azienda
     layout_top->addWidget(lbl_esp_nuova_azienda,riga_corrente,1);
@@ -517,9 +512,31 @@ void client_profilo::aggiungi_controlli_esperienza_professionale(int &riga_corre
     btn_inserisci_esperienza=new QPushButton("Inserisci esperienza");
     layout_top->addWidget(btn_inserisci_esperienza,riga_corrente,1,1,3);
 }
-void client_profilo::disabilita_controlli_esperienze_professionali(const bool &b){
 
+void client_profilo::disabilita_controlli_esperienze_professionali(const bool &b){
+    //int indice_riga=riga_inizio_esperienze_professionali+1;
+    int indice_riga=riga_fine_esperienze_profesionali;
+    if(b){
+        layout_top->itemAtPosition(indice_riga,1)->widget()->hide();
+        for (int i=1;i<=4;i++){
+            layout_top->itemAtPosition(indice_riga+i,1)->widget()->hide();
+            layout_top->itemAtPosition(indice_riga+i,2)->widget()->hide();
+        }
+        for (int i=5;i<=9;i++){
+            layout_top->itemAtPosition(indice_riga+i,1)->widget()->hide();
+        }
+    }else{
+        layout_top->itemAtPosition(indice_riga,1)->widget()->show();
+        for (int i=1;i<=4;i++){
+            layout_top->itemAtPosition(indice_riga+i,1)->widget()->show();
+            layout_top->itemAtPosition(indice_riga+i,2)->widget()->show();
+        }
+        for (int i=5;i<=9;i++){
+            layout_top->itemAtPosition(indice_riga+i,1)->widget()->show();
+        }
+    }
 }
+
 void client_profilo::disabilita_controlli_lingua(const bool & b){
     if(b){
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua,1)->widget()->hide();
@@ -547,6 +564,7 @@ void client_profilo::disabilita_controlli_lingua(const bool & b){
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua+5,1)->widget()->show();
     }
 }
+
 void client_profilo::disabilita_controlli_competenze(const bool &b){
     if(b){
         layout_top->removeWidget(btn_aggiungi_competenza);

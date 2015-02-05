@@ -1,9 +1,6 @@
 #include "test_esperienza.h"
-#include "./MODEL/esperienza_professionale.h"
 
-test_esperienza::test_esperienza()
-{
-}
+test_esperienza::test_esperienza(): test(0,0,0){}
 
 
 test* test_esperienza::run_tests(){

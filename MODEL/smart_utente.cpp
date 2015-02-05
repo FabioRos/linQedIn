@@ -1,7 +1,4 @@
 #include "smart_utente.h"
-#include "utente_basic.h"
-#include "utente_business.h"
-#include "utente_executive.h"
 
 smart_utente::smart_utente(): ptr_utente(0){}
 

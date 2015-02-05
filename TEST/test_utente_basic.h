@@ -2,7 +2,10 @@
 #define TEST_UTENTE_BASIC_H
 
 #include "test.h"
-#include <iostream>
+
+#include "./MODEL/smart_utente.h"
+#include "./MODEL/utente_basic.h"
+#include "./MODEL/utente_business.h"
 
 class test_utente_basic : public test{
 public:

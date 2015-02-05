@@ -1,8 +1,7 @@
 #ifndef CLIENT_PROFILO_H
 #define CLIENT_PROFILO_H
-#include "./MODEL/users_repository.h"
 #include "./CONTROLLER/client_controller.h"
-#include <QWidget>
+
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -13,6 +12,12 @@
 #include <QTextEdit>
 #include <QCalendarWidget>
 
+#include <QLayoutItem>
+#include <sstream>
+#include <istream>
+#include <QMessageBox>
+
+
 class client_profilo : public QWidget{
     Q_OBJECT
 private:
@@ -22,7 +27,7 @@ private:
     QGridLayout* layout_top;
     int riga_inizio_competenze, numero_competenze,riga_fine_competenze,numero_lingue;
     int riga_inizio_esperienze_professionali,numero_esperienze_professionali;
-    int riga_inizio_inserimento_lingua;
+    int riga_inizio_inserimento_lingua,riga_fine_esperienze_profesionali,riga_ultima_lingua;
     void disabilita_tutto();
     void abilita_tutto();
     void disabilita_competenze(const bool& value =true);  //true_disabilita
@@ -68,5 +73,7 @@ public slots:
     void abilita_modifiche();
     void salva_modifiche();
     void aggiungi_competenza();
+    void aggiungi_lingua();
+
 };
 #endif // CLIENT_PROFILO_H

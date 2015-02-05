@@ -2,7 +2,8 @@
 #define TEST_ESPERIENZA_H
 
 #include "test.h"
-#include <iostream>
+
+#include "./MODEL/esperienza_professionale.h"
 class test_esperienza : public test{
 public:
     test_esperienza();

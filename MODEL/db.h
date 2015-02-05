@@ -1,9 +1,8 @@
 #ifndef DB_H
 #define DB_H
-#include <map>
-#include <string>
-#include <list>
 #include "smart_utente.h"
+#include <map>
+#include <list>
 
 
 using std::string;

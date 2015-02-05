@@ -1,8 +1,5 @@
 #include "utente.h"
 #include "smart_utente.h"
-#include <QJsonArray>
-
-#include <iostream>
 
 utente::utente(const std::string & nome_ ,const std::string & cognome_,const std::string & username_)
     :nome(nome_),cognome(cognome_),username(username_){}
@@ -179,7 +176,7 @@ utente *utente::rimuovi_utente_da_rete(smart_utente* smart_u){
     return smart_u->get_ptr_utente();
 }
 
-utente *utente::rimuovi_utente_da_rete(const std::string &s){
+void utente::rimuovi_utente_da_rete(const std::string &s){
     rete_.rimuovi_elemento(s);
 }
 
@@ -195,7 +192,7 @@ void utente::scrivi_json(QJsonObject &json) const{
     QJsonArray array_esperienze;
     //array_esperienze.append("ciao");
     std::list<esperienza_professionale>::const_iterator it= esperienze_professionali.begin();
-    for(it;it!=esperienze_professionali.end();++it){
+    for(;it!=esperienze_professionali.end();++it){
         //esperienze_professionali.scrivi_json(json);
         QJsonObject temp;
         it->scrivi_json(temp);

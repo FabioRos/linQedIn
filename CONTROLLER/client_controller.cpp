@@ -1,10 +1,6 @@
 #include "client_controller.h"
-#include "./MODEL/smart_utente.h"
-#include "./MODEL/users_repository.h"
 
-#include "./MODEL/utente_basic.h"
-#include "./MODEL/utente_business.h"
-#include "./MODEL/utente_executive.h"
+
 
 
 //temp

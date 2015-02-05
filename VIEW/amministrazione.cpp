@@ -1,5 +1,6 @@
 #include "amministrazione.h"
-#include <QScrollBar>
+
+#include "menu_amministrazione.h"
 
 
 amministrazione::amministrazione(users_repository* repo, QWidget *parent)

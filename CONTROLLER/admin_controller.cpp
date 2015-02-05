@@ -1,10 +1,5 @@
 #include "admin_controller.h"
-#include "./MODEL/utente_business.h"
-#include "./MODEL/input_output.h"
-//#include <QMessageBox>
-#include <QApplication>
-#include <QLabel>
-//#include <QTime>
+
 
 admin_controller::admin_controller(DB* ptr_db):ptr_database(ptr_db){}
 

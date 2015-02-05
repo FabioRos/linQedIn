@@ -1,10 +1,8 @@
 #ifndef ESPERIENZA_PROFESSIONALE_H
 #define ESPERIENZA_PROFESSIONALE_H
 
-#include <string>
-#include "data.h"
-#include "attivita.h"
 
+#include "attivita.h"
 
 class esperienza_professionale:public attivita{
 private:

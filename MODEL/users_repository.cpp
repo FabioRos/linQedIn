@@ -1,9 +1,5 @@
 #include "users_repository.h"
 
-#include "utente_basic.h"
-#include "utente_business.h"
-#include "utente_executive.h"
-#include "input_output.h"
 
 
 DB *users_repository::get_ptr_db() const{

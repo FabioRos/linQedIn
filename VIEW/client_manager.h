@@ -7,7 +7,6 @@
 #include "amministrazione.h"
 #include "testing.h"
 #include "login.h"
-#include "client_enviroment.h"
 
 class client_manager : public QWidget{
 private:
