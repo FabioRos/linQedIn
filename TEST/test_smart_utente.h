@@ -3,10 +3,10 @@
 
 #include "test.h"
 
-#include "./MODEL/smart_utente.h"
-#include "./MODEL/utente_basic.h"
-#include "./MODEL/utente_business.h"
-#include "./MODEL/utente_executive.h"
+#include "../MODEL/smart_utente.h"
+#include "../MODEL/utente_basic.h"
+#include "../MODEL/utente_business.h"
+#include "../MODEL/utente_executive.h"
 
 class test_smart_utente : public test
 {

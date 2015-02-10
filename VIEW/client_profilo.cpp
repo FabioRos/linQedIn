@@ -1,12 +1,24 @@
 #include "client_profilo.h"
+#include <typeinfo>
 
-client_profilo::client_profilo(users_repository* repo, QScrollArea* s_a, const std::string& user, QWidget *parent) :
-    QWidget(parent), ptr_repository(repo), username_(user),ptr_scroll_area_contenitore(s_a){
-    //ptr_scroll_area_contenitore->widgetResizable(true);
+
+client_profilo::client_profilo(users_repository* repo, const std::string& user, QWidget *parent) :
+    QWidget(parent), ptr_repository(repo), username_(user){
+
+    riga_inizio_lingue=50;
+    riga_inizio_competenze=10;
+    riga_inizio_inserimento_lingua=250;
+    riga_inizio_esperienze_professionali=400;
+    riga_inizio_inserimento_esperienze=850;
+
+
+
     popola();
 
     // Installazione
     c_controller= new client_controller(ptr_repository);
+    edit_controller = new aggiungi_modifica_utenti(ptr_repository);
+
 
     std::list<std::string> user_data = c_controller->get_info_utente(username_);
 
@@ -21,7 +33,8 @@ client_profilo::client_profilo(users_repository* repo, QScrollArea* s_a, const s
     connect(btn_modifica_profilo,SIGNAL(clicked()),this,SLOT(abilita_modifiche()));
     connect(btn_salva_modifiche,SIGNAL(clicked()),this,SLOT(salva_modifiche()));
     connect(btn_aggiungi_competenza,SIGNAL(clicked()),this,SLOT(aggiungi_competenza()));
-
+    connect(btn_aggiungi_lingua,SIGNAL(clicked()),this,SLOT(aggiungi_lingua()));
+    connect(btn_inserisci_esperienza,SIGNAL(clicked()),this,SLOT(aggiungi_esperienza()));
 }
 void client_profilo::abilita_modifiche(){
     abilita_tutto();
@@ -29,10 +42,10 @@ void client_profilo::abilita_modifiche(){
     btn_salva_modifiche->show();
     layout_top->removeWidget(btn_modifica_profilo);
     layout_top->addWidget(btn_salva_modifiche,1,3);
-
     disabilita_controlli_inserimento(false);
 }
 void client_profilo::salva_modifiche(){
+    salva_utente();
     disabilita_tutto();
     btn_modifica_profilo->show();
     btn_salva_modifiche->hide();
@@ -57,25 +70,18 @@ void client_profilo::disabilita_tutto(){    //eccetto tasto btn_modifica_profilo
 void client_profilo::abilita_tutto(){
     nome->setDisabled(false);
     cognome->setDisabled(false);
-    username->setDisabled(false);
+    username->setDisabled(true);
     //competenze
     disabilita_competenze(false);
     disabilita_lingue(false);
     disabilita_esperienze_professionali(false);
 
-
     //layout_top->itemAtPosition(r,c)
 }
 void client_profilo::aggiungi_competenza(){
-    lbl_hint_inserimento->hide();
-    //controllo che non ci sia già
-   // if(nuova_competenza->text().toStdString())
-
     if( numero_competenze<18){
         if(nuova_competenza->text()!=""){
             if(numero_competenze%3==0){  //righe piene, ne devo aggiungere una
-                if(!numero_competenze)riga_inizio_competenze++;
-
                 riga_fine_competenze++;
             }
             layout_top->addWidget(new QLineEdit(nuova_competenza->text()),
@@ -103,28 +109,154 @@ void client_profilo::aggiungi_competenza(){
 
 void client_profilo::aggiungi_lingua(){
 
+    int indice_riga=riga_inizio_lingue+4*numero_lingue+1;
+
+
+    QComboBox* _comprensione=new QComboBox(nuovo_livello_comprensione);
+    QComboBox* _parlato=new QComboBox(nuovo_livello_parlato);
+    QComboBox* _scritto=new QComboBox(nuovo_livello_scritto);
+
+
+    _comprensione->addItems(livelli);
+    _parlato->addItems(livelli);
+    _scritto->addItems(livelli);
+
+    _comprensione->setCurrentIndex(nuovo_livello_comprensione->currentIndex());
+    _parlato->setCurrentIndex(nuovo_livello_parlato->currentIndex());
+    _scritto->setCurrentIndex(nuovo_livello_scritto->currentIndex());
+
+    layout_top->addWidget(new QLineEdit(nuova_descrizione_lingua->text()),
+                          indice_riga,1,3,1);
+    layout_top->addWidget(new QLabel("comprensione: "),indice_riga,2);
+    layout_top->addWidget(_comprensione, indice_riga,3);
+    layout_top->addWidget(new QLabel("parlato: "),++indice_riga,2);
+    layout_top->addWidget(_parlato, indice_riga,3);
+    layout_top->addWidget(new QLabel("scritto: "),++indice_riga,2);
+    layout_top->addWidget(_scritto, indice_riga,3);
+    layout_top->addWidget(new QLabel("<hr>"),++indice_riga,1,1,3);
+    riga_ultima_lingua=indice_riga;
+    numero_lingue++;
+
 }
-void client_profilo::disabilita_competenze(const bool &value){
-    //per recuperare i widgets mi conviene usare
-    //"QLayoutItem * QGridLayout::itemAtPosition ( int row, int column ) const"
-    int r=riga_inizio_competenze;
-    if(value==false){
-        lbl_hint_inserimento=new QLabel("Per eliminare una voce cancellare il suo contenuto.");
-        lbl_hint_inserimento->setStyleSheet(QString("font-style: italic;"));
-        layout_top->addWidget(lbl_hint_inserimento,0,1,1,3);
-    }else{
-        if (lbl_hint_inserimento!=0){
-            layout_top->removeWidget(lbl_hint_inserimento);
+
+void client_profilo::aggiungi_esperienza(){
+    layout_top->addWidget(new QLabel("Azienda: "),++riga_fine_esperienze_professionali,1);
+    layout_top->addWidget(new QLineEdit(input_nuova_azienda->text()),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("Posizione: "),++riga_fine_esperienze_professionali,1);
+    layout_top->addWidget(new QLineEdit(input_nuova_posizione->text()),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("Luogo: "),++riga_fine_esperienze_professionali,1);
+    layout_top->addWidget(new QLineEdit(input_nuovo_luogo->text()),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("Descrizione: "),++riga_fine_esperienze_professionali,1);
+    layout_top->addWidget(new QTextEdit(input_nuova_descrizione->toPlainText()),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("Da: "),++riga_fine_esperienze_professionali,1);
+
+    QDate d_inizio,d_fine;
+    d_inizio=cal_data_inizio->selectedDate();
+    d_fine=cal_data_fine->selectedDate();
+
+    layout_top->addWidget(new QLineEdit(d_inizio.toString("d-M-yyyy")),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("A: "),++riga_fine_esperienze_professionali,1);
+    layout_top->addWidget(new QLineEdit(d_fine.toString("d-M-yyyy")),riga_fine_esperienze_professionali,2,1,2);
+    layout_top->addWidget(new QLabel("<hr>"),++riga_fine_esperienze_professionali,1,1,3);
+
+    ++numero_esperienze_professionali;
+}
+
+void client_profilo::salva_utente(){
+    //qui andrò a fare la scrittura effettiva sul DB [in MEMORIA]
+    salva_nome_cognome();
+    salva_competenze();
+    salva_lingue();
+    salva_esperienze();
+
+
+}
+
+void client_profilo::salva_nome_cognome(){
+    edit_controller->aggiorna_cognome(username->text().toStdString(),cognome->text().toStdString());
+    edit_controller->aggiorna_nome(username->text().toStdString(),nome->text().toStdString());
+}
+
+void client_profilo::salva_competenze(){
+    std::list<std::string> s =get_lista_competenze();
+    numero_competenze=s.size();
+    edit_controller->riscrivi_competenze_di_un_utente(s,username->text().toStdString());
+}
+
+void client_profilo::salva_lingue(){
+
+    int r_c=riga_inizio_lingue;
+    edit_controller->rimuovi_tutte_le_lingue(username->text().toStdString());
+    if(numero_lingue){
+        for(int i=1;i<=numero_lingue;i++){
+            std::string comprensione,parlato,scritto;
+            std::string descrizione=dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(4*i)-1,1)->widget())->text().toStdString();
+            if(layout_top->itemAtPosition(r_c+(4*i)-3,3)){
+                comprensione = dynamic_cast<QComboBox*>(layout_top->itemAtPosition(r_c+(4*i)-3,3)->widget())->currentText().toStdString();
+            }
+            if(layout_top->itemAtPosition(r_c+(4*i)-2,3)){
+                parlato= dynamic_cast<QComboBox*>(layout_top->itemAtPosition(r_c+(4*i)-2,3)->widget())->currentText().toStdString();
+            }
+            if(layout_top->itemAtPosition(r_c+(4*i)-1,3)){
+                scritto= dynamic_cast<QComboBox*>(layout_top->itemAtPosition(r_c+(4*i)-1,3)->widget())->currentText().toStdString();
+            }
+            edit_controller->aggiungi_lingua_a_utente(username->text().toStdString(),
+                                                      descrizione,comprensione,
+                                                      parlato,scritto);
         }
     }
-    /*
-        algoritmo:
-            es r=4:, numero_competenze=8
-            mi servono: (4,1),(4,2),(4,3),(5,1),(5,2),(5,3),(6,1),(6,2)
-    */
+}
+
+void client_profilo::salva_esperienze(){
+    int r_c=riga_inizio_esperienze_professionali;
+    if(numero_esperienze_professionali!=0){
+        //std::cout<<numero_esperienze_professionali;
+        for(int i=0;i<numero_esperienze_professionali;i++){
+            std::string nome_azienda,posizione,luogo,descrizione,data_inizio,data_fine;
+            if(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)){
+                nome_azienda = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)->widget())->text().toStdString();
+                posizione= dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+1,2)->widget())->text().toStdString();
+                luogo = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+2,2)->widget())->text().toStdString();
+                descrizione = dynamic_cast<QTextEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+3,2)->widget())->toPlainText().toStdString();
+                data_inizio =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+4,2)->widget())->text().toStdString();
+                data_fine =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+5,2)->widget())->text().toStdString();
+
+
+
+//                std::cout<<"\na: "<<nome_azienda<<"\t p: "<<posizione<<"\t l: "<<luogo<<"\n";
+//                std::cout<<"d: "<<descrizione <<"\t i: "<<data_inizio <<"\t f: "<< data_fine<<"\n";
+
+
+
+            }
+        }
+    }
+}
+
+
+std::list<std::string> client_profilo::get_lista_competenze(){
+    int nuovo_numero_competenze=0;
+    std::list<std::string> s;
+
+    for(int r=riga_inizio_competenze;r<=riga_fine_competenze ;r++){
+
+        //prima controllo se eiste
+        for (int i=1;i<=3;i++){
+            if(layout_top->itemAtPosition(r,i) && dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r,i)->widget())){
+                s.push_back((static_cast<QLineEdit*> (layout_top->itemAtPosition(r,i)->widget()))->text().toStdString());
+                ++nuovo_numero_competenze;
+            }
+        }
+    }
+    //numero_competenze=nuovo_numero_competenze;
+    return s;
+}
+
+
+void client_profilo::disabilita_competenze(const bool &value){
+    int r=riga_inizio_competenze;
     int numero_iterazioni=numero_competenze+static_cast<int>(numero_competenze/4+1)+1;
     bool prima_volta=true;
-    //std::cout<< "num_competenze: "<<numero_competenze<<std::endl;
     if(numero_competenze){
         for(int i=0;i<numero_iterazioni;i++){
             if(i%4==0){
@@ -144,12 +276,11 @@ void client_profilo::disabilita_competenze(const bool &value){
 
 }
 void client_profilo::disabilita_lingue(const bool &value){//true disabilita
-    int r_c=riga_fine_competenze+4;     // 4 sono quelle di lasco per
-                                        // inserire fino a 18 competenze
+    int r_c=riga_inizio_lingue;
     if(numero_lingue){
         for(int i=1;i<=numero_lingue;i++){
-            layout_top->itemAtPosition(r_c+(4*i),1)->widget()->setDisabled(value);
-            for(int j=-1;j<2;j++){
+            layout_top->itemAtPosition(r_c+(4*i)-1,1)->widget()->setDisabled(value);
+            for(int j=-3;j<0;j++){
                 if(layout_top->itemAtPosition(r_c+(4*i)+j,3)){
                     layout_top->itemAtPosition(r_c+(4*i)+j,3)->widget()->setDisabled(value);
                 }
@@ -158,13 +289,25 @@ void client_profilo::disabilita_lingue(const bool &value){//true disabilita
     }
 }
 void client_profilo::disabilita_esperienze_professionali(const bool &value){
-    int r_c=riga_inizio_esperienze_professionali;//inizia giusto! il problema è sul conteggio
+    int r_c=riga_inizio_esperienze_professionali;
     if(numero_esperienze_professionali){
         //std::cout<<numero_esperienze_professionali;
         for(int i=0;i<numero_esperienze_professionali;i++){
             for (int j=0;j<7;j++){
-                layout_top->itemAtPosition(r_c+(7*i+1)+j,2)->widget()->setDisabled(value);
+                if( layout_top->itemAtPosition(r_c+(7*i+1)+j,2))
+                    layout_top->itemAtPosition(r_c+(7*i+1)+j,2)->widget()->setDisabled(value);
             }
+        }
+    }
+}
+
+void client_profilo::disabilita_suggerimenti(const bool & value){
+    if(value==false){
+       lbl_hint_inserimento->show();
+    }else{
+        if (lbl_hint_inserimento){
+            lbl_hint_inserimento->hide();
+           // layout_top->removeWidget(lbl_hint_inserimento);
         }
     }
 }
@@ -172,13 +315,21 @@ void client_profilo::popola() {
     //inizializzo, importante farlo qui!
     numero_competenze=0;
     numero_lingue=0;
+    numero_esperienze_professionali=0;
     
     btn_modifica_profilo =new QPushButton("Modifica Profilo");
     btn_salva_modifiche= new QPushButton("Salva modifiche");
     layout_top=new QGridLayout(this);
+
+    lbl_hint_inserimento=new QLabel("Per eliminare una voce cancellare il suo contenuto.");
+    lbl_hint_inserimento->setStyleSheet(QString("font-style: italic;"));
+    layout_top->addWidget(lbl_hint_inserimento,0,1,1,3);
+    disabilita_suggerimenti(true);
+
     nome=new QLineEdit("");
     cognome=new QLineEdit("");
     username=new QLineEdit("");
+    username->setReadOnly(true);
     lbl_tipo_account=new QLabel("Tipo Account: ");
     lbl_tipo_account->setStyleSheet(QString("font-weight:bold;"));
     tipo_account=new QLabel();
@@ -233,7 +384,7 @@ void client_profilo::inizializza(const std::list<std::string>& user_data){
     }
     ++it;
 
-    riga_inizio_competenze=5;
+    //riga_inizio_competenze=5;
     int indice_riga=riga_inizio_competenze;
     inizializza_competenze(user_data,it,indice_riga);
     //qui devo inserire dalla riga "indice_riga+2" //per bottone e lbl_hint
@@ -250,7 +401,7 @@ void client_profilo::inizializza(const std::list<std::string>& user_data){
 
     //ESPERIENZE PROFESSIONALI
     ++it;
-    inizializza_esperienze(user_data,it,indice_riga);
+    inizializza_esperienze(user_data,it,riga_inizio_esperienze_professionali);
 
 
 }
@@ -261,7 +412,7 @@ void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
     livelli << "A1" << "A2" << "B1" << "B2"<< "C1" << "C2";
     if(it!=user_data.end() && *it=="#inizio_lingue#"){
         ++it;
-        indice_riga+=4;    // cosi mi tengo lo spazio per inserire altre 12 competenze
+        indice_riga=riga_inizio_lingue;
         QLabel* lbl_lingue = new QLabel("Lingue: ");
         lbl_lingue->setStyleSheet("font-weight:bold;");
         layout_top->addWidget(lbl_lingue,indice_riga++,0);
@@ -307,20 +458,19 @@ void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
                                   indice_riga,1,3,1);
             layout_top->addWidget(new QLabel("comprensione: "),indice_riga,2);
             layout_top->addWidget(select_comprensione, indice_riga,3);
-            layout_top->addWidget(new QLabel("parlato: "),indice_riga+1,2);
-            layout_top->addWidget(select_parlato, indice_riga+1,3);
-            layout_top->addWidget(new QLabel("scritto: "),indice_riga+2,2);
-            layout_top->addWidget(select_scritto, indice_riga+2,3);
-            layout_top->addWidget(new QLabel("<hr>"),indice_riga+3,1,1,3);
-            indice_riga+=4;
+            layout_top->addWidget(new QLabel("parlato: "),++indice_riga,2);
+            layout_top->addWidget(select_parlato, indice_riga,3);
+            layout_top->addWidget(new QLabel("scritto: "),++indice_riga,2);
+            layout_top->addWidget(select_scritto, indice_riga,3);
+            layout_top->addWidget(new QLabel("<hr>"),++indice_riga,1,1,3);
+            indice_riga++;
         }
-        indice_riga+=9; // cosi mi tengo lo spazio per inserire altre 3 lingue
 
-        aggiungi_controlli_lingua(indice_riga);
+        aggiungi_controlli_lingua();
         disabilita_controlli_lingua(true);
 
-
-        riga_inizio_esperienze_professionali=indice_riga+1;
+        riga_ultima_lingua=indice_riga+1;
+       // riga_inizio_esperienze_professionali=indice_riga+1;
 
     }
 }
@@ -355,6 +505,7 @@ void client_profilo::inizializza_esperienze(const std::list<std::string> &user_d
                           std::list<std::string>::const_iterator& it, int &indice_riga){
 
     numero_esperienze_professionali=0;
+    indice_riga=riga_inizio_esperienze_professionali;
     if(it!=user_data.end() && *it=="#inizio_esperienze_professionali#"){
         ++it;
 
@@ -420,28 +571,28 @@ void client_profilo::inizializza_esperienze(const std::list<std::string> &user_d
             layout_top->addWidget(new QLineEdit(QString::fromStdString(data_inizio_)),indice_riga++,2,1,2);
             layout_top->addWidget(new QLabel("<hr>"),indice_riga++,1,1,3);
         }
-        riga_fine_esperienze_profesionali=indice_riga+=7*4; //7=num righe per esperienza,
-                                                            //4 numero esperienze da inserire
+        riga_fine_esperienze_professionali=indice_riga;
     }
 
-   aggiungi_controlli_esperienza_professionale(indice_riga);
+   aggiungi_controlli_esperienza_professionale();
    disabilita_controlli_esperienze_professionali(true);
 }
 //CONTROLLI INSERIMENTO NUOVA ENTRY
 void client_profilo::disabilita_controlli_inserimento(const bool & b){
+    disabilita_suggerimenti(b);
     disabilita_controlli_competenze(b);
     disabilita_controlli_lingua(b);
     disabilita_controlli_esperienze_professionali(b);
 
+
 }
 
-void client_profilo::aggiungi_controlli_lingua(int &indice_riga){
-    riga_inizio_inserimento_lingua=indice_riga;
+void client_profilo::aggiungi_controlli_lingua(){
     lbl_inserimento_lingua=new QLabel("inserisci un nuova lingua");
     lbl_inserimento_lingua->setStyleSheet("font-style: italic;");
-    layout_top->addWidget(lbl_inserimento_lingua,indice_riga++,1,1,3);
+    layout_top->addWidget(lbl_inserimento_lingua,riga_inizio_inserimento_lingua,1,1,3);
     nuova_descrizione_lingua=new QLineEdit("");
-    layout_top->addWidget(nuova_descrizione_lingua, indice_riga,1,3,1);
+    layout_top->addWidget(nuova_descrizione_lingua, riga_inizio_inserimento_lingua+1,1,3,1);
 
     nuovo_livello_comprensione=new QComboBox();
     nuovo_livello_parlato=new QComboBox();
@@ -452,20 +603,21 @@ void client_profilo::aggiungi_controlli_lingua(int &indice_riga){
     nuovo_livello_parlato->addItems(livelli);
     nuovo_livello_scritto->addItems(livelli);
 
-
-    layout_top->addWidget(new QLabel("comprensione: "),indice_riga,2);
-    layout_top->addWidget(nuovo_livello_comprensione, indice_riga++,3);
-    layout_top->addWidget(new QLabel("parlato: "),indice_riga,2);
-    layout_top->addWidget(nuovo_livello_parlato, indice_riga++,3);
-    layout_top->addWidget(new QLabel("scritto: "),indice_riga,2);
-    layout_top->addWidget(nuovo_livello_scritto, indice_riga++,3);
+    layout_top->addWidget(new QLabel("comprensione: "),riga_inizio_inserimento_lingua+2,2);
+    layout_top->addWidget(nuovo_livello_comprensione, riga_inizio_inserimento_lingua+2,3);
+    layout_top->addWidget(new QLabel("parlato: "),riga_inizio_inserimento_lingua+3,2);
+    layout_top->addWidget(nuovo_livello_parlato, riga_inizio_inserimento_lingua+3,3);
+    layout_top->addWidget(new QLabel("scritto: "),riga_inizio_inserimento_lingua+4,2);
+    layout_top->addWidget(nuovo_livello_scritto, riga_inizio_inserimento_lingua+4,3);
     btn_aggiungi_lingua=new QPushButton("Inserisci Lingua");
-    layout_top->addWidget(btn_aggiungi_lingua,indice_riga++,1,1,3);
-    layout_top->addWidget(new QLabel("<hr>"),indice_riga++,1,1,3);
+    layout_top->addWidget(btn_aggiungi_lingua,riga_inizio_inserimento_lingua+5,1,1,3);
+    layout_top->addWidget(new QLabel("<hr>"),riga_inizio_inserimento_lingua+6,1,1,3);
 
 }
 
-void client_profilo::aggiungi_controlli_esperienza_professionale(int &riga_corrente){
+void client_profilo::aggiungi_controlli_esperienza_professionale(){
+
+    int riga_corrente=riga_inizio_inserimento_esperienze;
 
     lbl_esp_nuova_azienda = new QLabel("Azienda: ");
     lbl_esp_nuova_posizione = new QLabel("Posizione: ");
@@ -514,8 +666,8 @@ void client_profilo::aggiungi_controlli_esperienza_professionale(int &riga_corre
 }
 
 void client_profilo::disabilita_controlli_esperienze_professionali(const bool &b){
-    //int indice_riga=riga_inizio_esperienze_professionali+1;
-    int indice_riga=riga_fine_esperienze_profesionali;
+
+    int indice_riga=riga_inizio_inserimento_esperienze;
     if(b){
         layout_top->itemAtPosition(indice_riga,1)->widget()->hide();
         for (int i=1;i<=4;i++){
@@ -539,29 +691,30 @@ void client_profilo::disabilita_controlli_esperienze_professionali(const bool &b
 
 void client_profilo::disabilita_controlli_lingua(const bool & b){
     if(b){
-        layout_top->itemAtPosition(riga_inizio_inserimento_lingua,1)->widget()->hide();
-        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+2,1)->widget()->hide();
 
-        for(int i=1;i<=3;i++){
+        layout_top->itemAtPosition(riga_inizio_inserimento_lingua,1)->widget()->hide();   //lbl descrizione
+        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+2,1)->widget()->hide(); //descrizione
+
+        for(int i=2;i<=4;i++){
             for(int j=2;j<=3;j++){
                 layout_top->itemAtPosition(riga_inizio_inserimento_lingua+i,j)->widget()->hide();
                 layout_top->itemAtPosition(riga_inizio_inserimento_lingua+i,j)->widget()->hide();
             }
         }
-        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+4,1)->widget()->hide();
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua+5,1)->widget()->hide();
+        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+6,1)->widget()->hide();
     }else{
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua,1)->widget()->show();
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua+2,1)->widget()->show();
 
-        for(int i=1;i<=3;i++){
+        for(int i=2;i<=4;i++){
             for(int j=2;j<=3;j++){
                 layout_top->itemAtPosition(riga_inizio_inserimento_lingua+i,j)->widget()->show();
                 layout_top->itemAtPosition(riga_inizio_inserimento_lingua+i,j)->widget()->show();
             }
         }
-        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+4,1)->widget()->show();
         layout_top->itemAtPosition(riga_inizio_inserimento_lingua+5,1)->widget()->show();
+        layout_top->itemAtPosition(riga_inizio_inserimento_lingua+6,1)->widget()->show();
     }
 }
 
@@ -569,12 +722,9 @@ void client_profilo::disabilita_controlli_competenze(const bool &b){
     if(b){
         layout_top->removeWidget(btn_aggiungi_competenza);
         layout_top->removeWidget(nuova_competenza);
-        if(lbl_hint_inserimento){
-            layout_top->removeWidget(lbl_hint_inserimento);
-        }
         btn_aggiungi_competenza->hide();
         nuova_competenza->hide();
-        lbl_hint_inserimento->hide();
+
     }else{
         btn_aggiungi_competenza->show();
         nuova_competenza->show();

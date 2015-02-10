@@ -56,7 +56,8 @@ HEADERS += TEST/test.h \
     VIEW/amministrazione.h \
     VIEW/modulo_rimozione_utenti.h \
     VIEW/client_profilo.h \
-    VIEW/client_environment.h
+    VIEW/client_environment.h \
+    VIEW/cambia_tipo_utente.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -103,7 +104,8 @@ SOURCES += main.cpp \
     VIEW/amministrazione.cpp \
     VIEW/modulo_rimozione_utenti.cpp \
     VIEW/client_profilo.cpp \
-    VIEW/client_environment.cpp
+    VIEW/client_environment.cpp \
+    VIEW/cambia_tipo_utente.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json

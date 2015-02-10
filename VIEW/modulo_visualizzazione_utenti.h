@@ -1,11 +1,13 @@
-#ifndef MODULO_VISUALIZZAZIONE_DATI_H
-#define MODULO_VISUALIZZAZIONE_DATI_H
+#ifndef MODULO_VISUALIZZAZIONE_UTENTI_H
+#define MODULO_VISUALIZZAZIONE_UTENTI_H
 
-#include "./CONTROLLER/admin_controller.h"
+#include "../CONTROLLER/admin_controller.h"
+
 
 #include <QWidget>
 #include <QTableWidget>
 #include <QStringList>
+#include <QHeaderView>
 
 
 
@@ -31,4 +33,4 @@ public slots:
 
 };
 
-#endif // MODULO_VISUALIZZAZIONE_DATI_H
+#endif // MODULO_VISUALIZZAZIONE_UTENTI_H

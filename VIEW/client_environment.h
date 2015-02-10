@@ -2,7 +2,7 @@
 #define CLIENT_ENVIRONMENT_H
 
 #include <QApplication>    //per qApp, puntatore statico all'applicazione up.
-#include "./VIEW/client_profilo.h"
+#include "client_profilo.h"
 
 #include "login.h"
 #include "finestraprincipale.h"

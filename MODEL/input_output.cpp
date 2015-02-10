@@ -1,17 +1,5 @@
 #include "input_output.h"
-#include <QFile>
-#include <QTextStream>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <map>
-#include "utente_basic.h"
-#include "utente_business.h"
-#include "utente_executive.h"
 
-#include <QDir>
-#include <QApplication>
-#include <QDebug>
-#include <iostream>
 
 
 input_output::input_output(){

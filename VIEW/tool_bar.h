@@ -1,12 +1,16 @@
 #ifndef TOOL_BAR_H
 #define TOOL_BAR_H
 
-#include "./CONTROLLER/admin_controller.h"
+#include "../CONTROLLER/admin_controller.h"
 
 #include <QWidget>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QHBoxLayout>
+
+#include <QApplication>
+#include <QTime>
+
 
 class tool_bar : public QWidget
 {private:

@@ -1,12 +1,17 @@
 #ifndef AMMINISTRAZIONE_H
 #define AMMINISTRAZIONE_H
+
 #include "aggiunta_utente.h"
 #include "modulo_rimozione_utenti.h"
+#include "cambia_tipo_utente.h"
+
 #include <QWidget>
 #include <QLayout>
 #include <QMessageBox>
 #include <QErrorMessage>
 #include <QScrollArea>
+
+//class modulo_visualizzazione_utenti;
 
 class menu_amministrazione;
 class amministrazione: public QWidget
@@ -19,6 +24,7 @@ class amministrazione: public QWidget
     aggiunta_utente* pagina_aggiunta_utente;
     modulo_visualizzazione_utenti* pagina_visualizzazione_utenti;
     modulo_rimozione_utenti* pagina_rimozione_utenti;
+    cambia_tipo_utente* pagina_cambia_tipo_utente;
 
 public:
     amministrazione( users_repository* =0, QWidget* =0);    //QWidget* =0 sempre
@@ -27,6 +33,7 @@ public slots:
     void mostra_pag_aggiunta_utenti();
     void mostra_pag_visualizzazione_utenti();
     void mostra_pag_rimozione_utenti();
+    void mostra_pag_cambio_tipo_utenti();
     void refresh();
 };
 

@@ -1,8 +1,8 @@
 #ifndef CLIENT_CONTROLLER_H
 #define CLIENT_CONTROLLER_H
 
-#include "./MODEL/smart_utente.h"
-#include "./MODEL/users_repository.h"
+#include "../MODEL/smart_utente.h"
+#include "../MODEL/users_repository.h"
 
 class client_controller{
 private:

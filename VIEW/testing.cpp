@@ -1,5 +1,5 @@
-#include "./testing.h"
-#include "./TEST/test_manager.h"
+#include "testing.h"
+#include "../TEST/test_manager.h"
 
 testing::testing(QWidget *parent):QWidget(parent){
     layout=new QVBoxLayout(this);

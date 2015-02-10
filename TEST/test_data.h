@@ -3,7 +3,7 @@
 
 #include "test.h"
 
-#include "./MODEL/data.h"
+#include "../MODEL/data.h"
 
 class test_data : public test{
 public:

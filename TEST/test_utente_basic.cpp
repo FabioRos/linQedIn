@@ -1,7 +1,7 @@
 #include "test_utente_basic.h"
-#include "./MODEL/smart_utente.h"
-#include "./MODEL/utente_basic.h"
-#include "./MODEL/utente_business.h"
+#include "../MODEL/smart_utente.h"
+#include "../MODEL/utente_basic.h"
+#include "../MODEL/utente_business.h"
 
 test_utente_basic::test_utente_basic() : test(0,0,0){
 }

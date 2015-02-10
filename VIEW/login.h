@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include "client_environment.h"
-#include "./MODEL/users_repository.h"
+#include "../MODEL/users_repository.h"
 
 #include <QHBoxLayout>
 

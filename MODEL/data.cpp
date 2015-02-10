@@ -1,7 +1,4 @@
 #include "data.h"
-#include <sstream>
-#include <iostream>
-#include <istream>
 
 data::data(int g, int m, int a):giorno(g),mese(m),anno(a){
     if(sanitize(*this)==false){

@@ -1,5 +1,5 @@
 #include "amministrazione.h"
-
+#include "modulo_visualizzazione_utenti.h"
 #include "menu_amministrazione.h"
 
 
@@ -47,6 +47,10 @@ void amministrazione::mostra_pag_rimozione_utenti(){
     admin_controller* ac=new admin_controller(ptr_repository->get_ptr_db());
     pagina_rimozione_utenti=new modulo_rimozione_utenti(ptr_repository, ac ,this);
     scroll_area->setWidget(pagina_rimozione_utenti);
+}
+
+void amministrazione::mostra_pag_cambio_tipo_utenti(){
+    scroll_area->setWidget(new cambia_tipo_utente(ptr_repository,this));
 }
 
 void amministrazione::mostra_pag_aggiunta_utenti(){

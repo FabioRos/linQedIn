@@ -1,8 +1,8 @@
 #ifndef MENU_AMMINISTRAZIONE_H
 #define MENU_AMMINISTRAZIONE_H
 
-#include "./CONTROLLER/admin_controller.h"
-#include "./VIEW/amministrazione.h"
+#include "../CONTROLLER/admin_controller.h"
+#include "amministrazione.h"
 
 
 class DB;

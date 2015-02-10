@@ -3,7 +3,7 @@
 
 #include "test.h"
 
-#include "./MODEL/esperienza_professionale.h"
+#include "../MODEL/esperienza_professionale.h"
 class test_esperienza : public test{
 public:
     test_esperienza();

@@ -1,9 +1,5 @@
 #include "aggiungi_modifica_utenti.h"
-#include "./MODEL/utente_basic.h"
-#include "./MODEL/utente_business.h"
-#include "./MODEL/utente_executive.h"
-#include "./MODEL/lingua.h"
-#include "./MODEL/esperienza_professionale.h"
+
 
 #include <sstream>
 
@@ -12,8 +8,8 @@
 #include <iostream>
 //temp
 
-aggiungi_modifica_utenti::aggiungi_modifica_utenti(DB* ptr_database_ )
-    :ptr_db(ptr_database_){}
+//aggiungi_modifica_utenti::aggiungi_modifica_utenti(DB* ptr_database_ )
+//    :ptr_db(ptr_database_){}
 
 aggiungi_modifica_utenti::aggiungi_modifica_utenti(users_repository* ptr_repo_ )
     :ptr_db(ptr_repo_->get_ptr_db()){}
@@ -138,6 +134,68 @@ std::list<esperienza_professionale> aggiungi_modifica_utenti::converti_tutte_le_
        // risultato.push_back(esplodi_esperienza(*it));
     }
     return risultato;
+}
+
+void aggiungi_modifica_utenti::aggiungi_competenze_ad_utente(
+        const std::list<std::string> &c, const std::string &u){
+    if(!c.empty()){
+            utente* ptr_usr=ptr_db->get_ptr_utente(u);
+            ptr_usr->aggiungi_competenze(c);
+    }
+}
+
+void aggiungi_modifica_utenti::riscrivi_competenze_di_un_utente(const std::list<std::string> &c, const std::string &u){
+    if(!c.empty()){
+//        std::list<std::string>::const_iterator it=c.begin();
+//        for(;it!=c.end();++it)
+//            std::cout << *it;
+
+
+        utente* ptr_usr=ptr_db->get_ptr_utente(u);
+        ptr_usr->rimuovi_tutte_le_competenze();
+        ptr_usr->aggiungi_competenze(c);
+    }
+//    else{
+//        std::cout<<"lista vuota";
+//    }
+}
+
+void aggiungi_modifica_utenti::aggiorna_nome(const std::string & usr,const std::string & n){
+    std::cout<<"\n nome:   "<<n<<"\t \tu: "<<usr<<"\n";
+    utente* ptr_usr=ptr_db->get_ptr_utente(usr);
+    ptr_usr->update_nome(n);
+}
+
+void aggiungi_modifica_utenti::aggiorna_cognome(const std::string &usr, const std::string &c){
+    std::cout<<"\n cognome: "<<c<<"\t \t u: "<<usr<<"\n";
+    utente* ptr_usr=ptr_db->get_ptr_utente(usr);
+    ptr_usr->update_cognome(c);
+}
+
+void aggiungi_modifica_utenti::aggiungi_lingua_a_utente(const std::string &usr,
+                              const std::string &d, const std::string &c,
+                              const std::string &p, const std::string &s){
+
+    ptr_db->get_ptr_utente(usr)->aggiungi_lingua(d,c,p,s);
+}
+
+void aggiungi_modifica_utenti::rimuovi_tutte_le_lingue(const std::string &usr){
+    ptr_db->get_ptr_utente(usr)->rimuovi_tutte_le_lingue(usr);
+}
+
+void aggiungi_modifica_utenti::aggiungi_esperienza(const std::string &usr,
+    const std::string &nome_azienda, const std::string &posizione,
+    const std::string &luogo, const std::string &descrizione,
+    const std::string &data_inizio, const std::string &data_fine){
+    data* d_inizio=new data;
+    d_inizio->converti_da_string(data_inizio);
+    data* d_fine=new data;
+    d_fine->converti_da_string(data_fine);
+    esperienza_professionale e(nome_azienda,posizione,luogo,descrizione,*d_inizio,*d_fine);
+    ptr_db->get_ptr_utente(usr)->aggiungi_esperienze_professionali(e);
+    delete d_inizio;
+    delete d_fine;
+
 }
 
 

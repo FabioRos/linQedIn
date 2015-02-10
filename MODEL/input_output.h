@@ -2,7 +2,6 @@
 #define INPUT_OUTPUT_H
 
 #include "db.h"
-#include "./MODEL/smart_utente.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -14,6 +13,13 @@
 
 #include <QDir>
 #include <QApplication>
+#include <QFile>
+#include <QTextStream>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <map>
+
+#include <iostream>
 
 
 #define file_path "/home/fabio/Development/C++/PaO_2014_15/LinQedIn/LinQedIn/PERSISTENT/database.json"

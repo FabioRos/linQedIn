@@ -1,7 +1,6 @@
 #include "modulo_visualizzazione_utenti.h"
-#include <QStringList>
-#include <QHeaderView>
-#include "./VIEW/amministrazione.h"
+#include "amministrazione.h"
+
 //temp
 #include <iostream>
 

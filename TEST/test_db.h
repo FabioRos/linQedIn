@@ -2,8 +2,8 @@
 #define TEST_DB_H
 
 #include "test.h"
-#include "./MODEL/db.h"
-#include "./MODEL/utente_basic.h"
+#include "../MODEL/db.h"
+#include "../MODEL/utente_basic.h"
 
 class test_db : public test{
 private:

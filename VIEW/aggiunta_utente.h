@@ -1,7 +1,7 @@
 #ifndef AGGIUNTA_UTENTE_H
 #define AGGIUNTA_UTENTE_H
 
-#include"./CONTROLLER/aggiungi_modifica_utenti.h"
+#include"../CONTROLLER/aggiungi_modifica_utenti.h"
 
 #include "modulo_lingua.h"
 #include "modulo_competenza.h"

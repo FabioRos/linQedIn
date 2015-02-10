@@ -1,6 +1,4 @@
 #include "tool_bar.h"
-#include <QApplication>
-#include <QTime>
 
 tool_bar::tool_bar(users_repository* repo, QWidget *parent) :
     QWidget(parent){

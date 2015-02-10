@@ -1,14 +1,16 @@
 #ifndef MODULO_RIMOZIONE_UTENTI_H
 #define MODULO_RIMOZIONE_UTENTI_H
+
 #include "modulo_visualizzazione_utenti.h"
+
 #include <QPushButton>
 
-class modulo_rimozione_utenti : public modulo_visualizzazione_utenti{
+class modulo_rimozione_utenti : public modulo_visualizzazione_utenti {
     Q_OBJECT
 private:
-        QTableWidget* ptr_tabella;
-        QPushButton* btn_rimuovi_utente;
-        admin_controller* controller;
+    QTableWidget* ptr_tabella;
+    QPushButton* btn_rimuovi_utente;
+    admin_controller* controller;
 
 public:
     explicit modulo_rimozione_utenti(users_repository* =0,admin_controller* =0, QWidget *parent = 0);

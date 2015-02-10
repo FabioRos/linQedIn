@@ -61,7 +61,7 @@ void client_environment::log_out(){
 
 void client_environment::mostra_profilo(){
     //pagina_profilo = new client_profilo(ptr_repository,username_corrente,this);
-    scroll_area->setWidget(new client_profilo(ptr_repository,scroll_area,username_corrente,this));
+    scroll_area->setWidget(new client_profilo(ptr_repository,username_corrente,this));
 }
 
 

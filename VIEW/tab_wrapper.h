@@ -1,7 +1,7 @@
 #ifndef TAB_WRAPPER_H
 #define TAB_WRAPPER_H
 
-#include "MODEL/users_repository.h"
+#include "../MODEL/users_repository.h"
 #include "amministrazione.h"
 
 #include <QWidget>

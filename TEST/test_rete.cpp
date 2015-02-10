@@ -1,5 +1,5 @@
 #include "test_rete.h"
-#include "./MODEL/smart_utente.h"
+#include "../MODEL/smart_utente.h"
 test_rete::test_rete() : test(0,0,0){
 
 }

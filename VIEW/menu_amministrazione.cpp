@@ -1,6 +1,6 @@
 #include "menu_amministrazione.h"
-#include "./CONTROLLER/admin_controller.h"
-#include "./VIEW/amministrazione.h"
+#include "../CONTROLLER/admin_controller.h"
+#include "amministrazione.h"
 
 #include <QVBoxLayout>
 
@@ -51,7 +51,7 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     connect(btn_aggiungi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_aggiunta_utenti()));
     connect(btn_dump_db,SIGNAL(clicked()),parent,SLOT(mostra_pag_visualizzazione_utenti()));
     connect(btn_rimuovi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_rimozione_utenti()));
-    //connect(btn_cambia_account,SIGNAL(clicked()),parent,SLOT(mostra_pag_cambio_account()));
+    connect(btn_cambia_account,SIGNAL(clicked()),parent,SLOT(mostra_pag_cambio_tipo_utenti()));
     //  I/O + EXIT _END
 
     QVBoxLayout* local_menu_layout=new QVBoxLayout(this);

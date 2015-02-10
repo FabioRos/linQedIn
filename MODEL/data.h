@@ -2,6 +2,9 @@
 #define DATA_H
 #include <string>
 
+#include <sstream>
+#include <iostream>
+#include <istream>
 class data{
 private:
     int giorno;

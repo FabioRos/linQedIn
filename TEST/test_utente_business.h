@@ -3,7 +3,7 @@
 
 #include "test.h"
 
-#include "./MODEL/utente_business.h"
+#include "../MODEL/utente_business.h"
 
 class test_utente_business : public test
 {

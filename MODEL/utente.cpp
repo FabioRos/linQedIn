@@ -134,6 +134,12 @@ void utente::rimuovi_lingua(const std::string &chiave){
     lingue.erase(it);
 }
 
+void utente::rimuovi_tutte_le_lingue(const std::string &){
+    std::map<std::string,lingua>::iterator it=lingue.begin();
+    for(;it!=lingue.end();++it)
+        lingue.erase(it);
+}
+
 bool utente::esiste_lingua(const std::string &chiave) const{
     std::map<std::string,lingua>::const_iterator it=lingue.begin();
     it=lingue.find(chiave);
@@ -154,6 +160,15 @@ void utente::aggiungi_competenze(const std::list<std::string> &competenze_da_agg
 void utente::rimuovi_competenze(const std::string &s){
     if(ha_la_competenza(s))
         competenze.remove(s);
+}
+
+void utente::rimuovi_tutte_le_competenze(){
+    if(!competenze.empty()){
+        //std::list<std::string>::iterator it=competenze.begin();
+        //for(;it!=competenze.end();++it){
+            competenze.erase(competenze.begin(),competenze.end());
+       // }
+   }
 }
 
 bool utente::ha_la_competenza(const std::string & s) const{

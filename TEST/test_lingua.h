@@ -2,7 +2,7 @@
 #define TEST_LINGUA_H
 
 #include "test.h"
-#include "./MODEL/lingua.h"
+#include "../MODEL/lingua.h"
 
 class test_lingua: public test{
 public:

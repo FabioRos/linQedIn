@@ -1,9 +1,9 @@
 #include "finestraprincipale.h"
-#include "./MODEL/input_output.h"
+#include "MODEL/input_output.h"
 #include <QApplication>
 
-#include "./TEST/test_manager.h"
-#include "./MODEL/users_repository.h"
+#include "TEST/test_manager.h"
+#include "MODEL/users_repository.h"
 
 int main(int argc, char *argv[])
 {
