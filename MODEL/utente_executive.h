@@ -12,7 +12,7 @@ public:
     utente_executive(const utente&, const std::string& cc ="");
     utente_executive(const std::string&, const std::string&, const std::string&);
    // utente_executive(const utente&);
-    std::list<utente*> cerca();
+    std::list<utente*> cerca(users_repository*,const std::string&);
     utente* clona_utente() const;   //virtual
     double get_costo_annuale() const;
     //genero record in json

@@ -36,6 +36,12 @@ client_profilo::client_profilo(users_repository* repo, const std::string& user, 
     connect(btn_aggiungi_lingua,SIGNAL(clicked()),this,SLOT(aggiungi_lingua()));
     connect(btn_inserisci_esperienza,SIGNAL(clicked()),this,SLOT(aggiungi_esperienza()));
 }
+
+void client_profilo::modalita_sola_lettura(){
+    btn_modifica_profilo->hide();
+    btn_salva_modifiche->hide();
+    disabilita_tutto();
+}
 void client_profilo::abilita_modifiche(){
     abilita_tutto();
     btn_modifica_profilo->hide();
@@ -210,6 +216,7 @@ void client_profilo::salva_lingue(){
 void client_profilo::salva_esperienze(){
     int r_c=riga_inizio_esperienze_professionali;
     if(numero_esperienze_professionali!=0){
+        edit_controller->rimuovi_tutte_le_esperienze(username->text().toStdString());
         //std::cout<<numero_esperienze_professionali;
         for(int i=0;i<numero_esperienze_professionali;i++){
             std::string nome_azienda,posizione,luogo,descrizione,data_inizio,data_fine;
@@ -221,6 +228,9 @@ void client_profilo::salva_esperienze(){
                 data_inizio =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+4,2)->widget())->text().toStdString();
                 data_fine =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+5,2)->widget())->text().toStdString();
 
+                edit_controller->aggiungi_esperienza(username->text().toStdString(),
+                                                     nome_azienda,posizione,luogo,
+                                                     descrizione,data_inizio,data_fine);
 
 
 //                std::cout<<"\na: "<<nome_azienda<<"\t p: "<<posizione<<"\t l: "<<luogo<<"\n";

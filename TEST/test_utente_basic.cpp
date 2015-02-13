@@ -19,11 +19,11 @@ test* test_utente_basic::run_tests(){
     this->test6();
     this->test7();
     this->test8();
-//    this->test9();
-//    this->test10();
-//    this->test11();
-//    this->test12();
-//    this->test13();
+
+
+
+
+
     //OUTPUT
     if(!n_test_falliti){
         std::cout<<"++++++++  [V] Tutti i test passati per l'unità [UTENTE BASIC] +++++++";

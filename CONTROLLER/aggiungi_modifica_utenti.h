@@ -30,7 +30,7 @@ public:
     void aggiungi_competenze_ad_utente(const std::list<std::string>&c, //da testare
                                        const std::string& u);
     void riscrivi_competenze_di_un_utente(const std::list<std::string>&c, //da testare
-                                       const std::string& u);
+                                          const std::string& u);
     void aggiorna_nome(const std::string& usr, const std::string& n);
     void aggiorna_cognome(const std::string& usr, const std::string& c);
     void aggiungi_lingua_a_utente( const std::string &usr,  const std::string &d,
@@ -41,6 +41,8 @@ public:
                              const std::string &posizione,    const std::string &luogo,
                              const std::string &descrizione, const std::string &data_inizio,
                              const std::string &data_fine);
+    void rimuovi_tutte_le_esperienze(const std::string &usr);
+    bool aggiungi_A_alla_rete_di_B(const std::string &username_A,const std::string &username_B);    //da testare
 };
 
 #endif // AGGIUNGI_MODIFICA_UTENTI_H

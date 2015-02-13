@@ -53,6 +53,7 @@ void amministrazione::mostra_pag_cambio_tipo_utenti(){
     scroll_area->setWidget(new cambia_tipo_utente(ptr_repository,this));
 }
 
+
 void amministrazione::mostra_pag_aggiunta_utenti(){
     pagina_aggiunta_utente= new aggiunta_utente(ptr_repository,this);
     scroll_area->setWidget(pagina_aggiunta_utente);

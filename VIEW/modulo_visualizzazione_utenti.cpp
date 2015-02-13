@@ -9,6 +9,7 @@
 
 modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* repo,QWidget *parent)
     :ptr_repository(repo), QWidget(parent){
+    numero_elementi=0;
     tabella = new QTableWidget(this);
     tabella->setMinimumWidth(510);
 //    tabella->setMinimumHeight(600);
@@ -17,7 +18,8 @@ modulo_visualizzazione_utenti::modulo_visualizzazione_utenti(users_repository* r
     inizializza_tabella();
 
     //popolazione
-    popola_tabella(ptr_repository->get_database());
+   if(ptr_repository!=0)
+        popola_tabella(ptr_repository->get_database());
 }
 
 void modulo_visualizzazione_utenti::inizializza_tabella(){
@@ -44,6 +46,14 @@ void modulo_visualizzazione_utenti::popola_tabella(std::list<smart_utente*> list
         inserisci_riga((*it)->get_ptr_utente(),offset);
         offset++;
     }
+    numero_elementi=offset;
+}
+
+void modulo_visualizzazione_utenti::rimuovi_tutti(){
+    tabella->clearContents();
+//    for(int i=0;i<numero_elementi;i++)
+//        tabella->removeRow(i);
+//    numero_elementi=0;
 }
 
 

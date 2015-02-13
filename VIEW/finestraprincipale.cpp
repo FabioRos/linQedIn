@@ -8,6 +8,7 @@ FinestraPrincipale::FinestraPrincipale(users_repository *repo, bool test_mode, Q
     //this->showFullScreen();
     this->setWindowTitle("Emulatore Browser");
 
+
     //FINESTRE ESTERNE
     if (test_mode){
         testing* view_testing=new testing(0);

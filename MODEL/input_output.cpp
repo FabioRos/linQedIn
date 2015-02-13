@@ -50,13 +50,13 @@ DB* input_output::carica_da_file(){
         utente* u;
         //riconoscimento tipo DA FARE
         if(j_tipo_account=="basic"){
-            u= new utente_basic(j_username,j_nome,j_cognome);
+            u= new utente_basic(j_nome,j_cognome,j_username);
             u=static_cast<utente_basic*>(u);
         } else if(j_tipo_account=="business"){
-            u= new utente_business(j_username,j_nome,j_cognome);
+            u= new utente_business(j_nome,j_cognome,j_username);
             u=static_cast<utente_business*>(u);
         } else if(j_tipo_account=="executive"){
-            u= new utente_executive(j_username,j_nome,j_cognome);
+            u= new utente_executive(j_nome,j_cognome,j_username);
             u=static_cast<utente_executive*>(u);
         }
 
@@ -104,18 +104,23 @@ DB* input_output::carica_da_file(){
 
         //Rete
         QJsonArray array_rete = oggetto_utente_corrente.value("rete").toArray();
+        //per tutti i contatti che ho nella mia rete:
         for (int i=0;i<array_rete.size();i++){
-
-            std::string entry=array_rete[i].toString().toStdString();
-            smart_utente* smu_di_questo_utente = tutti_gli_smart_utenti.find(entry)->second;
-            u->aggiungi_utente_a_rete(smu_di_questo_utente);    // da testare
-
+            //mi prendo l'username associato
+            std::string username_contatto=array_rete[i].toString().toStdString();
+            //prendo lo smart_utente dalla collezione che ho generato prima
+            smart_utente* smu_di_questo_utente = tutti_gli_smart_utenti.find(username_contatto)->second;
+            //e lo uso per aggiungere quell'utente alla rete.
+            u->aggiungi_utente_a_rete(username_contatto,smu_di_questo_utente);
+            //u->aggiungi_utente_a_rete(smu_di_questo_utente);    // da testare
         }
 
         //aggiorno il puntatore nello smart_utente da 0 a questo utente
-        smart_utente* tmp_ptr_smu= tutti_gli_smart_utenti.find(j_username)->second=new smart_utente(u);
+       // smart_utente* tmp_ptr_smu= tutti_gli_smart_utenti.find(j_username)->second=new smart_utente(u);
+       // db_da_file->aggiungi_utente(*tmp_ptr_smu);
+        tutti_gli_smart_utenti.find(j_username)->second->set_ptr_utente(u);
+        db_da_file->aggiungi_utente(*(tutti_gli_smart_utenti.find(j_username)->second));
 
-        db_da_file->aggiungi_utente(*tmp_ptr_smu);
 
     }// foreach-utenti _END_
 

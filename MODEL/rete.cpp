@@ -21,6 +21,11 @@ bool rete::esiste_elemento(const std::string &chiave) const{
 
 }
 
+void rete::aggiungi_elemento_via_ptr_smu(const std::string &username, smart_utente *ptr_smu){
+    if(!esiste_elemento(username))
+    lista.insert (std::pair<std::string,smart_utente*>(username,ptr_smu));
+}
+
 utente* rete::get_ptr_utente(const std::string &chiave){
     /* find: Searches the container for an element with a key equivalent to k and returns
        an iterator to it if found, otherwise it returns an iterator to map::end.*/

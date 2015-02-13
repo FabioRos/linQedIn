@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 
     users_repository* db=new users_repository(new DB(*(input_output::carica_da_file())));//carica_dati;
     FinestraPrincipale w(db,opzione);
+    w.setWindowIcon(QIcon("icon.png"));
     w.show();
 
     return a.exec();

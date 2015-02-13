@@ -16,16 +16,17 @@ private:
     Q_OBJECT
     QTableWidget* tabella;
     users_repository* ptr_repository;
-protected:
-    void inizializza_tabella();
-    QTableWidget* get_ptr_tabella() const;
+    int numero_elementi;
 
 public:
     explicit modulo_visualizzazione_utenti(users_repository* =0, QWidget *parent = 0);
     void refresh();
     void inserisci_riga(utente* riga,int indice_riga);
     void popola_tabella(std::list<smart_utente*>);
+    void rimuovi_tutti();
+    QTableWidget* get_ptr_tabella() const;
     ~modulo_visualizzazione_utenti();
+    void inizializza_tabella();
 signals:
 
 public slots:

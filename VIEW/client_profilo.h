@@ -79,7 +79,7 @@ private:
 public:
     client_controller* c_controller;
     explicit client_profilo(users_repository* ,const std::string& username ,QWidget *parent = 0);
-
+    void modalita_sola_lettura();
 signals:
 
 public slots:

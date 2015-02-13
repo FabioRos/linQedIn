@@ -17,6 +17,7 @@ public:
     void aggiungi_elemento(const smart_utente&);
     void rimuovi_elemento(const std::string&);
     bool esiste_elemento(const std::string&) const;
+    void aggiungi_elemento_via_ptr_smu(const std::string& username, smart_utente* ptr_smu);// da testare
     smart_utente* get_ptr_smart_utente(const std::string &);
     utente* get_ptr_utente(const std::string &);
     std::list<utente*> get_all_ptr_utente() const;

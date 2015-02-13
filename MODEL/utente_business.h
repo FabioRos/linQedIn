@@ -12,7 +12,7 @@ public:
     utente_business();
     utente_business(const utente&, const std::string& cc ="");
     utente_business(const std::string&, const std::string&, const std::string&);
-    std::list<utente*> cerca();
+    std::list<utente*> cerca(users_repository*, const std::string&);
     utente* clona_utente() const;   //virtual
     double get_costo_annuale() const;
     //genero record in json

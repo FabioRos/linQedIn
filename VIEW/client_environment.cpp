@@ -42,6 +42,7 @@ client_environment::client_environment(users_repository* repo, const std::string
 
     //faccio le connessioni
     connect(btn_profilo,SIGNAL(clicked()),this,SLOT(mostra_profilo()));
+    connect(btn_cerca,SIGNAL(clicked()),this,SLOT(mostra_pag_ricerca()));
     connect(btn_log_out,SIGNAL(clicked()),this,SLOT(log_out()));
 }
 
@@ -62,6 +63,10 @@ void client_environment::log_out(){
 void client_environment::mostra_profilo(){
     //pagina_profilo = new client_profilo(ptr_repository,username_corrente,this);
     scroll_area->setWidget(new client_profilo(ptr_repository,username_corrente,this));
+}
+
+void client_environment::mostra_pag_ricerca(){
+    scroll_area->setWidget(new cerca(ptr_repository,username_corrente,this));
 }
 
 

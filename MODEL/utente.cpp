@@ -140,6 +140,10 @@ void utente::rimuovi_tutte_le_lingue(const std::string &){
         lingue.erase(it);
 }
 
+void utente::rimuovi_tutte_le_esperienze(const std::string &){
+        esperienze_professionali.clear();
+}
+
 bool utente::esiste_lingua(const std::string &chiave) const{
     std::map<std::string,lingua>::const_iterator it=lingue.begin();
     it=lingue.find(chiave);
@@ -171,6 +175,15 @@ void utente::rimuovi_tutte_le_competenze(){
    }
 }
 
+bool utente::un_pezzo_di_competenza(const std::string & s) const{
+    for(std::list<std::string>::const_iterator it=competenze.begin();it!=competenze.end();++it){
+        if((*it).find(s)!=std::string::npos){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool utente::ha_la_competenza(const std::string & s) const{
     for(std::list<std::string>::const_iterator it=competenze.begin();it!=competenze.end();++it){
         if((*it).compare(s)==0){
@@ -184,6 +197,10 @@ bool utente::ha_la_competenza(const std::string & s) const{
 utente *utente::aggiungi_utente_a_rete(smart_utente* smart_u){
     rete_.aggiungi_elemento(*smart_u);
     return smart_u->get_ptr_utente();
+}
+
+void *utente::aggiungi_utente_a_rete(const std::string &username, smart_utente *ptr_smu){
+    rete_.aggiungi_elemento_via_ptr_smu(username,ptr_smu);
 }
 
 utente *utente::rimuovi_utente_da_rete(smart_utente* smart_u){

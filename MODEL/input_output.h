@@ -35,7 +35,6 @@ public:
     void scrivi_un_utente(smart_utente*,QJsonObject& json_obj);
     QJsonArray elenco_username(std::list<std::string>) const;
     QJsonArray serializza_db(const std::list<smart_utente*>&) const;
-
 };
 
 #endif // INPUT_OUTPUT_H

@@ -19,11 +19,6 @@ public:
     bool test6();
     bool test7();
     bool test8();
-//    bool test9();
-//    bool test10();
-//    bool test11();
-//    bool test12();
-//    bool test13();
 };
 
 #endif // TEST_UTENTE_BASIC_H

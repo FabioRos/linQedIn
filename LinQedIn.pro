@@ -57,7 +57,9 @@ HEADERS += TEST/test.h \
     VIEW/modulo_rimozione_utenti.h \
     VIEW/client_profilo.h \
     VIEW/client_environment.h \
-    VIEW/cambia_tipo_utente.h
+    VIEW/cambia_tipo_utente.h \
+    VIEW/cerca.h \
+    VIEW/profilo_popup.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -105,7 +107,9 @@ SOURCES += main.cpp \
     VIEW/modulo_rimozione_utenti.cpp \
     VIEW/client_profilo.cpp \
     VIEW/client_environment.cpp \
-    VIEW/cambia_tipo_utente.cpp
+    VIEW/cambia_tipo_utente.cpp \
+    VIEW/cerca.cpp \
+    VIEW/profilo_popup.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json
