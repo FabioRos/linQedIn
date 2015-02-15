@@ -70,3 +70,7 @@ std::list<std::string> client_controller::get_info_utente(const std::string &use
     return lista_risultato;
 
 }
+
+utente_a_pagamento *client_controller::isAPagamento(const std::string &usn) const{
+    return dynamic_cast<utente_a_pagamento*>(ptr_repository->get_ptr_utente(usn));
+}

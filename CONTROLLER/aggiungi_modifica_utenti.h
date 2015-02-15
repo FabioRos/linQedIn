@@ -43,6 +43,8 @@ public:
                              const std::string &data_fine);
     void rimuovi_tutte_le_esperienze(const std::string &usr);
     bool aggiungi_A_alla_rete_di_B(const std::string &username_A,const std::string &username_B);    //da testare
+    bool rimuovi_A_alla_rete_di_B(const std::string &username_A,const std::string &username_B);     //da testare
+    bool esiste_A_nella_rete_di_B(const std::string &username_A,const std::string &username_B);     // da testare
 };
 
 #endif // AGGIUNGI_MODIFICA_UTENTI_H

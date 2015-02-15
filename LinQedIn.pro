@@ -59,7 +59,12 @@ HEADERS += TEST/test.h \
     VIEW/client_environment.h \
     VIEW/cambia_tipo_utente.h \
     VIEW/cerca.h \
-    VIEW/profilo_popup.h
+    VIEW/profilo_popup.h \
+    VIEW/client_rete.h \
+    VIEW/popup_rimuovi_utente_da_rete.h \
+    VIEW/popup_cambia_tipo_utente.h \
+    VIEW/admin_gestisci_tariffe.h \
+    VIEW/client_modifica_cc.h
 SOURCES += main.cpp \
            TEST/test.cpp \
            TEST/test_data.cpp \
@@ -109,7 +114,12 @@ SOURCES += main.cpp \
     VIEW/client_environment.cpp \
     VIEW/cambia_tipo_utente.cpp \
     VIEW/cerca.cpp \
-    VIEW/profilo_popup.cpp
+    VIEW/profilo_popup.cpp \
+    VIEW/client_rete.cpp \
+    VIEW/popup_rimuovi_utente_da_rete.cpp \
+    VIEW/popup_cambia_tipo_utente.cpp \
+    VIEW/admin_gestisci_tariffe.cpp \
+    VIEW/client_modifica_cc.cpp
 
 OTHER_FILES += \
     PERSISTENT/database.json

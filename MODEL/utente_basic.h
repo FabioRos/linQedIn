@@ -11,7 +11,7 @@ public:
                   const std::string& usn );
 
     utente_basic(const utente&);
-    std::list<utente*> cerca(users_repository*,const std::string&);
+    std::list<utente*> cerca(users_repository*,const std::string&) const;
     utente* clona_utente() const;   //virtual
     //genero record in json
     void scrivi_json(QJsonObject &json) const;

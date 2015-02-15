@@ -11,6 +11,7 @@ public:
     client_controller(users_repository*);
     bool login_autorizzato(const std::string&) const;
     std::list<std::string> get_info_utente(const std::string&) const;//incompleto
+    utente_a_pagamento* isAPagamento(const std::string&) const;
 };
 
 #endif // CLIENT_CONTROLLER_H

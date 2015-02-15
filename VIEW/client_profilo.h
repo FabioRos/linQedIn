@@ -44,7 +44,7 @@ private:
     void inizializza(const std::list<std::string>&);
     void inizializza_lingue(const std::list<std::string>&,std::list<std::string>::const_iterator& ,int&);
     void inizializza_competenze(const std::list<std::string>&,std::list<std::string>::const_iterator& ,int&);
-    void inizializza_esperienze(const std::list<std::string>&,std::list<std::string>::const_iterator& ,int&);
+    void inizializza_esperienze(const std::list<std::string>&,std::list<std::string>::const_iterator&);
     void disabilita_controlli_inserimento(const bool& =true);
     void aggiungi_controlli_lingua();
     void aggiungi_controlli_esperienza_professionale();

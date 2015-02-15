@@ -210,3 +210,19 @@ bool aggiungi_modifica_utenti::aggiungi_A_alla_rete_di_B(const std::string &user
     }
     return false;
 }
+
+bool aggiungi_modifica_utenti::rimuovi_A_alla_rete_di_B(const std::string &username_A,
+                                                        const std::string &username_B){
+    utente* utente_host=ptr_db->get_ptr_utente(username_B);
+    bool rimosso=false;
+    if(utente_host)
+        rimosso=utente_host->rimuovi_utente_da_rete(ptr_db->get_ptr_smart_utente(username_A));
+                //aggiungi_utente_a_rete(ptr_db->get_ptr_smart_utente(username_A));
+
+    return rimosso;
+}
+
+bool aggiungi_modifica_utenti::esiste_A_nella_rete_di_B(const std::string &username_A,
+                                                        const std::string &username_B){
+     return ptr_db->get_ptr_utente(username_B)->esiste_nella_rete(username_A);
+}

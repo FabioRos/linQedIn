@@ -22,9 +22,9 @@ client_profilo::client_profilo(users_repository* repo, const std::string& user, 
 
     std::list<std::string> user_data = c_controller->get_info_utente(username_);
 
-    //    std::list<std::string>::const_iterator itt=user_data.begin();
-    //    for(;itt!=user_data.end();++itt)
-    //        std::cout<<*itt;
+        std::list<std::string>::const_iterator itt=user_data.begin();
+        for(;itt!=user_data.end();++itt)
+            std::cout<<*itt;
 
     inizializza(user_data);
     //di default disabilitati, li abilito per la modifica.
@@ -217,7 +217,6 @@ void client_profilo::salva_esperienze(){
     int r_c=riga_inizio_esperienze_professionali;
     if(numero_esperienze_professionali!=0){
         edit_controller->rimuovi_tutte_le_esperienze(username->text().toStdString());
-        //std::cout<<numero_esperienze_professionali;
         for(int i=0;i<numero_esperienze_professionali;i++){
             std::string nome_azienda,posizione,luogo,descrizione,data_inizio,data_fine;
             if(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)){
@@ -231,13 +230,6 @@ void client_profilo::salva_esperienze(){
                 edit_controller->aggiungi_esperienza(username->text().toStdString(),
                                                      nome_azienda,posizione,luogo,
                                                      descrizione,data_inizio,data_fine);
-
-
-//                std::cout<<"\na: "<<nome_azienda<<"\t p: "<<posizione<<"\t l: "<<luogo<<"\n";
-//                std::cout<<"d: "<<descrizione <<"\t i: "<<data_inizio <<"\t f: "<< data_fine<<"\n";
-
-
-
             }
         }
     }
@@ -276,7 +268,6 @@ void client_profilo::disabilita_competenze(const bool &value){
                     prima_volta=false;
             }else{
                 //!!MODO PER PRENDERSI WIDGETS ANONIMI DAL LAYOUT!!
-                //std::cout<<"("<<r<<","<<i%4<<")   ";
                 if(layout_top->itemAtPosition(r,i%4))
                     layout_top->itemAtPosition(r,i%4)->widget()->setDisabled(value);
 
@@ -301,7 +292,7 @@ void client_profilo::disabilita_lingue(const bool &value){//true disabilita
 void client_profilo::disabilita_esperienze_professionali(const bool &value){
     int r_c=riga_inizio_esperienze_professionali;
     if(numero_esperienze_professionali){
-        //std::cout<<numero_esperienze_professionali;
+        std::cout<<"\n#esp:"<<numero_esperienze_professionali<<"\n";
         for(int i=0;i<numero_esperienze_professionali;i++){
             for (int j=0;j<7;j++){
                 if( layout_top->itemAtPosition(r_c+(7*i+1)+j,2))
@@ -411,7 +402,7 @@ void client_profilo::inizializza(const std::list<std::string>& user_data){
 
     //ESPERIENZE PROFESSIONALI
     ++it;
-    inizializza_esperienze(user_data,it,riga_inizio_esperienze_professionali);
+    inizializza_esperienze(user_data,it);
 
 
 }
@@ -426,8 +417,6 @@ void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
         QLabel* lbl_lingue = new QLabel("Lingue: ");
         lbl_lingue->setStyleSheet("font-weight:bold;");
         layout_top->addWidget(lbl_lingue,indice_riga++,0);
-
-        //std::cout<<"[[["<<indice_riga<<"]]]";
         for(;it!=user_data.end() && *it != "#fine_lingue#";++it){
             numero_lingue++;
             std::string descrizione_, l_comprensione,l_parlato_,l_scritto_,s=*it;
@@ -444,7 +433,6 @@ void client_profilo::inizializza_lingue(const std::list<std::string> &user_data,
             l_parlato_ = s.substr(0,s.find(delimiter));
             s.erase(0, pos + delimiter.length());
             l_scritto_=s;
-            //std::cout<<descrizione_<<l_comprensione<<l_parlato_<<l_scritto_;
 
             QComboBox *select_comprensione, *select_parlato,*select_scritto;
             select_comprensione=new QComboBox();
@@ -512,14 +500,14 @@ void client_profilo::inizializza_competenze(const std::list<std::string> &user_d
 
 }
 void client_profilo::inizializza_esperienze(const std::list<std::string> &user_data,
-                          std::list<std::string>::const_iterator& it, int &indice_riga){
+                          std::list<std::string>::const_iterator& it){
 
     numero_esperienze_professionali=0;
-    indice_riga=riga_inizio_esperienze_professionali;
+    int indice_riga=riga_inizio_esperienze_professionali;
     if(it!=user_data.end() && *it=="#inizio_esperienze_professionali#"){
         ++it;
 
-        riga_inizio_esperienze_professionali=indice_riga;
+        //riga_inizio_esperienze_professionali=indice_riga;
         QLabel* lbl_esperienze = new QLabel("Esperienze\nProfessionali: ");
         lbl_esperienze->setStyleSheet("font-weight:bold;");
         layout_top->addWidget(lbl_esperienze,indice_riga++,0);

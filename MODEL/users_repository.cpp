@@ -42,5 +42,24 @@ bool users_repository::empty() const{
     return ptr_db->empty();
 }
 
+double users_repository::get_tariffa_business() const{
+    utente_business u;
+    return u.get_costo_annuale();
+}
+
+double users_repository::get_tariffa_executive() const{
+    utente_executive u;
+    return u.get_costo_annuale();
+}
+
+void users_repository::set_tariffa_business(const double& d){
+    utente_business u;
+    u.set_costo_annuale(d);
+}
+
+void users_repository::set_tariffa_executive(const double& d){
+    utente_executive u;
+    u.set_costo_annuale(d);
+}
 
 

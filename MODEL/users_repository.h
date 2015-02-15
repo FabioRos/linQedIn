@@ -25,6 +25,10 @@ public:
     void carica_dati(); //carica usando metodo di input_output.h
     int size() const;
     bool empty() const;
+    double get_tariffa_business() const;
+    double get_tariffa_executive() const;
+    void set_tariffa_business(const double&);
+    void set_tariffa_executive(const double&);
 
 };
 

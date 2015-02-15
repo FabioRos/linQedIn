@@ -16,4 +16,24 @@ cambia_tipo_utente::cambia_tipo_utente(users_repository * repo, QWidget *parent)
     layout_vericale->addWidget(tabella);
     layout_vericale->addWidget(btn_salva);
 
+
+    //connessioni
+     connect(tabella->get_ptr_tabella(),SIGNAL(cellClicked(int,int)),this,SLOT(esplodi_opzioni(int,int)));
+
+}
+
+void cambia_tipo_utente::esplodi_opzioni(const int &r, const int &c){
+
+    if(tabella->get_ptr_tabella()->item(r,c)!=0 && tabella->get_ptr_tabella()->item(r,c)->text()!=""){
+        tabella->get_ptr_tabella()->selectRow(r);
+        QList<QTableWidgetItem *> lista=tabella->get_ptr_tabella()->selectedItems();
+        std::string username_con_focus= lista.front()->text().toStdString();
+
+        popup_cambia_tipo_utente* popup_tipo= new popup_cambia_tipo_utente(username_con_focus,ptr_repository);
+        if(popup_tipo)
+            popup_tipo->show();
+    }
+
+
+
 }

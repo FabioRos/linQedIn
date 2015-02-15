@@ -4,6 +4,7 @@
 #include "aggiunta_utente.h"
 #include "modulo_rimozione_utenti.h"
 #include "cambia_tipo_utente.h"
+#include "admin_gestisci_tariffe.h"
 
 #include <QWidget>
 #include <QLayout>
@@ -25,7 +26,7 @@ class amministrazione: public QWidget
     modulo_visualizzazione_utenti* pagina_visualizzazione_utenti;
     modulo_rimozione_utenti* pagina_rimozione_utenti;
     cambia_tipo_utente* pagina_cambia_tipo_utente;
-
+    admin_gestisci_tariffe* pagina_gestione_tariffe;
 public:
     amministrazione( users_repository* =0, QWidget* =0);    //QWidget* =0 sempre
     ~amministrazione();
@@ -34,6 +35,7 @@ public slots:
     void mostra_pag_visualizzazione_utenti();
     void mostra_pag_rimozione_utenti();
     void mostra_pag_cambio_tipo_utenti();
+    void mostra_pag_gestione_tariffe();
     void refresh();
 };
 

@@ -3,6 +3,7 @@
 
 
 #include "modulo_visualizzazione_utenti.h"
+#include "popup_cambia_tipo_utente.h"
 
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -24,6 +25,7 @@ public:
 signals:
 
 public slots:
+     void esplodi_opzioni(const int& r,const int& c);
 
 };
 

@@ -13,14 +13,17 @@ utente_executive::utente_executive(const std::string &n, const std::string &c, c
 
 double utente_executive::costo_annuale =120;
 
-std::list<utente *> utente_executive::cerca(users_repository* ptr_repo, const std::string& s){
+std::list<utente *> utente_executive::cerca(users_repository* ptr_repo, const std::string& s) const{
     std::list<utente*> risultato;
     std::list<smart_utente*> lista_ptr_smu=ptr_repo->get_database();
     std::list<smart_utente*>::const_iterator it=lista_ptr_smu.begin();
     for(;it!=lista_ptr_smu.end();++it){
-        // cerca per username, nome o cognome e max 1 competenza.
+        // cerca per username, nome o cognome o 1 competenza(anche parziale), lingua,
+        // nome azienda in cui ha lavorato, posizione, luogo.
         utente* u=(*it)->get_ptr_utente();
-        if(u->ha_la_competenza(s) ||
+        if(  u->un_pezzo_di_competenza(s) || u->ha_lavorato_nell_azienda(s) ||
+             u->ha_lavorato_nella_posizione(s)|| u->ha_lavorato_nella_citta(s) ||
+             u->esiste_lingua(s) ||u->ha_la_competenza(s) ||
              u->get_username().find(s)!=std::string::npos ||
              u->get_cognome().find(s)!=std::string::npos  ||
              u->get_nome().find(s)!=std::string::npos)

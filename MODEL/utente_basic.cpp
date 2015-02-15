@@ -6,7 +6,7 @@ utente_basic::utente_basic(){}
 utente_basic::utente_basic(const std::string &n, const std::string &c, const std::string &usn)
     :utente_gratis(n,c,usn){}
 utente_basic::utente_basic(const utente& u):utente_gratis(u){}
-std::list<utente *> utente_basic::cerca(users_repository* ptr_repo, const std::string& s){
+std::list<utente *> utente_basic::cerca(users_repository* ptr_repo, const std::string& s) const{
     std::list<utente*> risultato;
     std::list<smart_utente*> lista_ptr_smu=ptr_repo->get_database();
     std::list<smart_utente*>::const_iterator it=lista_ptr_smu.begin();

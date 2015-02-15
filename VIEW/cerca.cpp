@@ -24,7 +24,6 @@ cerca::cerca(users_repository * repo, const std::string& usr, QWidget *parent)
 
     connect(input_ricerca,SIGNAL(textChanged(QString)),this,SLOT(popola(QString)));
     connect(tabella->get_ptr_tabella(),SIGNAL(cellClicked(int,int)),this,SLOT(esplodi_opzioni(int,int)));
-
 }
 
 void cerca::popola(QString qs){
@@ -49,9 +48,6 @@ void cerca::popola(QString qs){
 void cerca::esplodi_opzioni(const int &r, const int &c){
     if(tabella->get_ptr_tabella()->item(r,c)!=0 && tabella->get_ptr_tabella()->item(r,c)->text()!=""){
         tabella->get_ptr_tabella()->selectRow(r);
-        const QString titolo="Aggiungi a rete";
-        const QString testo="vuoi aggiungere l'utente che hai selezionato\n alla tua rete di contatti?";
-
         QList<QTableWidgetItem *> lista=tabella->get_ptr_tabella()->selectedItems();
         std::string username_con_focus= lista.front()->text().toStdString();
         //std::string username_con_focus= tabella->get_ptr_tabella()->itemAt(r,1)->text().toStdString();
@@ -62,27 +58,3 @@ void cerca::esplodi_opzioni(const int &r, const int &c){
      }
 }
 
-//void cerca::aggiungi_a_rete(QTableWidgetItem* i){
-
-//    tabella->get_ptr_tabella()->selectRow(i->row());
-//    const QString titolo="Aggiungi a rete";
-//    const QString testo="vuoi aggiungere l'utente che hai selezionato\n alla tua rete di contatti?";
-//    std::string username_con_focus= tabella->get_ptr_tabella()->itemAt(i->row(),1)->text().toStdString();
-//    client_profilo* popup_profilo= new client_profilo(ptr_repository,username_con_focus);
-//    popup_profilo->modalita_sola_lettura();
-//    popup_profilo->show();
-
-
-
-//    /*
-//            QMessageBox* msg=new QMessageBox;
-//            msg->setText(testo);
-//            msg->setWindowTitle(titolo);
-//            msg->
-
-//            msg->setIcon(QMessageBox::Question);
-//            msg->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-//            msg->show();
-//    */
-//    // ...
-//}

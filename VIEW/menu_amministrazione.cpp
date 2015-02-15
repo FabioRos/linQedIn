@@ -31,6 +31,9 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     btn2_salvataggio=new QPushButton("salva",this);
     //exit= new QPushButton("chiudi finestra",menu);
 
+    //Tariffe
+    btn_gestione_tariffe=new QPushButton("tariffe",this);
+
     ///CONNESSIONI
 
     //connect(exit,SIGNAL(clicked()),this,SLOT(close()));
@@ -52,13 +55,17 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     connect(btn_dump_db,SIGNAL(clicked()),parent,SLOT(mostra_pag_visualizzazione_utenti()));
     connect(btn_rimuovi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_rimozione_utenti()));
     connect(btn_cambia_account,SIGNAL(clicked()),parent,SLOT(mostra_pag_cambio_tipo_utenti()));
+    connect(btn_gestione_tariffe,SIGNAL(clicked()),parent,SLOT(mostra_pag_gestione_tariffe()));
     //  I/O + EXIT _END
+
+
 
     QVBoxLayout* local_menu_layout=new QVBoxLayout(this);
     local_menu_layout->addWidget(btn_aggiungi_utente);
     local_menu_layout->addWidget(btn_rimuovi_utente);
-    local_menu_layout->addWidget(btn_cambia_account);
     local_menu_layout->addWidget(btn_cerca);
+    local_menu_layout->addWidget(btn_gestione_tariffe);
+    local_menu_layout->addWidget(btn_cambia_account);
     local_menu_layout->addWidget(btn_dump_db);
 
     QHBoxLayout* layout_carica_salva=new QHBoxLayout;

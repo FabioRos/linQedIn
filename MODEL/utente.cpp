@@ -184,6 +184,34 @@ bool utente::un_pezzo_di_competenza(const std::string & s) const{
     return false;
 }
 
+bool utente::ha_lavorato_nella_posizione(const std::string &s) const{
+    for(std::list<esperienza_professionale>::const_iterator it=esperienze_professionali.begin();it!=esperienze_professionali.end();++it){
+        if((*it).get_posizione().find(s)!=std::string::npos){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool utente::ha_lavorato_nella_citta(const std::string &s) const{
+    for(std::list<esperienza_professionale>::const_iterator it=esperienze_professionali.begin();it!=esperienze_professionali.end();++it){
+        if((*it).get_luogo().find(s)!=std::string::npos){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool utente::ha_lavorato_nell_azienda(const std::string &s) const{
+    for(std::list<esperienza_professionale>::const_iterator it=esperienze_professionali.begin();it!=esperienze_professionali.end();++it){
+        if((*it).get_nome_azienda().find(s)!=std::string::npos){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool utente::ha_la_competenza(const std::string & s) const{
     for(std::list<std::string>::const_iterator it=competenze.begin();it!=competenze.end();++it){
         if((*it).compare(s)==0){

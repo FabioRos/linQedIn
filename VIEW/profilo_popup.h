@@ -16,7 +16,9 @@ private:
     client_profilo* informazioni;
     QScrollArea* frame_principale;
     QPushButton* btn_aggiungi_a_rete;
-
+    QPushButton* btn_rimuovi_dalla_rete;
+    aggiungi_modifica_utenti* controller;
+    QVBoxLayout* layout;
 public:
     explicit profilo_popup(users_repository*,const std::string& corrente,const std::string& target,QWidget *parent = 0);
 
@@ -24,6 +26,7 @@ signals:
 
 public slots:
     void aggiungi_a_rete();
+    void rimuovi_dalla_rete();  // da testare
 };
 
 #endif // PROFILO_POPUP_H

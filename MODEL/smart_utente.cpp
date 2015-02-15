@@ -34,9 +34,9 @@ bool smart_utente::cambio_tipo_utente(const std::string & nuovo_tipo,const std::
     if(ptr_utente!=0){
 
         int valore;
-        if(nuovo_tipo=="basic") valore=1;
-        if(nuovo_tipo=="business") valore=50;
-        if(nuovo_tipo=="executive") valore=51;
+        if(nuovo_tipo=="basic" || nuovo_tipo=="BASIC" ) valore=1;
+        if(nuovo_tipo=="business" || nuovo_tipo=="BUSINESS") valore=50;
+        if(nuovo_tipo=="executive" || nuovo_tipo=="EXECUTIVE") valore=51;
 
         switch(valore){
             case 1:{    //basic

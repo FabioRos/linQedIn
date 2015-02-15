@@ -7,6 +7,8 @@
 #include "login.h"
 #include "finestraprincipale.h"
 #include "cerca.h"
+#include "client_rete.h"
+#include "client_modifica_cc.h"
 
 #include <QLayout>
 #include <QScrollArea>
@@ -14,7 +16,7 @@
 class client_environment : public QWidget{
 private:
     Q_OBJECT
-    QPushButton* btn_profilo, *btn_rete, *btn_log_out, *btn_cerca;
+    QPushButton* btn_profilo, *btn_rete, *btn_log_out, *btn_cerca, *btn_modifica_cc;
     QHBoxLayout* layout_due_colonne;
     QVBoxLayout* layout_menu;
     QScrollArea* scroll_area;
@@ -27,6 +29,8 @@ public slots:
     void log_out();
     void mostra_profilo();
     void mostra_pag_ricerca();
+    void mostra_pag_rete();
+    void mostra_pag_modifica_cc();
 };
 
 #endif // CLIENT_ENVIRONMENT_H

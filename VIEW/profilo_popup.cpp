@@ -13,7 +13,7 @@ profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_co
     setWindowTitle(Cognome_nome);
 
 
-    QVBoxLayout* layout=new QVBoxLayout(this);
+    layout=new QVBoxLayout(this);
     QString txt_titolo="Profilo di \"";
     txt_titolo.append(Cognome_nome);
     txt_titolo.append("\"");
@@ -21,6 +21,8 @@ profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_co
 
     informazioni=new client_profilo(ptr_repository,username_da_visualizzare);
     informazioni->modalita_sola_lettura();
+
+    controller= new aggiungi_modifica_utenti(ptr_repository);
 
     //scroll_Area
     frame_principale=new QScrollArea(this);
@@ -34,19 +36,37 @@ profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_co
     frame_principale->setWidget(informazioni);
 
     btn_aggiungi_a_rete=new QPushButton ("Aggiungi Questo utente alla tua rete di contatti");
+    btn_rimuovi_dalla_rete=new QPushButton ("Rimuovi Questo utente alla tua rete di contatti");
 
     layout->addWidget(titolo);
     layout->addWidget(frame_principale);
-    layout->addWidget(btn_aggiungi_a_rete);
-
+    if(controller->esiste_A_nella_rete_di_B(username_da_visualizzare,username_corrente)){                                       //devo fare l f() delcontroller che verifica collegamento
+        layout->addWidget(btn_rimuovi_dalla_rete);
+    }else{
+        layout->addWidget(btn_aggiungi_a_rete);
+    }
     //connessioni
     connect(btn_aggiungi_a_rete,SIGNAL(clicked()),this,SLOT(aggiungi_a_rete()));
+    connect(btn_rimuovi_dalla_rete,SIGNAL(clicked()),this,SLOT(rimuovi_dalla_rete()));
 
 }
 
 
 void profilo_popup::aggiungi_a_rete(){
-    aggiungi_modifica_utenti* controller= new aggiungi_modifica_utenti(ptr_repository);
     controller->aggiungi_A_alla_rete_di_B(username_da_visualizzare,username_corrente);
+    QLabel* lbl_aggiunto=new QLabel("<center><h4>utente aggiunto con successo<br />alla tua rete di contatti.</h4></center>");
+    lbl_aggiunto->setStyleSheet("color:\"green\";");
+    lbl_aggiunto->setGeometry(400,300,250,100);
+    lbl_aggiunto->show();
+    this->close();
 
+}
+
+void profilo_popup::rimuovi_dalla_rete(){
+   controller->rimuovi_A_alla_rete_di_B(username_da_visualizzare,username_corrente);
+   QLabel* lbl_rimosso=new QLabel("<center><h4>utente rimosso con successo<br />dalla tua rete di contatti.</h4></center>");
+   lbl_rimosso->setStyleSheet("color:\"green\";");
+   lbl_rimosso->setGeometry(400,300,250,100);
+   lbl_rimosso->show();
+   this->close();
 }

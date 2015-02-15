@@ -50,10 +50,8 @@ void modulo_visualizzazione_utenti::popola_tabella(std::list<smart_utente*> list
 }
 
 void modulo_visualizzazione_utenti::rimuovi_tutti(){
+
     tabella->clearContents();
-//    for(int i=0;i<numero_elementi;i++)
-//        tabella->removeRow(i);
-//    numero_elementi=0;
 }
 
 
@@ -100,10 +98,5 @@ void modulo_visualizzazione_utenti::refresh(){
 }
 
 modulo_visualizzazione_utenti::~modulo_visualizzazione_utenti(){
-
-    delete tabella;
-
-
-    // !!! devo deallocare tutti i record!
-
+        delete tabella;
 }

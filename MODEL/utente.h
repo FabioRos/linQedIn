@@ -72,8 +72,11 @@ class utente{
         void rimuovi_tutte_le_competenze(); //da testare
         bool ha_la_competenza (const std::string&) const;
         bool un_pezzo_di_competenza (const std::string&) const;
+        bool ha_lavorato_nell_azienda(const std::string&) const;
+        bool ha_lavorato_nella_posizione(const std::string&) const;
+        bool ha_lavorato_nella_citta(const std::string&) const;
         virtual ~utente();//   da fare
-        virtual std::list<utente*> cerca(users_repository*,const std::string&)=0;
+        virtual std::list<utente*> cerca(users_repository*,const std::string&) const =0;
 
         bool esiste_nella_rete(const std::string&) const; //username
 
