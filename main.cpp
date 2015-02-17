@@ -1,4 +1,4 @@
-#include "finestraprincipale.h"
+#include "VIEW/finestraprincipale.h"
 #include "MODEL/input_output.h"
 #include <QApplication>
 

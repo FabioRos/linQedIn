@@ -3,7 +3,8 @@
 popup_rimuovi_utente_da_rete::popup_rimuovi_utente_da_rete(const std::string &usn,
     const std::string &target, users_repository *ptr_repo, QWidget *parent):
     username_corrente(usn),username_da_rimuovere(target),ptr_repository(ptr_repo),
-    QWidget(parent){
+    QWidget(parent){    
+    this->setWindowIcon(QIcon("popup_icon.png"));
     QString s=("<center><i>Vuoi davvero rimuovere l\'utente<br /> \"");
     s.append(QString::fromStdString(username_da_rimuovere));
     s.append("\"<br />dalla tua rete di contatti?<br /></i></center>");
@@ -21,7 +22,7 @@ popup_rimuovi_utente_da_rete::popup_rimuovi_utente_da_rete(const std::string &us
     layout_bottoni->addWidget(btn_conferma);
     layout->addLayout(layout_bottoni);
 
-
+    tutto_bene=false;
 
     //connessioni
     connect(btn_annulla,SIGNAL(clicked()),this,SLOT(close()));
@@ -31,15 +32,25 @@ popup_rimuovi_utente_da_rete::popup_rimuovi_utente_da_rete(const std::string &us
 
 void popup_rimuovi_utente_da_rete::rimuovi_da_rete(){
     aggiungi_modifica_utenti* controller=new aggiungi_modifica_utenti(ptr_repository);
-    controller->rimuovi_A_alla_rete_di_B(username_da_rimuovere,username_corrente);
+    tutto_bene=controller->rimuovi_A_alla_rete_di_B(username_da_rimuovere,username_corrente);
     rimosso_con_successo();
     this->close();
 }
 
 void popup_rimuovi_utente_da_rete::rimosso_con_successo(){
     QString testo("<center><i>L'utente </i><b>\"");
+    QMessageBox* msg= new QMessageBox;
+    msg->setWindowTitle("Conferma Rimozione");
     testo.append(QString::fromStdString(username_da_rimuovere));
-    testo.append("\"</b> <br />è stato rimosso con successo <br />dai tuoi contatti.");
-    QMessageBox* msg= new QMessageBox(QMessageBox::Information,"Conferma Rimozione",testo);
+    if(tutto_bene){
+        msg->setIcon(QMessageBox::Information);
+        testo.append("\"</b> <br />è stato rimosso con successo <br />dai tuoi contatti.");
+    }else{
+        msg->setIcon(QMessageBox::Warning);
+        testo.append("\"</b> <br />non è più presente <br />tra i tuoi contatti.<br /> Aggiorna la pagina!");
+    }
+
+    msg->setText(testo);
     msg->show();
 }
+

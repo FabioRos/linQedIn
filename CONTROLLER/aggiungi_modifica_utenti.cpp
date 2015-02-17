@@ -76,8 +76,10 @@ lingua aggiungi_modifica_utenti::esplodi_lingua(const std::string &stringa_lingu
 
 esperienza_professionale aggiungi_modifica_utenti::esplodi_esperienza(const std::string &stringa_esperienza){
       std::string token,descrizione,luogo,nome_azienda,posizione;
-      std::string giorno_i, mese_i, anno_i,giorno_f,mese_f,anno_f;
+      std::string data_i,data_f;
 
+
+      std::cout<<stringa_esperienza<< std::endl;
       std::istringstream iss(stringa_esperienza, std::istringstream::in);
       //metto i cicli while in serie cosi scarto i cancelletti ed accetto input di più parole
       while( iss >>  token && token != "#")    {
@@ -93,26 +95,20 @@ esperienza_professionale aggiungi_modifica_utenti::esplodi_esperienza(const std:
           posizione +=token;
       }
       //data inizio
-      iss>>giorno_i;        //ho definito io il formato quindi so che sono
-      iss>>mese_i;          //disposti così
-      iss>>anno_i;
-      //data fine
-      iss>>giorno_f;
-      iss>>mese_f;
-      iss>>anno_f;
+      iss >> token;
+      data_i=token;
+      data inizio=data::converti_da_string(data_i);
 
-      //ora devo convertrire le date che al momento sono tutte stringhe.
-      int gi,mi,ai,gf,mf,af;
-      std::istringstream ( giorno_i ) >> gi;
-      std::istringstream ( mese_i )   >> mi;
-      std::istringstream ( anno_i )   >> ai;
-      std::istringstream ( giorno_f ) >> gf;
-      std::istringstream ( mese_f )   >> mf;
-      std::istringstream ( anno_f )   >> af;
+      //mim mangio il cancelletto
+      iss >> token;
 
-      data inizio(gi,mi,ai);
-      data fine(gf,mf,af);
+      //data inizio
+      iss >> token;
+      data_f=token;
+      data fine=data::converti_da_string(data_f);
 
+      std::cout<<"\n"<<data_i<<"\n";
+      std::cout<<data_f<<"\n";
     return esperienza_professionale(nome_azienda,posizione,luogo,descrizione,inizio,fine);
 }
 
@@ -131,7 +127,7 @@ std::list<esperienza_professionale> aggiungi_modifica_utenti::converti_tutte_le_
     std::list<esperienza_professionale> risultato;
     std::list<std::string>::const_iterator it=s.begin();
     for(;it!=s.end();++it){
-       // risultato.push_back(esplodi_esperienza(*it));
+       risultato.push_back(esplodi_esperienza(*it));
     }
     return risultato;
 }
@@ -187,10 +183,8 @@ void aggiungi_modifica_utenti::aggiungi_esperienza(const std::string &usr,
     const std::string &nome_azienda, const std::string &posizione,
     const std::string &luogo, const std::string &descrizione,
     const std::string &data_inizio, const std::string &data_fine){
-    data* d_inizio=new data;
-    d_inizio->converti_da_string(data_inizio);
-    data* d_fine=new data;
-    d_fine->converti_da_string(data_fine);
+    data* d_inizio=new data( data::converti_da_string(data_inizio));
+    data* d_fine=new data( data::converti_da_string(data_fine));
     esperienza_professionale e(nome_azienda,posizione,luogo,descrizione,*d_inizio,*d_fine);
     ptr_db->get_ptr_utente(usr)->aggiungi_esperienze_professionali(e);
     delete d_inizio;
@@ -214,8 +208,9 @@ bool aggiungi_modifica_utenti::aggiungi_A_alla_rete_di_B(const std::string &user
 bool aggiungi_modifica_utenti::rimuovi_A_alla_rete_di_B(const std::string &username_A,
                                                         const std::string &username_B){
     utente* utente_host=ptr_db->get_ptr_utente(username_B);
+
     bool rimosso=false;
-    if(utente_host)
+    if(utente_host && utente_host->esiste_nella_rete(username_A))
         rimosso=utente_host->rimuovi_utente_da_rete(ptr_db->get_ptr_smart_utente(username_A));
                 //aggiungi_utente_a_rete(ptr_db->get_ptr_smart_utente(username_A));
 

@@ -20,6 +20,7 @@ signals:
 
 public slots:
     void esplodi_opzioni(const int &r, const int &c);
+    void refresh();
 };
 
 #endif // CLIENT_RETE_H

@@ -34,7 +34,7 @@ client_profilo::client_profilo(users_repository* repo, const std::string& user, 
     connect(btn_salva_modifiche,SIGNAL(clicked()),this,SLOT(salva_modifiche()));
     connect(btn_aggiungi_competenza,SIGNAL(clicked()),this,SLOT(aggiungi_competenza()));
     connect(btn_aggiungi_lingua,SIGNAL(clicked()),this,SLOT(aggiungi_lingua()));
-    connect(btn_inserisci_esperienza,SIGNAL(clicked()),this,SLOT(aggiungi_esperienza()));
+   //connect(btn_inserisci_esperienza,SIGNAL(clicked()),this,SLOT(aggiungi_esperienza()));
 }
 
 void client_profilo::modalita_sola_lettura(){
@@ -145,29 +145,6 @@ void client_profilo::aggiungi_lingua(){
 
 }
 
-void client_profilo::aggiungi_esperienza(){
-    layout_top->addWidget(new QLabel("Azienda: "),++riga_fine_esperienze_professionali,1);
-    layout_top->addWidget(new QLineEdit(input_nuova_azienda->text()),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("Posizione: "),++riga_fine_esperienze_professionali,1);
-    layout_top->addWidget(new QLineEdit(input_nuova_posizione->text()),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("Luogo: "),++riga_fine_esperienze_professionali,1);
-    layout_top->addWidget(new QLineEdit(input_nuovo_luogo->text()),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("Descrizione: "),++riga_fine_esperienze_professionali,1);
-    layout_top->addWidget(new QTextEdit(input_nuova_descrizione->toPlainText()),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("Da: "),++riga_fine_esperienze_professionali,1);
-
-    QDate d_inizio,d_fine;
-    d_inizio=cal_data_inizio->selectedDate();
-    d_fine=cal_data_fine->selectedDate();
-
-    layout_top->addWidget(new QLineEdit(d_inizio.toString("d-M-yyyy")),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("A: "),++riga_fine_esperienze_professionali,1);
-    layout_top->addWidget(new QLineEdit(d_fine.toString("d-M-yyyy")),riga_fine_esperienze_professionali,2,1,2);
-    layout_top->addWidget(new QLabel("<hr>"),++riga_fine_esperienze_professionali,1,1,3);
-
-    ++numero_esperienze_professionali;
-}
-
 void client_profilo::salva_utente(){
     //qui andrò a fare la scrittura effettiva sul DB [in MEMORIA]
     salva_nome_cognome();
@@ -220,16 +197,23 @@ void client_profilo::salva_esperienze(){
         for(int i=0;i<numero_esperienze_professionali;i++){
             std::string nome_azienda,posizione,luogo,descrizione,data_inizio,data_fine;
             if(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)){
-                nome_azienda = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)->widget())->text().toStdString();
-                posizione= dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+1,2)->widget())->text().toStdString();
-                luogo = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+2,2)->widget())->text().toStdString();
-                descrizione = dynamic_cast<QTextEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+3,2)->widget())->toPlainText().toStdString();
-                data_inizio =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+4,2)->widget())->text().toStdString();
-                data_fine =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+5,2)->widget())->text().toStdString();
+                if(dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)->widget()))
+                    nome_azienda = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+0,2)->widget())->text().toStdString();
+                if(dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+1,2)->widget()))
+                    posizione= dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+1,2)->widget())->text().toStdString();
+                if(dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+2,2)->widget()))
+                    luogo = dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+2,2)->widget())->text().toStdString();
+                if(dynamic_cast<QTextEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+3,2)->widget()))
+                    descrizione = dynamic_cast<QTextEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+3,2)->widget())->toPlainText().toStdString();
+                if(dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+4,2)->widget()))
+                    data_inizio =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+4,2)->widget())->text().toStdString();
+                if(dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+5,2)->widget()))
+                    data_fine =dynamic_cast<QLineEdit*>(layout_top->itemAtPosition(r_c+(7*i+1)+5,2)->widget())->text().toStdString();
 
                 edit_controller->aggiungi_esperienza(username->text().toStdString(),
                                                      nome_azienda,posizione,luogo,
                                                      descrizione,data_inizio,data_fine);
+
             }
         }
     }
@@ -566,21 +550,19 @@ void client_profilo::inizializza_esperienze(const std::list<std::string> &user_d
             layout_top->addWidget(new QLabel("Da: "),indice_riga,1);
             layout_top->addWidget(new QLineEdit(QString::fromStdString(data_inizio_)),indice_riga++,2,1,2);
             layout_top->addWidget(new QLabel("A: "),indice_riga,1);
-            layout_top->addWidget(new QLineEdit(QString::fromStdString(data_inizio_)),indice_riga++,2,1,2);
+            layout_top->addWidget(new QLineEdit(QString::fromStdString(data_fine_)),indice_riga++,2,1,2);
             layout_top->addWidget(new QLabel("<hr>"),indice_riga++,1,1,3);
         }
         riga_fine_esperienze_professionali=indice_riga;
     }
 
-   aggiungi_controlli_esperienza_professionale();
-   disabilita_controlli_esperienze_professionali(true);
+
 }
 //CONTROLLI INSERIMENTO NUOVA ENTRY
 void client_profilo::disabilita_controlli_inserimento(const bool & b){
     disabilita_suggerimenti(b);
     disabilita_controlli_competenze(b);
     disabilita_controlli_lingua(b);
-    disabilita_controlli_esperienze_professionali(b);
 
 
 }
@@ -613,79 +595,6 @@ void client_profilo::aggiungi_controlli_lingua(){
 
 }
 
-void client_profilo::aggiungi_controlli_esperienza_professionale(){
-
-    int riga_corrente=riga_inizio_inserimento_esperienze;
-
-    lbl_esp_nuova_azienda = new QLabel("Azienda: ");
-    lbl_esp_nuova_posizione = new QLabel("Posizione: ");
-    lbl_esp_nuovo_luogo = new QLabel("Luogo: ");
-    lbl_esp_nuova_descrizione = new QLabel("Decrizione: ");
-    lbl_esp_nuova_data_inizio = new QLabel("Da: ");
-    lbl_esp_nuova_data_fine = new QLabel("A: ");
-
-
-    //Titolo
-    QLabel* titolo =new QLabel("Aggiunta Esperienze Professionali: ");
-    layout_top->addWidget(titolo,riga_corrente++,1,1,3);
-    //Azienda
-    layout_top->addWidget(lbl_esp_nuova_azienda,riga_corrente,1);
-    input_nuova_azienda = new QLineEdit;
-    input_nuova_azienda->setPlaceholderText("Nome azienda");
-    layout_top->addWidget(input_nuova_azienda,riga_corrente++,2,1,2);
-    //Posizione
-    layout_top->addWidget(lbl_esp_nuova_posizione,riga_corrente,1);
-    input_nuova_posizione = new QLineEdit;
-    input_nuova_posizione->setPlaceholderText("Ruolo ricoperto");
-    layout_top->addWidget(input_nuova_posizione,riga_corrente++,2,1,2);
-    //Luogo
-    layout_top->addWidget(lbl_esp_nuovo_luogo,riga_corrente,1);
-    input_nuovo_luogo = new QLineEdit;
-    input_nuovo_luogo->setPlaceholderText("Indirizzo o Città");
-    layout_top->addWidget(input_nuovo_luogo,riga_corrente++,2,1,2);
-    //Descrizione
-    layout_top->addWidget(lbl_esp_nuova_descrizione,riga_corrente,1);
-    input_nuova_descrizione=new QTextEdit;
-    input_nuova_descrizione->setMinimumHeight(300);
-    input_nuova_descrizione->setPlaceholderText("Parla qui di quello che hai fatto ed imparato nell'esperienza!");
-    layout_top->addWidget(input_nuova_descrizione,riga_corrente++,2,1,2);
-
-    //Data inizio
-    layout_top->addWidget(lbl_esp_nuova_data_inizio,riga_corrente++,1);
-    cal_data_inizio= new QCalendarWidget;
-    layout_top->addWidget(cal_data_inizio,riga_corrente++,1,1,3);
-    //Data fine
-    layout_top->addWidget(lbl_esp_nuova_data_fine,riga_corrente++,1);
-    cal_data_fine= new QCalendarWidget;
-    layout_top->addWidget(cal_data_fine,riga_corrente++,1,1,3);
-    //bottone inserimento
-    btn_inserisci_esperienza=new QPushButton("Inserisci esperienza");
-    layout_top->addWidget(btn_inserisci_esperienza,riga_corrente,1,1,3);
-}
-
-void client_profilo::disabilita_controlli_esperienze_professionali(const bool &b){
-
-    int indice_riga=riga_inizio_inserimento_esperienze;
-    if(b){
-        layout_top->itemAtPosition(indice_riga,1)->widget()->hide();
-        for (int i=1;i<=4;i++){
-            layout_top->itemAtPosition(indice_riga+i,1)->widget()->hide();
-            layout_top->itemAtPosition(indice_riga+i,2)->widget()->hide();
-        }
-        for (int i=5;i<=9;i++){
-            layout_top->itemAtPosition(indice_riga+i,1)->widget()->hide();
-        }
-    }else{
-        layout_top->itemAtPosition(indice_riga,1)->widget()->show();
-        for (int i=1;i<=4;i++){
-            layout_top->itemAtPosition(indice_riga+i,1)->widget()->show();
-            layout_top->itemAtPosition(indice_riga+i,2)->widget()->show();
-        }
-        for (int i=5;i<=9;i++){
-            layout_top->itemAtPosition(indice_riga+i,1)->widget()->show();
-        }
-    }
-}
 
 void client_profilo::disabilita_controlli_lingua(const bool & b){
     if(b){

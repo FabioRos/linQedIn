@@ -12,6 +12,7 @@ private:
     QPushButton* btn_rimuovi_utente;
     admin_controller* controller;
 
+
 public:
     explicit modulo_rimozione_utenti(users_repository* =0,admin_controller* =0, QWidget *parent = 0);
     std::list<std::string> get_selected_usernames() const;

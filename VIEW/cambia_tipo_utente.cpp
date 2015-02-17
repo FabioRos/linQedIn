@@ -4,6 +4,7 @@ cambia_tipo_utente::cambia_tipo_utente(users_repository * repo, QWidget *parent)
     :ptr_repository(repo),QWidget(parent){
 
 
+    this->setWindowIcon(QIcon("popup_icon.png"));
     tabella=new modulo_visualizzazione_utenti(ptr_repository);
     btn_salva=new QPushButton("salva modifiche");
     input_ricerca=new QLineEdit;
@@ -18,9 +19,26 @@ cambia_tipo_utente::cambia_tipo_utente(users_repository * repo, QWidget *parent)
 
 
     //connessioni
+     connect(input_ricerca,SIGNAL(textChanged(QString)),this,SLOT(popola(QString)));
      connect(tabella->get_ptr_tabella(),SIGNAL(cellClicked(int,int)),this,SLOT(esplodi_opzioni(int,int)));
 
 }
+
+void cambia_tipo_utente::popola(QString qs){
+    //pulisco
+    tabella->rimuovi_tutti();
+    if(qs!=""){
+        //ricreo
+        std::list<utente *> lista=ptr_repository->cerca(ptr_repository,qs.toStdString(),101);
+        //delete tabella;
+        int i=0;
+        std::list<utente *>::const_iterator it=lista.begin();
+        for(;it!=lista.end();++it){
+            tabella->inserisci_riga(*it,i++);
+        }
+    }
+}
+
 
 void cambia_tipo_utente::esplodi_opzioni(const int &r, const int &c){
 

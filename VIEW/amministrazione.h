@@ -5,6 +5,7 @@
 #include "modulo_rimozione_utenti.h"
 #include "cambia_tipo_utente.h"
 #include "admin_gestisci_tariffe.h"
+#include "admin_cerca.h"
 
 #include <QWidget>
 #include <QLayout>
@@ -36,6 +37,7 @@ public slots:
     void mostra_pag_rimozione_utenti();
     void mostra_pag_cambio_tipo_utenti();
     void mostra_pag_gestione_tariffe();
+    void mostra_pag_ricerca();
     void refresh();
 };
 

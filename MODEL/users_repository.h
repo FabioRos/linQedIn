@@ -29,6 +29,9 @@ public:
     double get_tariffa_executive() const;
     void set_tariffa_business(const double&);
     void set_tariffa_executive(const double&);
+    bool is_username_valido(const std::string&);
+
+     std::list<utente*> cerca(users_repository*,const std::string&, const int&) const;
 
 };
 

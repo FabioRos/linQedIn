@@ -37,21 +37,17 @@ test* test_utente_business::run_tests(){
 
 bool test_utente_business::test0(){    //test
     numero_test++;
-    try{
-        utente_business* u= new utente_business();
-        if(u){
-            array_[0]=false;
-            n_test_superati+=1;
-            return true;
-        }else{
-            throw 0;
-        }
-    }
-    catch (int e)    {
-        array_[e]=true;
+    utente_business* u= new utente_business();
+    if(u){
+        array_[0]=false;
+        n_test_superati+=1;
+        return true;
+    }else{
+        array_[0]=true;
         n_test_falliti+=1;
         return false;
     }
+
 }
 
 

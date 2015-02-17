@@ -47,10 +47,8 @@ private:
     void inizializza_esperienze(const std::list<std::string>&,std::list<std::string>::const_iterator&);
     void disabilita_controlli_inserimento(const bool& =true);
     void aggiungi_controlli_lingua();
-    void aggiungi_controlli_esperienza_professionale();
     void disabilita_controlli_lingua(const bool & b);
     void disabilita_controlli_competenze(const bool & b);
-    void disabilita_controlli_esperienze_professionali(const bool & b);
     void salva_utente();
     void salva_nome_cognome();
     void salva_competenze();
@@ -87,7 +85,7 @@ public slots:
     void salva_modifiche();
     void aggiungi_competenza();
     void aggiungi_lingua();
-    void aggiungi_esperienza();
+    //void aggiungi_esperienza();
 
 };
 #endif // CLIENT_PROFILO_H

@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 
+
 #include "../CONTROLLER/aggiungi_modifica_utenti.h"
 
 class popup_rimuovi_utente_da_rete : public QWidget{
@@ -17,6 +18,7 @@ private:
       QHBoxLayout* layout_bottoni;
       QLabel* testo;
       QPushButton* btn_conferma, *btn_annulla;
+      bool tutto_bene;
 public:
     explicit popup_rimuovi_utente_da_rete(const std::string& username_corrente,
                                           const std::string& username_da_rimuovere,

@@ -1,205 +1,255 @@
 {
+    "tariffe": {
+        "business": "52",
+        "executive": "114"
+    },
     "usernames": [
-        "Fabio",
-        "Mario",
-        "aaa",
-        "ad",
-        "eeeee",
-        "ex",
-        "nome_test",
-        "pippo",
-        "q",
-        "tertert"
+        "Basilico",
+        "BiancaBi",
+        "Expert",
+        "FabioRos"
     ],
     "utenti": [
         {
-            "cognome": "FabioRos90",
+            "cognome": "Basico",
             "competenze": [
-                "WordPress",
-                "HTML",
-                "PHP",
-                "XML"
+                "public speaking",
+                "dizione",
+                "recitazione"
             ],
             "esperienze_professionali": [
                 {
-                    "descrizione": "de",
-                    "fine": "1-1-1970",
-                    "inizio": "1-1-1970",
-                    "luogo": "lu",
-                    "nome_azienda": "az",
-                    "posizione": "po"
+                    "descrizione": ".",
+                    "fine": "24-10-2014",
+                    "inizio": "16-10-2014",
+                    "luogo": "Comparsa",
+                    "nome_azienda": "Milano",
+                    "posizione": "Italiafilms"
+                },
+                {
+                    "descrizione": ".",
+                    "fine": "10-2-2015",
+                    "inizio": "10-11-2014",
+                    "luogo": "Attoreco-protagonista",
+                    "nome_azienda": "Milano",
+                    "posizione": "Italiafilms"
+                },
+                {
+                    "descrizione": ".",
+                    "fine": "10-2-2015",
+                    "inizio": "10-11-2014",
+                    "luogo": "Attoreco-protagonista",
+                    "nome_azienda": "Milano",
+                    "posizione": "radioon-Air102"
                 }
             ],
             "lingue": [
                 {
-                    "descrizione": "italiano",
-                    "livello_comprensione": "C2",
-                    "livello_parlato": "C2",
-                    "livello_scritto": "C2"
-                }
-            ],
-            "nome": "Ros",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "Fabio"
-        },
-        {
-            "carta_di_credito": "",
-            "cognome": "MarioRossi50",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "Rossi",
-            "rete": [
-                "Fabio"
-            ],
-            "tipo_account": "executive",
-            "username": "Mario"
-        },
-        {
-            "cognome": "aaa",
-            "competenze": [
-                "xml"
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-                {
-                    "descrizione": "eng",
-                    "livello_comprensione": "A1",
-                    "livello_parlato": "A1",
+                    "descrizione": "Francese",
+                    "livello_comprensione": "A2",
+                    "livello_parlato": "A2",
                     "livello_scritto": "A1"
                 },
                 {
-                    "descrizione": "ita",
-                    "livello_comprensione": "A1",
-                    "livello_parlato": "A1",
-                    "livello_scritto": "A1"
-                }
-            ],
-            "nome": "aaa",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "aaa"
-        },
-        {
-            "cognome": "dd",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "adsdas",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "ad"
-        },
-        {
-            "cognome": "eeee",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "eeeeee",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "eeeee"
-        },
-        {
-            "cognome": "ex",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "ex",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "ex"
-        },
-        {
-            "cognome": "Username_test",
-            "competenze": [
-                "xml",
-                "c++",
-                "php"
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-                {
-                    "descrizione": "inglese",
+                    "descrizione": "Inglese",
                     "livello_comprensione": "B2",
-                    "livello_parlato": "B1",
+                    "livello_parlato": "B2",
                     "livello_scritto": "B1"
                 },
                 {
-                    "descrizione": "italiano",
+                    "descrizione": "Italiano",
                     "livello_comprensione": "C2",
                     "livello_parlato": "C2",
                     "livello_scritto": "C2"
                 }
             ],
-            "nome": "cognome_test",
+            "nome": "Basilare",
             "rete": [
             ],
             "tipo_account": "basic",
-            "username": "nome_test"
+            "username": "Basilico"
         },
         {
-            "cognome": "pluto",
+            "carta_di_credito": "123456789",
+            "cognome": "Bianchi",
             "competenze": [
+                "marketing",
+                "word",
+                "excel"
             ],
             "esperienze_professionali": [
+                {
+                    "descrizione": "Mi sono occupata delle vendite.",
+                    "fine": "27-9-2013",
+                    "inizio": "26-8-2013",
+                    "luogo": "commessa",
+                    "nome_azienda": "Padova",
+                    "posizione": "tuttosport"
+                }
             ],
             "lingue": [
+                {
+                    "descrizione": "Inglese",
+                    "livello_comprensione": "B2",
+                    "livello_parlato": "B2",
+                    "livello_scritto": "B1"
+                },
+                {
+                    "descrizione": "Italiano",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                },
+                {
+                    "descrizione": "Tedesco",
+                    "livello_comprensione": "A2",
+                    "livello_parlato": "A2",
+                    "livello_scritto": "A1"
+                }
             ],
-            "nome": "paperino",
+            "nome": "Bianca",
             "rete": [
+                "Basilico",
+                "Expert"
             ],
-            "tipo_account": "basic",
-            "username": "pippo"
-        },
-        {
-            "cognome": "q",
-            "competenze": [
-            ],
-            "esperienze_professionali": [
-            ],
-            "lingue": [
-            ],
-            "nome": "q",
-            "rete": [
-            ],
-            "tipo_account": "basic",
-            "username": "q"
+            "tipo_account": "business",
+            "username": "BiancaBi"
         },
         {
             "carta_di_credito": "",
-            "cognome": "rteerter",
+            "cognome": "Esperanza",
             "competenze": [
             ],
             "esperienze_professionali": [
+                {
+                    "descrizione": ".",
+                    "fine": "16-5-2011",
+                    "inizio": "11-5-2011",
+                    "luogo": "Interprete",
+                    "nome_azienda": "Madrid",
+                    "posizione": "ONU"
+                },
+                {
+                    "descrizione": ".",
+                    "fine": "17-10-2011",
+                    "inizio": "11-10-2011",
+                    "luogo": "Interprete",
+                    "nome_azienda": "IlCairo",
+                    "posizione": "ONU"
+                }
             ],
             "lingue": [
+                {
+                    "descrizione": "Inglese",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                },
+                {
+                    "descrizione": "Italiano",
+                    "livello_comprensione": "A2",
+                    "livello_parlato": "A1",
+                    "livello_scritto": "A1"
+                },
+                {
+                    "descrizione": "Maori",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                },
+                {
+                    "descrizione": "Spagnolo",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C1"
+                }
             ],
-            "nome": "retreert",
+            "nome": "Tumanako",
             "rete": [
             ],
-            "tipo_account": "business",
-            "username": "tertert"
+            "tipo_account": "executive",
+            "username": "Expert"
+        },
+        {
+            "carta_di_credito": "",
+            "cognome": "Ros",
+            "competenze": [
+                "xml",
+                "xhtml",
+                "php",
+                "mySql",
+                "jQuery",
+                "WordPress",
+                "Ciclismo su strada",
+                "Ciclismo su pista",
+                "Git",
+                "css3",
+                "html5"
+            ],
+            "esperienze_professionali": [
+                {
+                    "descrizione": "Gregario per Fabio Aru, Stefano Pirazzi e Daniele Ratto.",
+                    "fine": "1-9-2010",
+                    "inizio": "2-11-2009",
+                    "luogo": "gregario",
+                    "nome_azienda": "Bergamo",
+                    "posizione": "TeamPalazzago"
+                },
+                {
+                    "descrizione": "Specialita' inseguimento a squadre",
+                    "fine": "16-9-2008",
+                    "inizio": "12-9-2007",
+                    "luogo": "endurance",
+                    "nome_azienda": "Padova",
+                    "posizione": "Nazionale Italiana ciclismo su pista"
+                },
+                {
+                    "descrizione": "Realizzazione di Plugin e widget per la gestione di un network di siti con un database centralizzato. ",
+                    "fine": "27-9-2013",
+                    "inizio": "15-7-2013",
+                    "luogo": "Mestre, VE",
+                    "nome_azienda": "Fodamente srl",
+                    "posizione": "Web Developer"
+                },
+                {
+                    "descrizione": "Realizzazione gratuita di un software di aggregazione degli orari delle aule di pertinenza del dipartimento di matematica. Le informazioni sono state ottenute mediante parsing dei vari siti dell'ateneo contenenti informazioni parziali. Consegna prevista: Marzo 2015.",
+                    "fine": "2-3-2015",
+                    "inizio": "3-11-2014",
+                    "luogo": "Padova",
+                    "nome_azienda": "Lab. informatici di matematica UNIPD",
+                    "posizione": "web developer"
+                },
+                {
+                    "descrizione": "Realizzazione di siti e web application utilizzando HTML, CSS, JS, vari frameworks ed API CORDOVA.",
+                    "fine": "17-2-2015",
+                    "inizio": "1-1-2007",
+                    "luogo": "Padova, Pordenone",
+                    "nome_azienda": "Freelance",
+                    "posizione": "web developer"
+                }
+            ],
+            "lingue": [
+                {
+                    "descrizione": "Inglese",
+                    "livello_comprensione": "B2",
+                    "livello_parlato": "C1",
+                    "livello_scritto": "B1"
+                },
+                {
+                    "descrizione": "Italiano",
+                    "livello_comprensione": "C2",
+                    "livello_parlato": "C2",
+                    "livello_scritto": "C2"
+                }
+            ],
+            "nome": "Fabio",
+            "rete": [
+                "Basilico",
+                "BiancaBi",
+                "Expert"
+            ],
+            "tipo_account": "executive",
+            "username": "FabioRos"
         }
     ]
 }

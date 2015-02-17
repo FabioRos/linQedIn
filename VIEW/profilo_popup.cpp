@@ -1,8 +1,7 @@
 #include "profilo_popup.h"
 
-profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_corrente,const std::string &usn, QWidget *parent):
-    username_da_visualizzare(usn),username_corrente(usn_corrente),ptr_repository(p_repo),QWidget(parent){
-
+void profilo_popup::inizializza(){
+    this->setWindowIcon(QIcon("popup_icon.png"));
     std::string cognome=ptr_repository->get_ptr_utente(username_da_visualizzare)->get_cognome();
     std::string nome=ptr_repository->get_ptr_utente(username_da_visualizzare)->get_nome();
 
@@ -40,15 +39,31 @@ profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_co
 
     layout->addWidget(titolo);
     layout->addWidget(frame_principale);
-    if(controller->esiste_A_nella_rete_di_B(username_da_visualizzare,username_corrente)){                                       //devo fare l f() delcontroller che verifica collegamento
-        layout->addWidget(btn_rimuovi_dalla_rete);
-    }else{
-        layout->addWidget(btn_aggiungi_a_rete);
-    }
-    //connessioni
-    connect(btn_aggiungi_a_rete,SIGNAL(clicked()),this,SLOT(aggiungi_a_rete()));
-    connect(btn_rimuovi_dalla_rete,SIGNAL(clicked()),this,SLOT(rimuovi_dalla_rete()));
 
+
+}
+
+profilo_popup::profilo_popup(users_repository *p_repo, const std::string &usn_corrente,const std::string &usn, QWidget *parent):
+    username_da_visualizzare(usn),username_corrente(usn_corrente),ptr_repository(p_repo),QWidget(parent){
+
+    inizializza();
+
+    if(username_corrente!=username_da_visualizzare){
+        if(controller->esiste_A_nella_rete_di_B(username_da_visualizzare,username_corrente)){                                       //devo fare l f() delcontroller che verifica collegamento
+            layout->addWidget(btn_rimuovi_dalla_rete);
+        }else{
+            layout->addWidget(btn_aggiungi_a_rete);
+        }
+        //connessioni
+        connect(btn_aggiungi_a_rete,SIGNAL(clicked()),this,SLOT(aggiungi_a_rete()));
+        connect(btn_rimuovi_dalla_rete,SIGNAL(clicked()),this,SLOT(rimuovi_dalla_rete()));
+    }
+}
+
+profilo_popup::profilo_popup(users_repository *p_repo, const std::string &target, QWidget *parent):
+    username_da_visualizzare(target),ptr_repository(p_repo),QWidget(parent){
+
+    inizializza();
 }
 
 

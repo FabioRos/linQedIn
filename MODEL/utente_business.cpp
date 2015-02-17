@@ -13,21 +13,7 @@ utente_business::utente_business(const std::string &n, const std::string &c, con
 double utente_business::costo_annuale =40;
 
 std::list<utente *> utente_business::cerca(users_repository* ptr_repo, const std::string& s) const{
-    std::list<utente*> risultato;
-    std::list<smart_utente*> lista_ptr_smu=ptr_repo->get_database();
-    std::list<smart_utente*>::const_iterator it=lista_ptr_smu.begin();
-    for(;it!=lista_ptr_smu.end();++it){
-        // cerca per username, nome o cognome, competenza una lingua.
-        utente* u=(*it)->get_ptr_utente();
-        if(     u->un_pezzo_di_competenza(s) ||
-                u->esiste_lingua(s) ||
-                u->get_username().find(s)!=std::string::npos ||
-                u->get_cognome().find(s)!=std::string::npos  ||
-                u->get_nome().find(s)!=std::string::npos)
-            risultato.push_back(u);
-
-    }
-    return risultato;
+    return ptr_repo->cerca(ptr_repo,s,100);
 }
 
 utente *utente_business::clona_utente() const{

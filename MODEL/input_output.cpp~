@@ -126,11 +126,11 @@ DB* input_output::carica_da_file(){
         }// foreach-utenti _END_
 
 	 //tariffe:
-		 QJsonObject tariffe = oggetto_root.value("tariffe").toObject();
-		 utente_business ub;
-		 ub.set_costo_annuale(tariffe["business"].toString().toDouble());
-		 utente_executive ue;
-		 ue.set_costo_annuale(tariffe["executive"].toString().toDouble());
+     QJsonObject tariffe = oggetto_root.value("tariffe").toObject();
+     utente_business ub;
+     ub.set_costo_annuale(tariffe["business"].toString().toDouble());
+     utente_executive ue;
+     ue.set_costo_annuale(tariffe["executive"].toString().toDouble());
 
 
 

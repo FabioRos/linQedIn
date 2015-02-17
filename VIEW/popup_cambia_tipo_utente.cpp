@@ -5,6 +5,7 @@ popup_cambia_tipo_utente::popup_cambia_tipo_utente(const std::string& usn,
               username(usn),ptr_repository(ptr_repo),QWidget(parent){
 
 
+   this->setWindowIcon(QIcon("popup_icon.png"));
    combo_tipo=new QComboBox(this);
    tipi_account << "BASIC" << "BUSINESS" << "EXECUTIVE";
    combo_tipo->addItems(tipi_account);

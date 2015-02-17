@@ -56,6 +56,7 @@ menu_amministrazione::menu_amministrazione(admin_controller* ac, QWidget *parent
     connect(btn_rimuovi_utente,SIGNAL(clicked()),parent,SLOT(mostra_pag_rimozione_utenti()));
     connect(btn_cambia_account,SIGNAL(clicked()),parent,SLOT(mostra_pag_cambio_tipo_utenti()));
     connect(btn_gestione_tariffe,SIGNAL(clicked()),parent,SLOT(mostra_pag_gestione_tariffe()));
+    connect(btn_cerca,SIGNAL(clicked()),parent,SLOT(mostra_pag_ricerca()));
     //  I/O + EXIT _END
 
 

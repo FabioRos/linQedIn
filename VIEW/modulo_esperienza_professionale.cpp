@@ -77,12 +77,9 @@ void modulo_esperienza_professionale::aggiungi_esperienza(){
     record.append(" # ");
     record.append(nome_azienda->text());
     record.append(" # ");
-        QDate d_inizio,d_fine;
-        d_inizio=data_inizio->selectedDate();
-        d_fine=data_fine->selectedDate();
-    record.append(d_inizio.toString("d M yyyy"));
+    record.append(data_inizio->selectedDate().toString("d-M-yyyy"));
     record.append(" # ");
-    record.append(d_fine.toString("d M yyyy"));
+    record.append(data_fine->selectedDate().toString("d-M-yyyy"));
 
     esperienze->addItem(record);
 }

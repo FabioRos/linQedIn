@@ -18,7 +18,7 @@ cerca::cerca(users_repository * repo, const std::string& usr, QWidget *parent)
     info_txt.append("se sei un utente BUSINESS puoi cercare anche per lingua e competenza<br />");
     info_txt.append("mentre se sei un utente EXECUTIVE puoi cercare anche per esperienza professionale <br />(luogo, posizione, azienda).");
     lbl_how_to = new QLabel(info_txt);
-    lbl_how_to->setMaximumHeight(150);
+    lbl_how_to->setMaximumHeight(40);
     layout_vericale=new QVBoxLayout(this);
     layout_vericale->addWidget(lbl_titolo);
     layout_vericale->addWidget(input_ricerca);

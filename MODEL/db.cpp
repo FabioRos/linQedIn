@@ -13,7 +13,8 @@ smart_utente *DB::get_ptr_smart_utente(const std::string& username){
 }
 
 utente *DB::get_ptr_utente(const std::string& username){
-    return this->get_ptr_smart_utente(username)->get_ptr_utente();
+     smart_utente* smu=this->get_ptr_smart_utente(username);
+     return (smu!=0)?smu->get_ptr_utente():0;
 }
 
 

@@ -62,4 +62,60 @@ void users_repository::set_tariffa_executive(const double& d){
     u.set_costo_annuale(d);
 }
 
+bool users_repository::is_username_valido(const std::string & s){
+    return ptr_db->get_ptr_utente(s)==0;
+}
+
+std::list<utente *> users_repository::cerca(users_repository *ptr_repo, const std::string &s,
+                                            const int &tipo) const{
+    //int indice scelta tipo ricerca
+
+    ///LEGENDA: 1_basic, 100_business, 101_executive
+
+    std::list<utente*> risultato;
+    std::list<smart_utente*> lista_ptr_smu=ptr_repo->get_database();
+    std::list<smart_utente*>::const_iterator it=lista_ptr_smu.begin();
+    switch (tipo) {
+    case 1:{//BASIC
+        for(;it!=lista_ptr_smu.end();++it){
+            // cerca per username, nome o cognome
+            utente* u=(*it)->get_ptr_utente();
+            if(     (u->get_username().find(s)!=std::string::npos ||
+                     u->get_cognome().find(s)!=std::string::npos  ||
+                     u->get_nome().find(s)!=std::string::npos))
+                risultato.push_back(u);
+        }
+    }break;
+    case 100:{//BUSINESS
+        for(;it!=lista_ptr_smu.end();++it){
+            // cerca per username, nome o cognome, competenza una lingua.
+            utente* u=(*it)->get_ptr_utente();
+            if(     u->un_pezzo_di_competenza(s) ||
+                    u->esiste_lingua(s) ||
+                    u->get_username().find(s)!=std::string::npos ||
+                    u->get_cognome().find(s)!=std::string::npos  ||
+                    u->get_nome().find(s)!=std::string::npos)
+                risultato.push_back(u);
+        }
+    }break;
+    case 101:{  //EXECUTIVE
+        for(;it!=lista_ptr_smu.end();++it){
+            // cerca per username, nome o cognome o 1 competenza(anche parziale), lingua,
+            // nome azienda in cui ha lavorato, posizione, luogo.
+            utente* u=(*it)->get_ptr_utente();
+            if(  u->un_pezzo_di_competenza(s) || u->ha_lavorato_nell_azienda(s) ||
+                 u->ha_lavorato_nella_posizione(s)|| u->ha_lavorato_nella_citta(s) ||
+                 u->esiste_lingua(s) ||u->ha_la_competenza(s) ||
+                 u->get_username().find(s)!=std::string::npos ||
+                 u->get_cognome().find(s)!=std::string::npos  ||
+                 u->get_nome().find(s)!=std::string::npos)
+                risultato.push_back(u);
+        }
+    }break;
+    default:
+        break;
+    }
+    return risultato;
+}
+
 

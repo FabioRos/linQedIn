@@ -2,7 +2,7 @@
 
 admin_gestisci_tariffe::admin_gestisci_tariffe(users_repository* ptr_repo,QWidget *parent) :
     ptr_repository(ptr_repo),QWidget(parent){
-    lbl_titolo= new QLabel(QString("<b><center><h3>MODIFICA TARIFFAZIONI</h3></center></b>"),this);
+    lbl_titolo= new QLabel(QString("<b><center><h3>MODIFICA TARIFFAZIONI ANNUALI</h3></center></b>"),this);
     btn_salva_modifiche = new QPushButton("salva_modifiche",this);
     input_tariffa_business= new QDoubleSpinBox(this);
     input_tariffa_executive= new QDoubleSpinBox(this);

@@ -6,8 +6,11 @@ client_rete::client_rete(const std::string &username, users_repository *ptr_repo
     tabella->rimuovi_tutti();
     tabella->popola_tabella(get_all_smu_rete());
     QLabel* lbl_suggerimento=new QLabel("<center><i>Per rimuovere un contatto selezionalo e conferma.</i></center>");
-
+    QLabel *titolo=new QLabel("<center><h3>RETE</h3></center>");
+    titolo->setMaximumHeight(50);
+    titolo->setMaximumHeight(70);
     layout=new QVBoxLayout(this);
+    layout->addWidget(titolo);
     layout->addWidget(tabella);
     layout->addWidget(lbl_suggerimento);
 
@@ -39,4 +42,9 @@ void client_rete::esplodi_opzioni(const int &r, const int &c){
         popup_rimuovi_utente_da_rete* popup= new popup_rimuovi_utente_da_rete(utente_corrente,username_con_focus,ptr_repository,0);
         popup->show();
     }
+}
+
+void client_rete::refresh(){
+    tabella->rimuovi_tutti();
+    tabella->popola_tabella(get_all_smu_rete());
 }

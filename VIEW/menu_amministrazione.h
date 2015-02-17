@@ -12,7 +12,8 @@ private:
     admin_controller* controller;
     QWidget* parent_ptr;
     users_repository* ptr_repo;
-    QPushButton* btn_aggiungi_utente, *btn_rimuovi_utente, *btn_cambia_account, *btn_dump_db, *btn_cerca;
+    QPushButton* btn_aggiungi_utente, *btn_rimuovi_utente, *btn_cambia_account;
+    QPushButton*btn_dump_db, *btn_cerca;
     QPushButton* btn_caricamento, *btn2_salvataggio, *btn_gestione_tariffe;
     QPushButton* exit;
     QVBoxLayout *main_menu_layout;

@@ -19,8 +19,10 @@ private:
     QPushButton* btn_rimuovi_dalla_rete;
     aggiungi_modifica_utenti* controller;
     QVBoxLayout* layout;
+    void inizializza();
 public:
     explicit profilo_popup(users_repository*,const std::string& corrente,const std::string& target,QWidget *parent = 0);
+    explicit profilo_popup(users_repository*,const std::string& target,QWidget *parent = 0);
 
 signals:
 

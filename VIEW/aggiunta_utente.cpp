@@ -1,14 +1,17 @@
 #include "aggiunta_utente.h"
+#include "amministrazione.h"
 
 aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     : ptr_repository(repo) ,QWidget(parent){
+    padre=static_cast<amministrazione*>(parent);
     layout_form=new QFormLayout(this);
     QHBoxLayout* layout_footer= new QHBoxLayout;
-
+    username_valido=false;
     btn_conferma=new QPushButton("inserisci",this);
     cognome= new QLineEdit(this);
     nome= new QLineEdit(this);
     username= new QLineEdit(this);
+    username->setStyleSheet(QString("border:1px solid #990000;"));
     carta_di_credito= new QLineEdit(this);
     carta_di_credito->setDisabled(true);
     tipologia_account=new QComboBox(this);
@@ -42,11 +45,14 @@ aggiunta_utente::aggiunta_utente(users_repository *repo, QWidget *parent)
     //connessioni
     connect(btn_conferma,SIGNAL(clicked()),this,SLOT(aggiungi_utente_a_db()));
     connect(tipologia_account,SIGNAL(currentIndexChanged(int)),this,SLOT(cc_manager(int)));
+    connect(username,SIGNAL(textChanged(QString)),this,SLOT(valida_username()));
 }
 
 
 
 void aggiunta_utente::aggiungi_utente_a_db(){
+
+    if(username_valido){
         //prendo i campi dati
         std::string username_ = username->text().toStdString();
         std::string cognome_ = cognome->text().toStdString();
@@ -80,6 +86,14 @@ void aggiunta_utente::aggiungi_utente_a_db(){
                                                 esperienze_, cc));
 
         //inserisco tramite lo smartutente*
+        padre->mostra_pag_visualizzazione_utenti();
+    }
+    else{
+        QMessageBox* msg=new QMessageBox(QMessageBox::Critical,"Username già esistente",
+                                         "<center>L'username inserito è già in uso<br /> per un altro untente oppure è vuoto.</center>");
+        msg->setGeometry(400,400,400,250);
+        msg->show();
+    }
 }
 
 void aggiunta_utente::cc_manager(int i){
@@ -89,4 +103,15 @@ void aggiunta_utente::cc_manager(int i){
         carta_di_credito->setDisabled(false);
     else    //0
         carta_di_credito->setDisabled(true);
+}
+
+void aggiunta_utente::valida_username() {
+    if(username->text()!="" && ptr_repository->is_username_valido(username->text().toStdString())){
+        username_valido=true;
+        username->setStyleSheet(QString("border:1px solid #009900;"));
+    }else{
+        username_valido=false;
+        username->setStyleSheet(QString("border:1px solid #990000;"));
+    }
+
 }

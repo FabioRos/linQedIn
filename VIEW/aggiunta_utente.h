@@ -9,12 +9,15 @@
 
 #include <QFormLayout>
 #include <QLabel>
+#include <QMessageBox>
 
-
+class amministrazione;
 class aggiunta_utente : public QWidget{
     Q_OBJECT
 private:
     users_repository* ptr_repository;
+    bool username_valido;
+    amministrazione* padre;
 public:
     explicit aggiunta_utente(users_repository* =0,QWidget *parent = 0);
     QFormLayout* layout_form;
@@ -30,6 +33,7 @@ signals:
 public slots:
     void aggiungi_utente_a_db();// da testare
     void cc_manager(int);
+    void valida_username();
 };
 
 #endif // AGGIUNTA_UTENTE_H

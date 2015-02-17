@@ -25,6 +25,7 @@ public:
 signals:
 
 public slots:
+    void popola(QString);
      void esplodi_opzioni(const int& r,const int& c);
 
 };
